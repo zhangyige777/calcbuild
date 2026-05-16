@@ -2,6 +2,7 @@
   "name": "calcbuild",
   "version": "1.0.0",
   "type": "module",
+  "packageManager": "pnpm@9.15.4",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
