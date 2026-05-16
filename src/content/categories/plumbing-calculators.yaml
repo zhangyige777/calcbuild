@@ -1,0 +1,6 @@
+slug: "plumbing-calculators"
+name: "Plumbing"
+description: "Free plumbing calculators for pipe sizing, water flow, pressure, and drainage."
+icon: "plumbing"
+calculators:
+  - "pool-gallons-calculator"

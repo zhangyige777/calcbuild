@@ -1,0 +1,79 @@
+title: "Asphalt Cost Calculator"
+h1: "Asphalt Cost Calculator – Estimate Your Paving Cost"
+description: "Estimate the total cost of your asphalt project. Enter dimensions and price per ton to calculate materials needed and total cost."
+category: "construction-calculators"
+slug: "asphalt-cost-calculator"
+keywords:
+  - "parking lot paving cost calculator"
+  - "how to calculate asphalt tonnage"
+  - "how to calculate asphalt in tons"
+  - "how to figure tons of asphalt"
+  - "how to figure asphalt tons"
+  - "how much asphalt is in a ton"
+
+calculator:
+  component: "AsphaltCostCalculator"
+  inputs:
+    - name: "length"
+      label: "Length"
+      unit: "ft"
+      type: "number"
+      placeholder: "50"
+      required: true
+    - name: "width"
+      label: "Width"
+      unit: "ft"
+      type: "number"
+      placeholder: "20"
+      required: true
+    - name: "depth"
+      label: "Depth"
+      unit: "in"
+      type: "number"
+      placeholder: "3"
+      required: true
+    - name: "pricePerTon"
+      label: "Price per Ton"
+      unit: "$"
+      type: "number"
+      placeholder: "150"
+      required: true
+
+formula:
+  expression: "Total Cost = (Length × Width × Depth/12 ÷ 27 × 1.4) × Price per Ton"
+  steps:
+    - "1. Measure the area length and width in feet"
+    - "2. Determine desired depth in inches"
+    - "3. Calculate volume: Length × Width × (Depth ÷ 12) = cubic feet"
+    - "4. Convert to cubic yards: cubic feet ÷ 27"
+    - "5. Convert to tons: cubic yards × 1.4"
+    - "6. Multiply tons by price per ton for total cost"
+
+example:
+  scenario: "estimating cost for a 50ft × 20ft parking area, 3 inches deep, at $150 per ton"
+  values:
+    length: 50
+    width: 20
+    depth: 3
+    pricePerTon: 150
+  result: "Volume = 50 × 20 × 0.25 = 250 ft³ → 9.26 yd³ → 12.96 tons → Total cost: $1,944"
+
+tips:
+  - "Asphalt costs between $100–$200 per ton depending on your location"
+  - "Residential driveways typically need 2-3 inches of asphalt over a gravel base"
+  - "Commercial parking lots may require 3-4 inches of asphalt"
+  - "Get at least 3 quotes from local paving contractors for the best price"
+  - "Factor in additional costs for base preparation, grading, and sealing"
+
+faq:
+  - question: "How much does it cost to pave a driveway with asphalt?"
+    answer: "A typical residential driveway (600 sq ft, 3 inches deep) requires about 9.3 tons of asphalt. At $100-$200 per ton, material costs range from $930 to $1,860. Total cost including labor is typically $3-$7 per square foot."
+  - question: "How do I calculate asphalt tonnage?"
+    answer: "Calculate the volume in cubic feet (length × width × depth in feet), divide by 27 to get cubic yards, then multiply by 1.4 to get tons. Add 5-10% for waste."
+  - question: "How much asphalt is in a ton?"
+    answer: "One ton of asphalt covers approximately 40-80 square feet depending on depth. At 2 inches deep, it covers about 80 sq ft. At 4 inches deep, it covers about 40 sq ft."
+
+related:
+  - "asphalt-calculator"
+  - "asphalt-tons-to-cubic-yards"
+  - "asphalt-square-yards-to-tons"

@@ -1,0 +1,83 @@
+title: "Board Foot Calculator"
+h1: "Board Foot Calculator – Estimate Lumber Volume & Cost"
+description: "Calculate board feet for any lumber size. Enter thickness, width, and length to get board feet, total for multiple pieces, and estimated cost."
+category: "construction-calculators"
+slug: "board-foot-calculator"
+keywords:
+  - "board foot lumber calculator"
+  - "formula for board footage"
+  - "how many 2x4 do i need calculator"
+  - "shed lumber calculator"
+  - "lumber estimator"
+  - "material calculator lumber"
+
+calculator:
+  component: "BoardFootCalculator"
+  inputs:
+    - name: "thickness"
+      label: "Thickness"
+      unit: "in"
+      type: "number"
+      placeholder: "2"
+      required: true
+    - name: "width"
+      label: "Width"
+      unit: "in"
+      type: "number"
+      placeholder: "6"
+      required: true
+    - name: "length"
+      label: "Length"
+      unit: "ft"
+      type: "number"
+      placeholder: "8"
+      required: true
+    - name: "quantity"
+      label: "Quantity"
+      unit: "pcs"
+      type: "number"
+      placeholder: "1"
+    - name: "pricePerBf"
+      label: "Price per Board Foot"
+      unit: "$/bf"
+      type: "number"
+      placeholder: "4.50 (optional)"
+
+formula:
+  expression: "Board Feet = (Thickness (in) × Width (in) × Length (ft)) / 12"
+  steps:
+    - "1. Measure the thickness of the board in inches (use nominal dimensions, e.g. 2 for a 2×4)"
+    - "2. Measure the width in inches (e.g. 4 for a 2×4)"
+    - "3. Measure the length in feet"
+    - "4. Calculate: Board Feet = (Thickness × Width × Length) / 12"
+    - "5. For multiple boards: Total BF = Board Feet × Quantity"
+    - "6. For cost: Cost = Total Board Feet × Price per BF"
+
+example:
+  scenario: "calculating board feet for ten 2×6 boards that are 10 feet long"
+  values:
+    thickness: 2
+    width: 6
+    length: 10
+    quantity: 10
+  result: "Each board = 10.00 bf, total = 100.00 board feet. At $4.50/bf, cost = $450.00. Equivalent to about 13 standard 2×4×12 boards."
+
+tips:
+  - "Use nominal dimensions (e.g., 2×4, not the actual 1.5×3.5) for board foot calculations"
+  - "A standard 2×4×8 = 5.33 board feet; a 2×4×12 = 8 board feet"
+  - "Board foot price varies by species: pine ≈ $2–4/bf, oak ≈ $4–8/bf, exotic woods ≈ $10+/bf"
+  - "Always buy 10–15% extra lumber to account for waste, defects, and cutting errors"
+
+faq:
+  - question: "What is a board foot?"
+    answer: "A board foot is a unit of lumber volume equal to 144 cubic inches — a board that is 12 inches wide, 1 inch thick, and 12 inches long (or any combination with the same volume). The formula is: BF = (Thickness (in) × Width (in) × Length (ft)) / 12."
+  - question: "How many board feet in a 2×4×8?"
+    answer: "A 2×4×8 board contains 5.33 board feet: (2 × 4 × 8) / 12 = 5.33 bf. Note this uses nominal dimensions (the actual size of a 2×4 is about 1.5×3.5 inches, but board feet always uses nominal size)."
+  - question: "How do I calculate how much lumber I need?"
+    answer: "List all the boards you need by size (thickness, width, length) and quantity. Calculate board feet for each size using (T × W × L) / 12, multiply by quantity, and sum all sizes. Add 10–15% for waste."
+
+related:
+  - "fence-calculator"
+  - "cinder-block-calculator"
+  - "stair-calculator"
+  - "gutter-calculator"

@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  icon?: string;
+}
+
+const { title, description, href } = Astro.props;
+---
+
+<a
+  href={href}
+  class="group flex flex-col w-full border border-grey-400 dark:border-grey-700 rounded-ic-md overflow-hidden hover:border-brand-700 dark:hover:border-brand-600 transition-colors"
+>
+  <!-- Card heading -->
+  <div class="px-[20px] py-[18px] border-b border-grey-400 dark:border-grey-700 flex items-center gap-[10px]">
+    <svg class="w-[1.8em] h-[1.8em] text-brand-700 dark:text-brand-600 opacity-80 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z" />
+    </svg>
+    <h3 class="text-[1.8rem] font-semibold text-grey-800 dark:text-grey-100 group-hover:text-brand-700 dark:group-hover:text-brand-600 transition-colors">{title}</h3>
+  </div>
+  <!-- Card body -->
+  <div class="px-[20px] py-[15px] flex flex-col flex-1">
+    <p class="text-[1.6rem] text-grey-600 dark:text-[#D4D4D4] mb-[15px] line-clamp-2 flex-1">{description}</p>
+    <span class="text-[1.6rem] font-semibold text-grey-800 dark:text-grey-200 group-hover:text-brand-700 dark:group-hover:text-brand-600 flex items-center gap-[5px] transition-colors">
+      Calculate
+      <svg class="w-[1.4rem] h-[1.4rem] text-brand-700 dark:text-brand-600 transition-transform group-hover:translate-x-[3px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+    </span>
+  </div>
+</a>

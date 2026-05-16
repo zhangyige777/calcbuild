@@ -1,0 +1,79 @@
+title: "Swimming Pool Cost Calculator"
+h1: "Swimming Pool Cost Calculator – Estimate Your Pool Installation Budget"
+description: "Estimate the cost of installing a swimming pool. Compare inground concrete, fiberglass, and above ground pools with low/mid/high budget ranges and monthly maintenance costs."
+category: "cost-calculators"
+slug: "swimming-pool-cost-calculator"
+keywords:
+  - "swimming pool cost calculator"
+  - "pool cost estimator"
+  - "inground pool cost"
+  - "fiberglass pool cost"
+  - "above ground pool cost"
+  - "pool installation cost"
+  - "pool maintenance cost"
+
+calculator:
+  component: "SwimmingPoolCost"
+  inputs:
+    - name: "poolType"
+      label: "Pool Type"
+      unit: ""
+      type: "select"
+      options:
+        - value: "concrete"
+          label: "Inground Concrete"
+        - value: "fiberglass"
+          label: "Inground Fiberglass"
+        - value: "above_ground"
+          label: "Above Ground"
+      required: true
+    - name: "poolSize"
+      label: "Pool Size"
+      unit: ""
+      type: "select"
+      options:
+        - value: "small"
+          label: "Small (12×24 ft)"
+        - value: "medium"
+          label: "Medium (16×32 ft)"
+        - value: "large"
+          label: "Large (20×40 ft)"
+      required: true
+
+formula:
+  expression: "Cost = Pool Area × Cost/sqft (varies by type); Concrete: $50–100/sqft, Fiberglass: $40–75/sqft, Above Ground: $1,500–$5,000 flat"
+  steps:
+    - "1. Determine pool surface area: Small = 288 sq ft (12×24), Medium = 512 sq ft (16×32), Large = 800 sq ft (20×40)"
+    - "2. For concrete pools: multiply area by $50–$100/sqft"
+    - "3. For fiberglass pools: multiply area by $40–$75/sqft"
+    - "4. For above ground pools: use flat range of $1,500–$5,000"
+    - "5. Monthly maintenance: Concrete $150–$400, Fiberglass $100–$300, Above Ground $50–$150"
+
+example:
+  scenario: "estimating cost for a medium (16×32 ft) inground concrete pool"
+  values:
+    poolType: "concrete"
+    poolSize: "medium"
+  result: "Low estimate: $25,600, Mid estimate: $38,400, High estimate: $51,200, Monthly maintenance: $150–$400"
+
+tips:
+  - "Concrete pools offer the most customization but require the highest maintenance and have the longest install time (3–6 months)"
+  - "Fiberglass pools are pre-molded and install faster (2–4 weeks) but limit shape and size options"
+  - "Above ground pools are the most budget-friendly option and can be installed in as little as 1–3 days"
+  - "Don't forget to budget for pool fencing, decking, and landscaping which can add 20–50% to the total cost"
+
+faq:
+  - question: "How much does an inground concrete pool cost?"
+    answer: "An inground concrete pool typically costs $50–$100 per square foot. A medium 16×32 ft pool (512 sq ft) ranges from $25,600 to $51,200. Costs vary based on location, finishes, and additional features like spas or waterfalls."
+  - question: "Is a fiberglass pool cheaper than concrete?"
+    answer: "Fiberglass pools generally cost $40–$75/sqft versus $50–$100/sqft for concrete. For a medium pool, fiberglass runs $20,480–$38,400 while concrete runs $25,600–$51,200. Fiberglass also has lower lifetime maintenance costs."
+  - question: "What is the cheapest type of swimming pool?"
+    answer: "Above ground pools are the most affordable, ranging from $1,500 to $5,000 installed. Inground fiberglass pools are the next most affordable option at $40–$75/sqft. Concrete pools are typically the most expensive due to labor and customization."
+  - question: "How much does pool maintenance cost per month?"
+    answer: "Monthly pool maintenance costs vary by type: concrete pools $150–$400, fiberglass pools $100–$300, and above ground pools $50–$150. This includes chemicals, cleaning, and equipment maintenance."
+
+related:
+  - "concrete-calculator"
+  - "construction-cost-calculator"
+  - "addition-cost-calculator"
+  - "deck-calculator"

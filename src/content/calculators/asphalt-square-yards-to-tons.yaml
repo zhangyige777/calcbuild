@@ -1,0 +1,63 @@
+title: "Asphalt Square Yards to Tons Calculator"
+h1: "Asphalt Square Yards to Tons Calculator"
+description: "Convert asphalt square yards to tons. Enter area in square yards and depth in inches to calculate the tons of asphalt needed."
+category: "construction-calculators"
+slug: "asphalt-square-yards-to-tons"
+keywords:
+  - "sy to tons asphalt"
+  - "asphalt tons to square yards"
+  - "square yards to tons asphalt"
+  - "asphalt sy to tons"
+  - "convert asphalt sy to tons"
+  - "cy to tons asphalt"
+
+calculator:
+  component: "AsphaltSqYardsToTons"
+  inputs:
+    - name: "squareYards"
+      label: "Square Yards"
+      unit: "sq yd"
+      type: "number"
+      placeholder: "100"
+      required: true
+    - name: "depth"
+      label: "Depth"
+      unit: "in"
+      type: "number"
+      placeholder: "2"
+      required: true
+
+formula:
+  expression: "Tons = (Square Yards × Depth in inches ÷ 324) × 1.4"
+  steps:
+    - "1. Measure the area in square yards"
+    - "2. Determine the depth in inches"
+    - "3. Multiply square yards by depth in inches"
+    - "4. Divide by 324 to get cubic yards"
+    - "5. Multiply by 1.4 (asphalt density) to get tons"
+
+example:
+  scenario: "calculating asphalt needed for 100 square yards at 2 inches deep"
+  values:
+    squareYards: 100
+    depth: 2
+  result: "Tons = (100 × 2 ÷ 324) × 1.4 = 0.864 tons of asphalt"
+
+tips:
+  - "A square yard is 9 square feet (3 ft × 3 ft)"
+  - "The divisor 324 converts square yards × inches directly to cubic yards"
+  - "For residential driveways, 2-3 inches of asphalt depth is typical"
+  - "Order 5-10% extra to account for uneven surfaces and waste"
+
+faq:
+  - question: "How do I convert square yards of asphalt to tons?"
+    answer: "Multiply square yards by depth in inches, divide by 324, then multiply by 1.4. This gives you the tons of asphalt needed."
+  - question: "How many square yards does a ton of asphalt cover?"
+    answer: "One ton of asphalt covers approximately 9 square yards at 2 inches deep, or about 6 square yards at 3 inches deep."
+  - question: "What is the formula for asphalt square yards to tons?"
+    answer: "Tons = (Square Yards × Depth in inches ÷ 324) × 1.4. The 324 converts the area-depth product to cubic yards, and 1.4 is the standard asphalt density."
+
+related:
+  - "asphalt-calculator"
+  - "asphalt-tons-to-cubic-yards"
+  - "asphalt-cost-calculator"

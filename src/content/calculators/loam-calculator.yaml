@@ -1,0 +1,70 @@
+title: "Loam Calculator"
+h1: "Loam Calculator – Estimate Cubic Yards & Cost"
+description: "Use our free loam calculator to estimate how much loam you need in cubic yards and tons. Enter length, width, and depth for instant results."
+category: "landscaping-calculators"
+slug: "loam-calculator"
+keywords:
+  - "loam calculator"
+  - "loam calculator square feet"
+  - "how much loam do i need"
+  - "yard of loam"
+  - "1 yard of loam"
+  - "how much is a yard of loam"
+
+calculator:
+  component: "LoamCalculator"
+  inputs:
+    - name: "length"
+      label: "Length"
+      unit: "ft"
+      type: "number"
+      placeholder: "20"
+      required: true
+    - name: "width"
+      label: "Width"
+      unit: "ft"
+      type: "number"
+      placeholder: "10"
+      required: true
+    - name: "depth"
+      label: "Depth"
+      unit: "in"
+      type: "number"
+      placeholder: "6"
+      required: true
+
+formula:
+  expression: "Cubic Yards = (Length × Width × Depth in ft) ÷ 27"
+  steps:
+    - "1. Convert depth from inches to feet: Depth (ft) = Depth (in) ÷ 12"
+    - "2. Calculate cubic yards: Cubic Yards = (Length × Width × Depth) ÷ 27"
+    - "3. Calculate tons: Tons = Cubic Yards × 1.15 (loam density)"
+    - "4. Estimate cost: Cost = Cubic Yards × $25 (average price per cubic yard)"
+
+example:
+  scenario: "filling a 20ft × 10ft garden bed with 6 inches of loam"
+  values:
+    length: 20
+    width: 10
+    depth: 6
+  result: "You need approximately 3.70 cubic yards or 4.26 tons of loam, costing about $92.59"
+
+tips:
+  - "Order 10% extra for settling — loam compacts significantly after the first rain"
+  - "Loam density is approximately 1.15 tons per cubic yard (2,300 lbs/yd³)"
+  - "Screened loam is best for lawns and gardens; unscreened loam may contain rocks and roots"
+  - "A cubic yard of loam covers approximately 100 sq ft at a 3-inch depth"
+
+faq:
+  - question: "How much does a yard of loam cost?"
+    answer: "A cubic yard of loam costs between $15–$50 depending on your location and whether it is screened or blended. Delivery fees typically add $50–$100 per truckload."
+  - question: "How much loam do I need for my lawn?"
+    answer: "For a new lawn, you typically need 4–6 inches of loam. Calculate cubic yards using: (Length × Width × Depth in inches ÷ 12) ÷ 27. Add 10% extra for compaction."
+  - question: "What is the difference between loam and topsoil?"
+    answer: "Loam is a specific soil type with a balanced mix of sand, silt, and clay (about 40/40/20). Topsoil is the top layer of soil which may or may not be loam. Screened loam is generally better for planting."
+
+related:
+  - "topsoil-calculator"
+  - "pea-gravel-calculator"
+  - "river-rock-calculator"
+  - "sod-calculator"

@@ -1,0 +1,106 @@
+title: "River Rock Calculator"
+h1: "River Rock Calculator – Estimate Cubic Yards, Tons & Cost"
+description: "Use our free river rock calculator to estimate how much river rock you need in cubic yards, tons, or by weight. Supports 1-3 inch, 2 inch, and 3/4 inch rock sizes."
+category: "landscaping-calculators"
+slug: "river-rock-calculator"
+keywords:
+  - "river stone calculator"
+  - "river rock coverage calculator"
+  - "river rock stone calculator"
+  - "riverstone calculator"
+  - "rock coverage calculator square feet"
+  - "how much river rock will i need"
+  - "calculate river rock"
+  - "how do i calculate how much river rock i need"
+  - "calculating river rock"
+  - "1-3 river rock calculator"
+  - "1 3 river rock calculator"
+  - "2 inch river rock calculator"
+  - "3/4 river rock calculator"
+  - "calculating river rock coverage"
+  - "river rock calculator square feet"
+  - "river rock coverage per ton"
+  - "1 ton of river rock coverage"
+  - "how much does river rock cost"
+  - "cost per ton river rock"
+  - "river rock coverage chart"
+  - "river rock coverage"
+  - "weight of a yard of river rock"
+  - "yard of river rock weight"
+  - "weight of 1 yard of river rock"
+  - "weight of river rock per yard"
+  - "river rock cost per cubic yard"
+
+calculator:
+  component: "RiverRockCalculator"
+  inputs:
+    - name: "length"
+      label: "Length"
+      unit: "ft"
+      type: "number"
+      placeholder: "20"
+      required: true
+    - name: "width"
+      label: "Width"
+      unit: "ft"
+      type: "number"
+      placeholder: "10"
+      required: true
+    - name: "depth"
+      label: "Depth"
+      unit: "in"
+      type: "number"
+      placeholder: "3"
+      required: true
+    - name: "rockSize"
+      label: "Rock Size"
+      unit: ""
+      type: "select"
+      options:
+        - value: "1-3"
+          label: "1-3 inch"
+        - value: "2"
+          label: "2 inch"
+        - value: "3/4"
+          label: "3/4 inch"
+      required: true
+
+formula:
+  expression: "Cubic Yards = (Length × Width × Depth in ft) ÷ 27; Tons = Cubic Yards × Density"
+  steps:
+    - "1. Convert depth from inches to feet: Depth (ft) = Depth (in) ÷ 12"
+    - "2. Calculate cubic yards: Cubic Yards = (Length × Width × Depth) ÷ 27"
+    - "3. Calculate tons: Tons = Cubic Yards × density (1-3 inch: 1.35; 2 inch: 1.4; 3/4 inch: 1.45)"
+    - "4. Calculate coverage: Coverage (sq ft/ton) = (Tons × 2000) ÷ (Depth in inches × 100)"
+    - "5. Calculate weight: Weight (lbs) = Cubic Yards × density × 2000"
+
+example:
+  scenario: "covering a 20ft × 10ft area with 3 inches of 1-3 inch river rock"
+  values:
+    length: 20
+    width: 10
+    depth: 3
+    rockSize: "1-3"
+  result: "You need approximately 1.85 cubic yards or 2.50 tons of 1-3 inch river rock, covering about 167 sq ft per ton"
+
+tips:
+  - "Order 5–10% extra to account for gaps between irregularly shaped rocks"
+  - "River rock density varies by size: 1-3 inch ≈ 1.35 tons/yd³, 2 inch ≈ 1.4 tons/yd³, 3/4 inch ≈ 1.45 tons/yd³"
+  - "For drainage projects, use larger rock (1-3 inch); for decorative ground cover, smaller rock (3/4 inch) works well"
+  - "River rock is sold by the ton at most landscape supply yards — a typical pickup truck carries about 1 ton"
+
+faq:
+  - question: "How much does a ton of river rock cover?"
+    answer: "One ton of river rock covers approximately 80–100 square feet at a 2-inch depth, or 50–60 square feet at a 3-inch depth. Coverage depends on the rock size and how tightly it is packed."
+  - question: "How much does river rock cost per ton?"
+    answer: "River rock costs between $50–$150 per ton depending on your location, the rock size, and the color. Delivery fees may add $50–$100 depending on distance."
+  - question: "How do I calculate how much river rock I need?"
+    answer: "Measure your area's length and width in feet and the desired depth in inches. Calculate: Cubic Yards = (Length × Width × Depth ÷ 12) ÷ 27. Then multiply by the density (1.35–1.45 tons per cubic yard) to get tons. Add 5–10% extra."
+  - question: "How much does a yard of river rock weigh?"
+    answer: "One cubic yard of river rock weighs approximately 2,700–2,900 pounds (1.35–1.45 tons), depending on the rock size. Smaller rock tends to be denser than larger rock."
+
+related:
+  - "pea-gravel-calculator"
+  - "pea-gravel-cost-calculator"
+  - "topsoil-calculator"
+  - "loam-calculator"

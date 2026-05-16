@@ -1,0 +1,92 @@
+title: "Deck Joist Calculator"
+h1: "Deck Joist Calculator – Number of Joists, Linear Feet & Lumber Cost"
+description: "Calculate how many joists you need for your deck based on length, spacing, and joist size. Get total linear feet and estimated lumber cost for pressure-treated lumber."
+category: "deck-fence-calculators"
+slug: "deck-joist-calculator"
+keywords:
+  - "deck joist calculator"
+  - "deck load calculator"
+  - "deck joist spacing calculator"
+  - "deck framing calculator"
+  - "how many joists for a deck"
+  - "deck material calculator"
+  - "deck beam calculator"
+
+calculator:
+  component: "DeckJoistCalculator"
+  inputs:
+    - name: "deckLength"
+      label: "Deck Length"
+      unit: "ft"
+      type: "number"
+      placeholder: "16"
+      required: true
+    - name: "deckWidth"
+      label: "Deck Width (Joist Span)"
+      unit: "ft"
+      type: "number"
+      placeholder: "12"
+      required: true
+    - name: "joistSpacing"
+      label: "Joist Spacing"
+      unit: ""
+      type: "select"
+      options:
+        - value: "12"
+          label: '12" OC'
+        - value: "16"
+          label: '16" OC'
+        - value: "24"
+          label: '24" OC'
+    - name: "joistSize"
+      label: "Joist Size"
+      unit: ""
+      type: "select"
+      options:
+        - value: "2x6"
+          label: "2x6"
+        - value: "2x8"
+          label: "2x8"
+        - value: "2x10"
+          label: "2x10"
+        - value: "2x12"
+          label: "2x12"
+
+formula:
+  expression: "Joists = (Length / Spacing) + 1; Total LF = Joists x Width; Cost = LF x Price/LF"
+  steps:
+    - "1. Convert joist spacing from inches to feet: Spacing (ft) = Spacing (in) / 12"
+    - "2. Calculate number of joists: Joists = Ceiling(Length / Spacing) + 1"
+    - "3. Calculate total linear feet: Total LF = Number of Joists x Deck Width"
+    - "4. Estimate lumber cost based on joist size: 2x6=$2.50/LF, 2x8=$3.25/LF, 2x10=$4.00/LF, 2x12=$5.50/LF"
+
+example:
+  scenario: "building a 16 ft x 12 ft deck with 16\" OC spacing using 2x8 joists"
+  values:
+    deckLength: 16
+    deckWidth: 12
+    joistSpacing: "16"
+    joistSize: "2x8"
+  result: "13 joists needed, 156 linear feet of lumber, estimated cost: $507.00"
+
+tips:
+  - "16 inches on center is the most common joist spacing for residential decks with standard decking boards"
+  - "Use 12 inch OC spacing for composite decking or when spanning longer distances — it reduces bounce"
+  - "2x8 joists can span up to 12 feet, 2x10 up to 16 feet, and 2x12 up to 19 feet at 16\" OC spacing"
+  - "Always use pressure-treated lumber rated for ground contact for deck framing"
+
+faq:
+  - question: "How far can a 2x8 deck joist span?"
+    answer: "A pressure-treated 2x8 joist at 16 inches on center can span approximately 12 feet. For longer spans, use 2x10 or 2x12 joists, or reduce the spacing to 12 inches on center."
+  - question: "What is the standard spacing for deck joists?"
+    answer: "The most common spacing is 16 inches on center (OC). For composite decking, 12 inches OC is often required. For wood decking with 2-inch thick boards, 24 inches OC may be acceptable."
+  - question: "How do I calculate how many joists I need?"
+    answer: "Divide the deck length (in inches) by the joist spacing (in inches), then add 1 for the starting joist. For example, a 16-foot deck at 16 inches OC: (192 / 16) + 1 = 13 joists."
+  - question: "Should I use 2x8 or 2x10 for deck joists?"
+    answer: "It depends on your span. For spans up to 12 feet, 2x8 works at 16\" OC. For 12 to 16 feet, use 2x10. For longer spans up to 19 feet, use 2x12. Always check local building codes for span tables."
+
+related:
+  - "fence-calculator"
+  - "stair-calculator"
+  - "board-foot-calculator"
+  - "asphalt-calculator"

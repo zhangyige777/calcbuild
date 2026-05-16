@@ -1,0 +1,70 @@
+title: "Asphalt Calculator"
+h1: "Asphalt Calculator – Estimate Tons & Cost"
+description: "Use our free asphalt calculator to estimate how many tons of asphalt you need. Enter length, width, and depth to get instant results."
+category: "construction-calculators"
+slug: "asphalt-calculator"
+keywords:
+  - "asphalt calculator tons"
+  - "asphalt estimator"
+  - "calculate asphalt"
+  - "asphalt calculator ton"
+  - "asphalt calculations"
+
+calculator:
+  component: "AsphaltCalculator"
+  inputs:
+    - name: "length"
+      label: "Length"
+      unit: "ft"
+      type: "number"
+      placeholder: "20"
+      required: true
+    - name: "width"
+      label: "Width"
+      unit: "ft"
+      type: "number"
+      placeholder: "24"
+      required: true
+    - name: "depth"
+      label: "Depth"
+      unit: "in"
+      type: "number"
+      placeholder: "3"
+      required: true
+
+formula:
+  expression: "Volume (ft³) = Length × Width × Depth (ft)"
+  steps:
+    - "1. Convert depth from inches to feet: Depth (ft) = Depth (in) ÷ 12"
+    - "2. Calculate volume in cubic feet: Volume = Length × Width × Depth"
+    - "3. Convert to cubic yards: Cubic Yards = Volume ÷ 27"
+    - "4. Convert to tons: Tons = Cubic Yards × 1.4 (asphalt density)"
+
+example:
+  scenario: "paving a 20ft × 24ft driveway that is 3 inches deep"
+  values:
+    length: 20
+    width: 24
+    depth: 3
+  result: "You need approximately 1.87 cubic yards or 2.61 tons of asphalt"
+
+tips:
+  - "Always order 5–10% extra for waste and uneven surfaces"
+  - "Asphalt density is approximately 145 lbs per cubic foot (1.4 tons per cubic yard)"
+  - "Consider compacting — asphalt settles about 25% after compaction"
+  - "For best results, schedule paving when temperatures are above 50°F (10°C)"
+
+faq:
+  - question: "How many square feet does a ton of asphalt cover?"
+    answer: "One ton of asphalt covers approximately 40–80 square feet depending on the depth. At 2 inches deep, a ton covers about 80 sq ft. At 4 inches deep, it covers about 40 sq ft."
+  - question: "How much does asphalt cost per ton?"
+    answer: "Asphalt costs between $100–$200 per ton on average, depending on your location and the type of asphalt mix. Prices can vary significantly by region."
+  - question: "How thick should asphalt be for a driveway?"
+    answer: "A residential driveway should typically be 2–3 inches of asphalt over a 4–8 inch gravel base. Commercial driveways may require 3–4 inches of asphalt."
+  - question: "How do I calculate how much asphalt I need?"
+    answer: "Multiply the length × width × depth (in feet) to get cubic feet. Divide by 27 to get cubic yards. Multiply by 1.4 to convert to tons. Add 5–10% extra for waste."
+
+related:
+  - "asphalt-tons-to-cubic-yards"
+  - "asphalt-square-yards-to-tons"
+  - "asphalt-cost-calculator"

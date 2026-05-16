@@ -1,0 +1,94 @@
+title: "Pond Volume Calculator"
+h1: "Pond Volume Calculator – Estimate Pond Gallons"
+description: "Calculate how many gallons of water your pond holds. Supports rectangular, circular, and irregular shapes with sloping sides. Get instant volume results."
+category: "landscaping-calculators"
+slug: "pond-volume-calculator"
+keywords:
+  - "koi pond calculator"
+  - "koi pond size calculator"
+  - "how to calculate pond volume"
+  - "how many gallons in a pond"
+  - "how to figure gallons in pond"
+  - "how to figure pond gallons"
+  - "how to calculate gallons of water in a pond"
+  - "how to figure gallons of water in a pond"
+  - "how to measure gallons of water in a pond"
+  - "koi pond volume calculator"
+  - "how to determine pond volume"
+  - "how to determine gallons in a pond"
+  - "volume of pond with sloping sides"
+  - "pond size"
+  - "determine the width of the pond"
+
+calculator:
+  component: "PondVolumeCalculator"
+  inputs:
+    - name: "shape"
+      label: "Pond Shape"
+      unit: ""
+      type: "select"
+      options:
+        - value: "rectangular"
+          label: "Rectangular"
+        - value: "circular"
+          label: "Circular"
+        - value: "irregular"
+          label: "Irregular / Sloping Sides"
+      required: true
+    - name: "length"
+      label: "Length"
+      unit: "ft"
+      type: "number"
+      placeholder: "20"
+      required: true
+    - name: "width"
+      label: "Width"
+      unit: "ft"
+      type: "number"
+      placeholder: "10"
+      required: true
+    - name: "depth"
+      label: "Average Depth"
+      unit: "ft"
+      type: "number"
+      placeholder: "4"
+      required: true
+
+formula:
+  expression: "Rectangular: L x W x D x 7.48; Circular: π x (D/2)² x D x 7.48; Irregular: L x W x D x 0.8 x 7.48"
+  steps:
+    - "1. Measure the pond dimensions in feet (length, width, diameter, depth)"
+    - "2. For rectangular ponds: Volume (cu ft) = Length x Width x Depth"
+    - "3. For circular ponds: Volume (cu ft) = π x (Diameter/2)² x Depth"
+    - "4. For irregular ponds with sloping sides: Volume (cu ft) = Length x Width x Depth x 0.8 (the 0.8 factor accounts for sloped sides)"
+    - "5. Convert to gallons: Gallons = Volume (cu ft) x 7.48"
+    - "6. For large ponds, also calculate acre-feet: Acre-Feet = Volume (cu ft) / 43,560"
+
+example:
+  scenario: "calculating water volume for a 20ft x 10ft rectangular koi pond with 4ft average depth"
+  values:
+    shape: "rectangular"
+    length: 20
+    width: 10
+    depth: 4
+  result: "The pond holds approximately 5,984 gallons of water"
+
+tips:
+  - "For ponds with sloping sides, use the irregular shape option which applies a 0.8 correction factor to account for the reduced volume"
+  - "Measure depth at multiple points and average them for the most accurate volume estimate"
+  - "Knowing your pond's volume is essential for proper fish stocking rates, pump sizing, and water treatment dosing"
+  - "A general rule for koi ponds is 250-500 gallons per adult koi fish"
+  - "One acre-foot of water equals 325,851 gallons — use the acre-feet result for large farm ponds"
+
+faq:
+  - question: "How do I calculate the volume of a pond with sloping sides?"
+    answer: "For ponds with sloping sides, calculate the volume as if the sides were straight (Length x Width x Depth), then multiply by 0.8 to account for the slope. This gives a more accurate estimate of the actual water volume."
+  - question: "How many gallons in a koi pond?"
+    answer: "A typical backyard koi pond holds between 1,000 and 5,000 gallons. The minimum recommended size for koi is about 1,000 gallons, with 250-500 gallons needed per adult koi fish."
+  - question: "How do I measure my pond's average depth?"
+    answer: "Take depth measurements at several points across the pond using a weighted line or pole. Add all measurements together and divide by the number of measurements taken. For ponds with a dramatic drop-off, take more measurements in that area."
+
+related:
+  - "pool-gallons-calculator"
+  - "sod-calculator"
+  - "sod-cost-calculator"

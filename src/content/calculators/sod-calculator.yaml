@@ -1,0 +1,70 @@
+title: "Sod Calculator"
+h1: "Sod Calculator – Estimate Pallets, Rolls & Pieces"
+description: "Use our free sod calculator to estimate how much sod you need. Enter length and width to calculate pallets, rolls, pieces, and weight for your lawn project."
+category: "landscaping-calculators"
+slug: "sod-calculator"
+keywords:
+  - "sod solutions area calculator"
+  - "how much sod comes in a pallet"
+  - "sod pallet calculator"
+  - "how many rolls of sod on a pallet"
+  - "how many rolls of sod in a pallet"
+  - "size of a piece of sod"
+  - "how many pieces of sod in a pallet"
+  - "how many pieces of sod on a pallet"
+  - "what size is a piece of sod"
+  - "how many square feet is a roll of sod"
+  - "dimensions of a pallet of sod"
+  - "how big are sod pieces"
+
+calculator:
+  component: "SodCalculator"
+  inputs:
+    - name: "length"
+      label: "Length"
+      unit: "ft"
+      type: "number"
+      placeholder: "50"
+      required: true
+    - name: "width"
+      label: "Width"
+      unit: "ft"
+      type: "number"
+      placeholder: "30"
+      required: true
+
+formula:
+  expression: "Pallets = Area (sq ft) / 450; Rolls = Area / 10; Pieces = Area / 2.75"
+  steps:
+    - "1. Calculate the total area: Area = Length x Width (sq ft)"
+    - "2. Calculate pallets needed: Pallets = Area / 450 (standard pallet covers 450 sq ft)"
+    - "3. Calculate rolls needed: Rolls = Area / 10 (standard roll covers 10 sq ft)"
+    - "4. Calculate pieces needed: Pieces = Area / 2.75 (standard piece is 16\" x 24\" = 2.75 sq ft)"
+    - "5. Estimate weight: Weight = Pallets x 2,000 lbs (approx 2,000 lbs per pallet)"
+
+example:
+  scenario: "sodding a 50ft x 30ft yard"
+  values:
+    length: 50
+    width: 30
+  result: "1,500 sq ft requires approximately 4 pallets (3.33 exact), 150 rolls, 545 pieces, weighing about 8,000 lbs"
+
+tips:
+  - "Order 5-10% extra sod to account for cuts around edges and odd shapes"
+  - "A standard pallet of sod covers about 450 square feet and weighs roughly 2,000 lbs"
+  - "Install sod as soon as possible after delivery — ideally within 24 hours"
+  - "Water new sod thoroughly within 30 minutes of installation and keep it moist for the first 2 weeks"
+  - "Each piece of sod is approximately 16\" x 24\" (2.75 sq ft), and a pallet contains about 165 pieces"
+
+faq:
+  - question: "How many pieces of sod on a pallet?"
+    answer: "A standard pallet of sod contains approximately 165 pieces. Each piece measures about 16\" x 24\", covering roughly 2.75 square feet. The total coverage per pallet is about 450 square feet."
+  - question: "How big is a piece of sod?"
+    answer: "A standard piece of sod measures approximately 16 inches by 24 inches, which equals about 2.75 square feet. Dimensions can vary slightly depending on the sod farm and grass variety."
+  - question: "How many square feet in a pallet of sod?"
+    answer: "A standard pallet of sod covers approximately 450 square feet. This can vary between 400-500 square feet depending on the supplier and how tightly the pieces are stacked."
+
+related:
+  - "sod-cost-calculator"
+  - "pond-volume-calculator"
+  - "pool-gallons-calculator"

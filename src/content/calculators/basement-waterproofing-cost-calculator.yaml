@@ -1,0 +1,75 @@
+title: "Basement Waterproofing Cost Calculator"
+h1: "Basement Waterproofing Cost Calculator – Estimate Waterproofing Expenses"
+description: "Calculate the cost of basement waterproofing based on perimeter and method. Compare interior sealant, exterior waterproofing, and French drain systems with cost breakdowns."
+category: "cost-calculators"
+slug: "basement-waterproofing-cost-calculator"
+keywords:
+  - "basement waterproofing cost calculator"
+  - "basement waterproofing cost estimator"
+  - "french drain cost calculator"
+  - "basement waterproofing price"
+  - "interior waterproofing cost"
+  - "exterior waterproofing cost"
+  - "basement sealant cost"
+
+calculator:
+  component: "BasementWaterproofCost"
+  inputs:
+    - name: "perimeter"
+      label: "Basement Perimeter"
+      unit: "ft"
+      type: "number"
+      placeholder: "120"
+      required: true
+    - name: "method"
+      label: "Waterproofing Method"
+      unit: ""
+      type: "select"
+      options:
+        - value: "interior"
+          label: "Interior Sealant"
+        - value: "exterior"
+          label: "Exterior Waterproofing"
+        - value: "french"
+          label: "French Drain"
+      required: true
+
+formula:
+  expression: "Cost = Perimeter × Rate; Interior: $3–10/ft, Exterior: $50–100/ft, French drain: $40–80/ft"
+  steps:
+    - "1. Measure the basement perimeter in linear feet"
+    - "2. Select the waterproofing method"
+    - "3. Low Estimate = Perimeter × Low Rate (Interior: $3, Exterior: $50, French: $40)"
+    - "4. Mid Estimate = Perimeter × Mid Rate (Interior: $6.50, Exterior: $75, French: $60)"
+    - "5. High Estimate = Perimeter × High Rate (Interior: $10, Exterior: $100, French: $80)"
+    - "6. Breakdown: Materials 25–35%, Labor 45–55%, Misc & Cleanup 10–20%"
+
+example:
+  scenario: "estimating cost for a 120 ft perimeter basement with exterior waterproofing"
+  values:
+    perimeter: 120
+    method: "exterior"
+  result: "Low estimate: $6,000, Mid estimate: $9,000, High estimate: $12,000 with a 3–7 day timeline"
+
+tips:
+  - "Interior sealant is the most affordable option but only addresses minor moisture — not structural water issues"
+  - "Exterior waterproofing is the most effective long-term solution but requires excavation around the foundation"
+  - "French drains are ideal for homes with high water tables or poor yard drainage"
+  - "Most waterproofing projects require a professional contractor — this is not recommended as a DIY project"
+  - "Get a professional inspection before choosing a method — the wrong solution wastes money"
+
+faq:
+  - question: "How much does basement waterproofing cost?"
+    answer: "Basement waterproofing costs $3–10 per linear foot for interior sealant, $40–80/ft for a French drain system, and $50–100/ft for exterior waterproofing. For a typical 120 ft perimeter basement, total costs range from $360–12,000 depending on the method chosen."
+  - question: "What is the best basement waterproofing method?"
+    answer: "Exterior waterproofing is the most effective long-term solution because it stops water before it reaches the foundation. French drains are best for high water table areas. Interior sealant is only suitable for minor moisture issues and is not a permanent fix for active leaks."
+  - question: "How long does basement waterproofing take?"
+    answer: "Interior sealant applications take 1–3 days. French drain installation takes 2–5 days. Exterior waterproofing with excavation takes 3–7 days for a typical residential basement. Timelines may increase if structural repairs are needed."
+  - question: "Is basement waterproofing worth the cost?"
+    answer: "Yes. Waterproofing protects your home's structural integrity, prevents mold growth, and can increase usable living space. Unaddressed water damage can cost 5–10x more in foundation repairs. Waterproofing also adds resale value and is often required for basement finishing permits."
+
+related:
+  - "concrete-calculator"
+  - "gravel-calculator"
+  - "mold-remediation-cost-calculator"
+  - "bathroom-remodel-cost-calculator"

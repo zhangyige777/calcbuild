@@ -1,0 +1,79 @@
+title: "Insulation Calculator"
+h1: "Insulation Calculator – Thickness, Material Quantity & Cost Estimate"
+description: "Calculate how much insulation you need for walls, attic, or basement. Supports fiberglass batt, blown-in cellulose, and rigid foam board with R-value based thickness and cost estimates."
+category: "construction-calculators"
+slug: "insulation-calculator"
+keywords:
+  - "insulation savings calculator"
+  - "calculate insulation for walls"
+  - "roll insulation calculator"
+  - "insulation calculator for walls"
+  - "insulation cost calculator"
+  - "r value calculator"
+  - "attic insulation calculator"
+  - "insulation thickness calculator"
+
+calculator:
+  component: "InsulationCalculator"
+  inputs:
+    - name: "area"
+      label: "Area to Insulate"
+      unit: "sq ft"
+      type: "number"
+      placeholder: "1000"
+      required: true
+    - name: "desiredRValue"
+      label: "Desired R-Value"
+      unit: "R-value"
+      type: "number"
+      placeholder: "38"
+      required: true
+    - name: "insulationType"
+      label: "Insulation Type"
+      unit: ""
+      type: "select"
+      options:
+        - value: "fiberglass"
+          label: "Fiberglass Batt"
+        - value: "cellulose"
+          label: "Blown-In Cellulose"
+        - value: "rigid_foam"
+          label: "Rigid Foam Board"
+
+formula:
+  expression: "Thickness = R-value / R-per-inch; Cost = Area x Thickness x Cost/sq ft/inch"
+  steps:
+    - "1. Determine required thickness: Thickness (inches) = Desired R-value / R-value per inch"
+    - "2. R-values per inch: Fiberglass batt = R-3.2/inch, Blown-in cellulose = R-3.5/inch, Rigid foam board = R-5.0/inch"
+    - "3. Calculate material quantity: Units = Ceiling(Area / Coverage per unit)"
+    - "4. Estimate cost: Cost = Area x Thickness x Cost per sq ft per inch"
+
+example:
+  scenario: "insulating a 1,000 sq ft attic to R-38 with fiberglass batt"
+  values:
+    area: 1000
+    desiredRValue: 38
+    insulationType: "fiberglass"
+  result: "Required thickness: 11.9 inches, 25 batts needed, estimated cost: $1,781.25"
+
+tips:
+  - "Fiberglass batts are the most common DIY option — they come in pre-cut widths that fit standard stud spacing"
+  - "Blown-in cellulose is ideal for irregular spaces and existing walls — it fills gaps better than batts"
+  - "Rigid foam board provides the highest R-value per inch and works well for basement walls and crawl spaces"
+  - "Always check your local building codes for minimum R-value requirements — they vary by climate zone"
+
+faq:
+  - question: "How thick should my insulation be for R-38?"
+    answer: "It depends on the material. For R-38 you need approximately 11.9 inches of fiberglass batt (R-3.2/inch), 10.9 inches of blown-in cellulose (R-3.5/inch), or 7.6 inches of rigid foam board (R-5.0/inch)."
+  - question: "What is the cheapest insulation type?"
+    answer: "Blown-in cellulose is typically the most cost-effective option at about $0.12/sq ft/inch. Fiberglass batts are close behind at $0.15/sq ft/inch. Rigid foam board is the most expensive at $0.55/sq ft/inch but offers the highest R-value per inch."
+  - question: "Do I need to remove old insulation before adding new?"
+    answer: "Not always. You can add new insulation over existing insulation in attics as long as the old insulation is dry and in good condition. However, if the old insulation is wet, moldy, or compressed, it should be removed first for maximum effectiveness."
+  - question: "What R-value do I need for my area?"
+    answer: "R-value requirements vary by climate zone. The DOE recommends R-38 to R-60 for attics, R-13 to R-21 for walls, and R-25 to R-30 for floors in most US climate zones. Check your local building codes for specific requirements."
+
+related:
+  - "spray-foam-cost-calculator"
+  - "drywall-calculator"
+  - "asphalt-calculator"
+  - "siding-calculator"

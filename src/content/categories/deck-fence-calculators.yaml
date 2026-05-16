@@ -1,0 +1,6 @@
+slug: "deck-fence-calculators"
+name: "Deck & Fence"
+description: "Free deck and fence calculators to estimate lumber, posts, railing, and materials for your outdoor projects."
+icon: "deck"
+calculators:
+  - "deck-joist-calculator"

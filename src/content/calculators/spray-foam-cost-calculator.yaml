@@ -1,0 +1,76 @@
+title: "Spray Foam Cost Calculator"
+h1: "Spray Foam Cost Calculator – Board Feet, Price & Coverage Estimate"
+description: "Estimate the cost of spray foam insulation based on area, thickness, and foam type. Compare open cell vs closed cell spray foam pricing per board foot."
+category: "construction-calculators"
+slug: "spray-foam-cost-calculator"
+keywords:
+  - "spray foam insulation cost calculator"
+  - "closed cell spray foam insulation cost calculator"
+  - "spray foam insulation calculator cost"
+  - "house insulation cost calculator"
+  - "spray foam board feet calculator"
+  - "open cell spray foam cost"
+  - "spray foam price estimator"
+
+calculator:
+  component: "SprayFoamCostCalculator"
+  inputs:
+    - name: "area"
+      label: "Area"
+      unit: "sq ft"
+      type: "number"
+      placeholder: "1500"
+      required: true
+    - name: "thickness"
+      label: "Thickness"
+      unit: "inches"
+      type: "number"
+      placeholder: "3"
+      required: true
+    - name: "foamType"
+      label: "Foam Type"
+      unit: ""
+      type: "select"
+      options:
+        - value: "open_cell"
+          label: "Open Cell"
+        - value: "closed_cell"
+          label: "Closed Cell"
+
+formula:
+  expression: "Board Feet = Area x Thickness; Cost = Board Feet x Price per BF"
+  steps:
+    - "1. Calculate board feet: Board Feet = Area (sq ft) x Thickness (inches)"
+    - "2. Determine price per board foot: Open cell = $0.44/BF, Closed cell = $1.50/BF"
+    - "3. Total cost = Board Feet x Price per board foot"
+    - "4. Coverage = total area in sq ft at the specified thickness"
+
+example:
+  scenario: "insulating a 1,500 sq ft area with 3 inches of open cell spray foam"
+  values:
+    area: 1500
+    thickness: 3
+    foamType: "open_cell"
+  result: "Board feet: 4,500 BF, estimated cost: $1,980.00, coverage: 1,500 sq ft"
+
+tips:
+  - "Open cell spray foam is best for interior walls and soundproofing — it expands to fill cavities completely"
+  - "Closed cell spray foam provides a moisture barrier and higher R-value per inch — ideal for basements and exterior walls"
+  - "Board feet is the standard unit for spray foam measurement: 1 board foot = 1 sq ft at 1 inch thick"
+  - "Get at least 3 quotes from licensed installers — labor can significantly affect the final price"
+
+faq:
+  - question: "How much does spray foam insulation cost per board foot?"
+    answer: "Open cell spray foam costs approximately $0.44 per board foot, while closed cell costs about $1.50 per board foot. A board foot equals 1 square foot at 1 inch of thickness."
+  - question: "What is the difference between open cell and closed cell spray foam?"
+    answer: "Open cell foam is softer, more affordable, and great for sound dampening with an R-value of about R-3.7/inch. Closed cell foam is denser, acts as a moisture barrier, and offers R-6.5/inch but costs significantly more."
+  - question: "How many board feet do I need for a 2,000 sq ft house?"
+    answer: "It depends on the thickness. For 3 inches of foam on 2,000 sq ft, you need 6,000 board feet. At open cell rates that is about $2,640 and at closed cell rates about $9,000."
+  - question: "Is spray foam worth the cost?"
+    answer: "Spray foam has a higher upfront cost than traditional insulation but provides superior air sealing, moisture control, and long-term energy savings. Most homeowners recoup the cost within 5-7 years through reduced energy bills."
+
+related:
+  - "insulation-calculator"
+  - "drywall-calculator"
+  - "siding-cost-calculator"
+  - "asphalt-calculator"

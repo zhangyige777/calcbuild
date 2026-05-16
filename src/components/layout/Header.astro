@@ -1,0 +1,124 @@
+---
+import { SITE_NAME, CATEGORIES } from '../../utils/constants';
+import MobileMenu from './MobileMenu.astro';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="bg-white border-b border-grey-400 shadow-header sticky top-0 z-50 dark:bg-grey-950 dark:border-grey-850 dark:shadow-none">
+  <div class="max-w-ic-header mx-auto px-[15px]">
+    <div class="flex items-center justify-between h-[65px] max-[480px]:h-[60px]">
+      <!-- Brand -->
+      <a href="/" class="flex items-center gap-[10px] px-[10px] rounded-ic-md hover:bg-grey-200 transition-colors shrink-0 group">
+        <svg class="h-[35px] max-[480px]:h-[30px] max-[380px]:h-[25px] text-brand-700 dark:text-brand-600" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="36" height="36" rx="8" stroke="currentColor" stroke-width="3"/>
+          <rect x="8" y="8" width="10" height="10" rx="2" fill="currentColor"/>
+          <rect x="22" y="8" width="10" height="10" rx="2" fill="currentColor" opacity="0.5"/>
+          <rect x="8" y="22" width="10" height="10" rx="2" fill="currentColor" opacity="0.5"/>
+          <rect x="22" y="22" width="10" height="10" rx="2" fill="currentColor"/>
+        </svg>
+        <span class="text-[3.0rem] font-bold uppercase text-grey-800 dark:text-grey-100 group-hover:text-brand-700 dark:group-hover:text-brand-600 transition-colors max-[330px]:text-[1.6rem]">{SITE_NAME}</span>
+      </a>
+
+      <!-- Search (desktop) -->
+      <div class="hidden md:flex flex-1 max-w-[500px] mx-[20px] max-[1199px]:max-w-[400px] max-[1099px]:max-w-[350px]">
+        <div class="relative w-full">
+          <svg class="absolute left-[15px] top-1/2 -translate-y-1/2 w-[25px] h-[25px] text-grey-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
+          </svg>
+          <input
+            type="text"
+            placeholder="search for a calculator"
+            class="w-full pl-[48px] pr-[15px] py-[10px] text-[1.6rem] border border-grey-400 rounded-ic-md bg-white focus:border-brand-700 focus:outline-none transition-colors min-h-[40px] dark:bg-grey-850 dark:border-grey-700 dark:text-grey-100 dark:placeholder:text-[#949494]"
+          />
+        </div>
+      </div>
+
+      <!-- Right side -->
+      <div class="flex items-center">
+        <!-- Theme toggle -->
+        <button
+          class="w-[60px] flex items-center justify-center py-[15px] text-grey-700 hover:text-grey-900 dark:text-[#D4D4D4] dark:hover:text-grey-200 transition-colors"
+          id="theme-toggle"
+          aria-label="Toggle theme"
+        >
+          <svg class="w-[25px] h-[25px] dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
+          </svg>
+          <svg class="w-[25px] h-[25px] hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+          </svg>
+        </button>
+
+        <!-- Nav (desktop) -->
+        <nav class="hidden lg:flex items-center h-[65px]">
+          <div class="relative group">
+            <button class="px-[15px] h-full text-[1.6rem] font-medium text-grey-700 hover:text-grey-900 flex items-center gap-[5px] dark:text-grey-300 dark:hover:text-grey-100 transition-colors">
+              Calculators
+              <svg class="w-[14px] h-[14px] transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.-7.5-7.5" />
+              </svg>
+            </button>
+            <div class="absolute right-[-30px] top-full pt-[5px] w-[300px] bg-white border border-grey-400 shadow-overlay rounded-ic-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-[10px] z-50 dark:bg-grey-950 dark:border-grey-700 dark:shadow-none">
+              {CATEGORIES.map((cat) => (
+                <a
+                  href={`/${cat.slug}/`}
+                  class:list={[
+                    'flex items-center gap-[12px] mx-[10px] px-[10px] py-[7px] rounded-[12px] text-[1.6rem] font-medium text-grey-800 hover:bg-grey-300 dark:text-grey-200 dark:hover:bg-grey-850 transition-colors',
+                    currentPath.startsWith(`/${cat.slug}`) && 'text-brand-700 dark:text-brand-600'
+                  ]}
+                >
+                  <svg class="w-[30px] h-[30px] text-brand-700 dark:text-brand-600 opacity-80 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 17.25h15M5.25 13.5h13.5M6 9.75h12M6.75 6h10.5" />
+                  </svg>
+                  {cat.name} Calculators
+                </a>
+              ))}
+            </div>
+          </div>
+          <a href="/about/" class="px-[15px] h-full flex items-center text-[1.6rem] font-medium text-grey-700 hover:text-grey-900 dark:text-grey-300 dark:hover:text-grey-100 transition-colors">About</a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button
+          class="lg:hidden flex items-center justify-center w-[45px] h-[37px] text-grey-700 hover:text-grey-900 dark:text-grey-300 dark:hover:text-grey-100 transition-colors"
+          id="mobile-menu-btn"
+          aria-label="Menu"
+        >
+          <svg class="w-[22px] h-[22px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <MobileMenu />
+</header>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+
+  function getTheme() {
+    return localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+
+  function applyTheme(theme: string) {
+    if (theme === 'dark') {
+      html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
+    }
+  }
+
+  applyTheme(getTheme());
+
+  themeToggle?.addEventListener('click', () => {
+    const current = html.classList.contains('dark') ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem('theme', next);
+  });
+</script>

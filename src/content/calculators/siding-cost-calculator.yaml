@@ -1,0 +1,76 @@
+title: "Siding Cost Calculator"
+h1: "Siding Cost Calculator – Estimate Replacement Cost"
+description: "Estimate the cost of siding replacement. Compare costs for vinyl, Hardie board, cedar, metal, and stucco siding materials."
+category: "landscaping-calculators"
+slug: "siding-cost-calculator"
+keywords:
+  - "metal siding calculator"
+  - "cedar siding cost calculator"
+  - "siding repair cost calculator"
+  - "hardie siding calculator square feet"
+  - "calculate vinyl siding"
+  - "gable siding calculator"
+  - "siding calculator for gable"
+  - "gable end siding calculator"
+
+calculator:
+  component: "SidingCostCalculator"
+  inputs:
+    - name: "area"
+      label: "Total Siding Area"
+      unit: "sq ft"
+      type: "number"
+      placeholder: "1500"
+      required: true
+    - name: "materialType"
+      label: "Material Type"
+      unit: ""
+      type: "select"
+      options:
+        - value: "vinyl"
+          label: "Vinyl Siding"
+        - value: "hardie"
+          label: "Hardie/Fiber Cement"
+        - value: "cedar"
+          label: "Cedar/Wood"
+        - value: "metal"
+          label: "Metal/Steel"
+        - value: "stucco"
+          label: "Stucco"
+      required: true
+
+formula:
+  expression: "Total Cost = Area × (Material Cost/sq ft + Labor Cost/sq ft)"
+  steps:
+    - "1. Calculate your total siding area in square feet"
+    - "2. Choose your siding material"
+    - "3. Look up the material cost per square foot"
+    - "4. Add labor costs (typically equal to material costs)"
+    - "5. Add removal and disposal costs if replacing existing siding"
+    - "6. Multiply total per-square-foot cost by your area"
+
+example:
+  scenario: "estimating cost for 1,500 sq ft of Hardie board siding"
+  values:
+    area: 1500
+    materialType: "hardie"
+  result: "Material cost: $7,500–$15,000, Labor: $7,500–$15,000, Total estimated cost: $15,000–$30,000"
+
+tips:
+  - "Vinyl siding is the most budget-friendly option at $3-7 per sq ft installed"
+  - "Fiber cement (Hardie) costs $5-10 per sq ft but lasts 50+ years"
+  - "Cedar siding costs $6-12 per sq ft and requires regular maintenance"
+  - "Get at least 3 quotes from local contractors for accurate pricing"
+  - "Factor in removal costs ($1-2/sq ft) if replacing existing siding"
+
+faq:
+  - question: "How much does siding replacement cost?"
+    answer: "Siding replacement costs vary by material: vinyl $3-7/sq ft, Hardie board $5-10/sq ft, cedar $6-12/sq ft, and metal $5-9/sq ft installed. Labor typically equals material costs."
+  - question: "How much does metal siding cost?"
+    answer: "Metal siding costs $5-9 per square foot installed, including materials and labor. Steel siding is more expensive than aluminum but more durable."
+  - question: "How much does cedar siding cost?"
+    answer: "Cedar siding costs $6-12 per square foot installed. Premium grades can cost more. Cedar requires regular staining or painting every 3-5 years."
+
+related:
+  - "siding-calculator"
+  - "siding-square-footage-calculator"

@@ -1,0 +1,12 @@
+slug: "cost-calculators"
+name: "Cost Estimation"
+description: "Free cost estimation calculators for construction projects. Budget materials, labor, and total project costs."
+icon: "cost"
+calculators:
+  - "bathroom-remodel-cost-calculator"
+  - "basement-waterproofing-cost-calculator"
+  - "mold-remediation-cost-calculator"
+  - "swimming-pool-cost-calculator"
+  - "construction-cost-calculator"
+  - "bay-window-cost-calculator"
+  - "addition-cost-calculator"

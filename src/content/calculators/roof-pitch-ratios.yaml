@@ -1,0 +1,69 @@
+title: "Roof Pitch Ratios"
+h1: "Roof Pitch Ratio Calculator – Angle, Factor & Chart"
+description: "Calculate roof pitch angle and multiplier factor for any pitch ratio. Reference chart for common roof slopes from 1/12 to 12/12."
+category: "roofing-calculators"
+slug: "roof-pitch-ratios"
+keywords:
+  - "5 roof pitch"
+  - "4 12 roof pitch calculator"
+  - "8/12 pitch roof"
+  - "8:12 roof pitch"
+  - "roof rise chart"
+  - "roof slope pitch factor"
+  - "pitch factors for roof slopes"
+  - "roof pitches diagram"
+
+calculator:
+  component: "RoofPitchRatios"
+  inputs:
+    - name: "rise"
+      label: "Rise"
+      unit: "in"
+      type: "number"
+      placeholder: "6"
+      required: true
+    - name: "run"
+      label: "Run"
+      unit: "in"
+      type: "number"
+      placeholder: "12"
+      required: true
+    - name: "baseArea"
+      label: "Base Area (optional)"
+      unit: "sq ft"
+      type: "number"
+      placeholder: "1000"
+
+formula:
+  expression: "Pitch Factor = √(Rise² + Run²) / Run | Angle = arctan(Rise / Run)"
+  steps:
+    - "1. Determine the rise (vertical) and run (horizontal) in inches"
+    - "2. Calculate the pitch factor: √(Rise² + Run²) ÷ Run"
+    - "3. Calculate the angle: arctan(Rise ÷ Run) in degrees"
+    - "4. If you have a base area, multiply by pitch factor for actual roof area"
+
+example:
+  scenario: "calculating the pitch for an 8/12 roof with a 1,000 sq ft base area"
+  values:
+    rise: 8
+    run: 12
+    baseArea: 1000
+  result: "Pitch ratio is 8/12, angle is 33.69°, pitch factor is 1.202. Actual roof area for 1,000 sq ft base = 1,202 sq ft"
+
+tips:
+  - "A 4/12 pitch rises 4 inches for every 12 inches of horizontal run"
+  - "Pitches from 4/12 to 9/12 are considered standard for residential roofs"
+  - "The pitch factor tells you how much extra roofing material you need compared to flat area"
+  - "Low-slope roofs (below 4/12) require special waterproofing membranes"
+
+faq:
+  - question: "What does a 5/12 roof pitch mean?"
+    answer: "A 5/12 pitch means the roof rises 5 inches vertically for every 12 inches of horizontal distance. This equals approximately 22.62 degrees with a pitch factor of 1.083."
+  - question: "What is the angle of an 8/12 roof pitch?"
+    answer: "An 8/12 roof pitch has an angle of approximately 33.69 degrees with a pitch factor of 1.202."
+  - question: "How do I read a roof pitch chart?"
+    answer: "A roof pitch chart shows the ratio (rise/run), the corresponding angle in degrees, and the pitch factor/multiplier. Higher ratios mean steeper roofs with larger pitch factors."
+
+related:
+  - "roof-pitch-calculator"
+  - "gambrel-roof-calculator"

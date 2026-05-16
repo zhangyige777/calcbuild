@@ -1,0 +1,86 @@
+title: "Topsoil Calculator"
+h1: "Topsoil Calculator – Estimate Cubic Yards, Tons & Bags"
+description: "Use our free topsoil calculator to estimate how much topsoil you need in cubic yards, tons, pounds, and 40lb bags. Enter dimensions for instant results."
+category: "landscaping-calculators"
+slug: "topsoil-calculator"
+keywords:
+  - "how much does a cubic yard of topsoil weigh"
+  - "how much does topsoil cost"
+  - "how to calculate cubic yards of soil"
+  - "how much does a cubic yard of topsoil cost"
+  - "1 cubic foot of soil"
+  - "how many square feet in a cubic yard of soil"
+  - "how many cubic feet in 40 pound bag of soil"
+  - "how much does one yard of soil weigh"
+  - "soil cost per cubic yard"
+  - "topsoil coverage calculator"
+  - "topsoil calculator for lawn"
+  - "topdressing calculator"
+  - "40 lb bag of topsoil is how many cubic yards"
+  - "cost of yard of topsoil"
+  - "ton of topsoil"
+  - "ton of soil"
+  - "2 cubic yards of topsoil"
+
+calculator:
+  component: "TopsoilCalculator"
+  inputs:
+    - name: "length"
+      label: "Length"
+      unit: "ft"
+      type: "number"
+      placeholder: "20"
+      required: true
+    - name: "width"
+      label: "Width"
+      unit: "ft"
+      type: "number"
+      placeholder: "10"
+      required: true
+    - name: "depth"
+      label: "Depth"
+      unit: "in"
+      type: "number"
+      placeholder: "6"
+      required: true
+
+formula:
+  expression: "Cubic Yards = (Length × Width × Depth in ft) ÷ 27"
+  steps:
+    - "1. Convert depth from inches to feet: Depth (ft) = Depth (in) ÷ 12"
+    - "2. Calculate cubic yards: Cubic Yards = (Length × Width × Depth) ÷ 27"
+    - "3. Calculate tons: Tons = Cubic Yards × 1.0 (topsoil density)"
+    - "4. Calculate weight: Weight (lbs) = Cubic Yards × 2000"
+    - "5. Calculate 40lb bags: Bags = Weight ÷ 40"
+    - "6. Estimate cost: Cost = Cubic Yards × $20 (average price)"
+
+example:
+  scenario: "topdressing a 20ft × 10ft lawn area with 6 inches of topsoil"
+  values:
+    length: 20
+    width: 10
+    depth: 6
+  result: "You need approximately 3.70 cubic yards or 3.70 tons of topsoil, weighing 7,407 lbs (186 forty-pound bags)"
+
+tips:
+  - "Order 10% extra — topsoil compacts and settles after spreading and watering"
+  - "Topsoil density is approximately 1.0 tons per cubic yard (2,000 lbs/yd³)"
+  - "A 40lb bag of topsoil covers about 0.5 cubic feet or 12 sq ft at 1/2 inch depth"
+  - "For new lawns, spread 4–6 inches of topsoil before seeding or sodding"
+  - "For topdressing existing lawns, 1/4 to 1/2 inch is sufficient"
+
+faq:
+  - question: "How much does a cubic yard of topsoil weigh?"
+    answer: "A cubic yard of topsoil weighs approximately 2,000 pounds (1 ton) when dry. Wet topsoil can weigh significantly more — up to 3,000 pounds per cubic yard."
+  - question: "How much does topsoil cost per cubic yard?"
+    answer: "Topsoil costs between $12–$55 per cubic yard depending on quality and your location. Screened topsoil costs more than unscreened. Bulk delivery typically saves money over bagged topsoil."
+  - question: "How many cubic feet are in a 40 pound bag of topsoil?"
+    answer: "A 40-pound bag of topsoil contains approximately 0.5 to 0.75 cubic feet of soil, depending on moisture content and compaction. For planning purposes, use 0.5 cubic feet per bag."
+  - question: "How do I calculate how much topsoil I need?"
+    answer: "Measure your area length and width in feet, and desired depth in inches. Use the formula: Cubic Yards = (Length × Width × Depth ÷ 12) ÷ 27. Always add 10% extra for settling."
+
+related:
+  - "loam-calculator"
+  - "pea-gravel-calculator"
+  - "river-rock-calculator"
+  - "sod-calculator"

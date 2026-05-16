@@ -1,0 +1,95 @@
+title: "Gambrel Roof Calculator"
+h1: "Gambrel Roof Calculator – Rafter Lengths & Angles"
+description: "Calculate gambrel roof rafter lengths, angles, and roof area. Free online gambrel roof truss calculator for barn-style roofs."
+category: "roofing-calculators"
+slug: "gambrel-roof-calculator"
+keywords:
+  - "gambrel roof calculator"
+  - "gambrel roof truss calculator"
+  - "gambrel calculator"
+  - "gambrel roof rafters"
+  - "12 foot gambrel roof truss calculator"
+  - "30 foot gambrel roof trusses"
+  - "gambrel roof pitch"
+  - "angles for barn style roof"
+  - "gambrel angles"
+
+calculator:
+  component: "GambrelRoofCalculator"
+  inputs:
+    - name: "span"
+      label: "Building Span"
+      unit: "ft"
+      type: "number"
+      placeholder: "24"
+      required: true
+    - name: "lowerRise"
+      label: "Lower Slope Rise"
+      unit: "in"
+      type: "number"
+      placeholder: "12"
+      required: true
+    - name: "lowerRun"
+      label: "Lower Slope Run"
+      unit: "in"
+      type: "number"
+      placeholder: "12"
+      required: true
+    - name: "upperRise"
+      label: "Upper Slope Rise"
+      unit: "in"
+      type: "number"
+      placeholder: "5"
+      required: true
+    - name: "upperRun"
+      label: "Upper Slope Run"
+      unit: "in"
+      type: "number"
+      placeholder: "12"
+      required: true
+    - name: "buildingLength"
+      label: "Building Length"
+      unit: "ft"
+      type: "number"
+      placeholder: "40"
+      required: true
+
+formula:
+  expression: "Rafter Length = √(Rise² + Run²) | Angle = arctan(Rise ÷ Run)"
+  steps:
+    - "1. Enter the building span (total width)"
+    - "2. Specify the lower slope as rise/run (e.g., 12/12)"
+    - "3. Specify the upper slope as rise/run (e.g., 5/12)"
+    - "4. Calculate each rafter: √(rise² + run²)"
+    - "5. Calculate each angle: arctan(rise/run) × 180/π"
+    - "6. Total roof area = 2 × (lower rafter + upper rafter) × building length"
+
+example:
+  scenario: "calculating a 24ft span gambrel roof with 12/12 lower slope and 5/12 upper slope, 40ft long building"
+  values:
+    span: 24
+    lowerRise: 12
+    lowerRun: 12
+    upperRise: 5
+    upperRun: 12
+    buildingLength: 40
+  result: "Lower rafter = 16.97 per side (12ft run), Upper rafter = 13.00 per side, Lower angle = 45°, Upper angle = 22.62°"
+
+tips:
+  - "A gambrel roof has two slopes on each side — a steeper lower slope and a shallower upper slope"
+  - "Common lower slopes range from 6/12 to 12/12 (27° to 45°)"
+  - "Common upper slopes range from 4/12 to 6/12 (18° to 27°)"
+  - "The gambrel design maximizes attic or loft space"
+  - "Always consult local building codes for snow load requirements"
+
+faq:
+  - question: "What is a gambrel roof?"
+    answer: "A gambrel roof is a symmetrical two-sided roof with two slopes on each side. The upper slope is shallow and the lower slope is steep, creating extra space in the attic or loft area."
+  - question: "What is the best pitch for a gambrel roof?"
+    answer: "The most common gambrel roof pitches are a 12/12 lower slope (45°) with a 5/12 or 6/12 upper slope (22-27°). This combination provides good headroom and classic barn-style appearance."
+  - question: "How do you calculate gambrel roof rafters?"
+    answer: "Each rafter length equals the square root of (rise squared + run squared). For a 12/12 lower pitch with a 12ft run, the lower rafter = √(144 + 144) = 16.97 ft."
+
+related:
+  - "roof-pitch-calculator"
+  - "roof-pitch-ratios"

@@ -1,0 +1,68 @@
+title: "Pea Gravel Cost Calculator"
+h1: "Pea Gravel Cost Calculator – Estimate Price per Yard & Ton"
+description: "Calculate the total cost of pea gravel for your project. Enter quantity and price per unit to get cost per cubic yard, cost per ton, and total cost."
+category: "landscaping-calculators"
+slug: "pea-gravel-cost-calculator"
+keywords:
+  - "pea gravel cost per yard"
+  - "pea gravel price per yard"
+  - "price per ton of pea gravel"
+  - "pea gravel prices per ton"
+  - "cost of pea gravel per cubic yard"
+  - "price of pea gravel per cubic yard"
+  - "cost pea gravel per cubic yard"
+  - "yard of pea gravel cost"
+  - "how much does a yard of pea gravel cost"
+
+calculator:
+  component: "PeaGravelCostCalculator"
+  inputs:
+    - name: "quantity"
+      label: "Quantity"
+      unit: "cubic-yards"
+      type: "number"
+      placeholder: "5"
+      required: true
+    - name: "pricePerUnit"
+      label: "Price per Unit"
+      unit: "$"
+      type: "number"
+      placeholder: "50"
+      required: true
+
+formula:
+  expression: "Total Cost = Quantity × Price per Unit"
+  steps:
+    - "1. Enter the quantity of pea gravel needed (in cubic yards or tons)"
+    - "2. Enter the price per unit ($/yd³ or $/ton)"
+    - "3. Total Cost = Quantity × Price per Unit"
+    - "4. Cost per Cubic Yard = Price per Ton ÷ 1.3 (density conversion)"
+    - "5. Cost per Ton = Price per Cubic Yard × 1.3"
+
+example:
+  scenario: "purchasing 5 cubic yards of pea gravel at $50 per cubic yard"
+  values:
+    quantity: 5
+    unit: "cubic-yards"
+    pricePerUnit: 50
+  result: "Total cost is $250.00, which equals $50.00 per cubic yard or $38.46 per ton"
+
+tips:
+  - "Pea gravel typically costs $30–$60 per cubic yard or $40–$75 per ton"
+  - "Delivery fees can add $50–$150 depending on distance from the supplier"
+  - "Buying in bulk is significantly cheaper than purchasing individual bags"
+  - "Prices vary by region, so get quotes from multiple local suppliers"
+  - "Factor in the cost of landscape fabric and edging for a complete project budget"
+
+faq:
+  - question: "How much does a yard of pea gravel cost?"
+    answer: "A cubic yard of pea gravel costs between $30 and $60 on average, depending on your location and the supplier. Bulk delivery orders often qualify for discounted pricing."
+  - question: "Is it cheaper to buy pea gravel by the ton or by the yard?"
+    answer: "Buying by the ton is often slightly more economical for large projects, but the difference is small. Since one cubic yard of pea gravel weighs about 1.3 tons, compare both unit prices to find the better deal."
+  - question: "What additional costs should I budget for pea gravel?"
+    answer: "Beyond the gravel itself, budget for delivery fees ($50–$150), landscape fabric ($0.05–$0.10/sq ft), edging materials ($2–$8/linear foot), and labor if hiring professionals. A woven geotextile fabric beneath the gravel helps prevent weed growth."
+
+related:
+  - "pea-gravel-calculator"
+  - "river-rock-calculator"
+  - "loam-calculator"

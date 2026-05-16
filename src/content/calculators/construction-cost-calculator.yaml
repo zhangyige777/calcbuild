@@ -1,0 +1,87 @@
+title: "Construction Cost Calculator"
+h1: "Construction Cost Calculator – Estimate Building Costs per Square Foot"
+description: "Estimate construction costs for houses, garages, and additions. Compare economy, standard, custom, and luxury quality levels with detailed cost breakdowns."
+category: "cost-calculators"
+slug: "construction-cost-calculator"
+keywords:
+  - "construction cost calculator"
+  - "building cost estimator"
+  - "cost per square foot calculator"
+  - "home construction cost"
+  - "house building cost calculator"
+  - "garage construction cost"
+  - "room addition cost calculator"
+
+calculator:
+  component: "ConstructionCostCalculator"
+  inputs:
+    - name: "buildingSize"
+      label: "Building Size"
+      unit: "sq ft"
+      type: "number"
+      placeholder: "2000"
+      required: true
+    - name: "quality"
+      label: "Quality Level"
+      unit: ""
+      type: "select"
+      options:
+        - value: "economy"
+          label: "Economy"
+        - value: "standard"
+          label: "Standard"
+        - value: "custom"
+          label: "Custom"
+        - value: "luxury"
+          label: "Luxury"
+      required: true
+    - name: "buildingType"
+      label: "Building Type"
+      unit: ""
+      type: "select"
+      options:
+        - value: "house"
+          label: "House"
+        - value: "garage"
+          label: "Garage"
+        - value: "addition"
+          label: "Addition"
+      required: true
+
+formula:
+  expression: "Total Cost = Building Size × Quality Rate × Type Multiplier; Breakdown: Materials 50%, Labor 40%, Permits 10%"
+  steps:
+    - "1. Select cost rate based on quality: Economy $100–150/sqft, Standard $150–250/sqft, Custom $250–400/sqft, Luxury $400–600/sqft"
+    - "2. Apply building type multiplier: House ×1.0, Garage ×0.6, Addition ×0.85"
+    - "3. Calculate total range: Size × Low Rate × Multiplier to Size × High Rate × Multiplier"
+    - "4. Break down average cost: Materials 50%, Labor 40%, Permits & Fees 10%"
+
+example:
+  scenario: "estimating cost to build a 2,000 sq ft standard quality house"
+  values:
+    buildingSize: 2000
+    quality: "standard"
+    buildingType: "house"
+  result: "Total cost range: $300,000 – $500,000, Cost per sq ft: $150–$250, Materials: $200,000, Labor: $160,000, Permits: $40,000"
+
+tips:
+  - "Construction costs vary significantly by location — urban areas can be 30–50% more expensive than rural areas"
+  - "Garage construction costs roughly 60% of house construction per square foot due to simpler finishes"
+  - "Always budget an additional 10–20% contingency for unexpected costs and change orders"
+  - "Permit costs vary by municipality but typically run 5–15% of total construction cost"
+
+faq:
+  - question: "How much does it cost to build a house per square foot?"
+    answer: "The cost to build a house ranges from $100 to $600+ per square foot depending on quality. Economy builds run $100–150/sqft, standard $150–250/sqft, custom $250–400/sqft, and luxury $400–600+/sqft. Location, materials, and labor availability significantly affect these ranges."
+  - question: "How much does it cost to build a garage?"
+    answer: "Garage construction costs approximately 60% of house construction costs per square foot. A standard quality attached garage (24×24 ft, 576 sq ft) would cost roughly $51,840–$86,400. Detached garages may cost slightly more due to separate utility connections."
+  - question: "What is included in construction cost breakdown?"
+    answer: "A typical construction cost breakdown includes: Materials (~50%) such as lumber, concrete, roofing, and fixtures; Labor (~40%) for all trades including framing, electrical, plumbing, and finishing; and Permits & Fees (~10%) for building permits, inspections, and impact fees."
+  - question: "How accurate are construction cost estimates?"
+    answer: "Square-foot cost estimates provide a useful ballpark but actual costs can vary ±20% or more. For a more accurate estimate, get quotes from local contractors who can account for site conditions, local labor rates, material availability, and specific design choices."
+
+related:
+  - "concrete-calculator"
+  - "lumber-calculator"
+  - "roof-pitch-calculator"
+  - "addition-cost-calculator"

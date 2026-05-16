@@ -1,0 +1,179 @@
+---
+import type { GetStaticPaths } from 'astro';
+import CalculatorLayout from '../../layouts/CalculatorLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Calculator imports — Asphalt
+import AsphaltCalculator from '../../components/calculators/AsphaltCalculator';
+import AsphaltTonsToCubicYards from '../../components/calculators/AsphaltTonsToCubicYards';
+import AsphaltSqYardsToTons from '../../components/calculators/AsphaltSqYardsToTons';
+import AsphaltCostCalculator from '../../components/calculators/AsphaltCostCalculator';
+// Roofing
+import RoofPitchCalculator from '../../components/calculators/RoofPitchCalculator';
+import GambrelRoofCalculator from '../../components/calculators/GambrelRoofCalculator';
+import RoofPitchRatios from '../../components/calculators/RoofPitchRatios';
+// Siding
+import SidingCalculator from '../../components/calculators/SidingCalculator';
+import SidingSquareFootage from '../../components/calculators/SidingSquareFootage';
+import SidingCostCalculator from '../../components/calculators/SidingCostCalculator';
+// Gravel & Soil
+import PeaGravelCalculator from '../../components/calculators/PeaGravelCalculator';
+import PeaGravelCostCalculator from '../../components/calculators/PeaGravelCostCalculator';
+import RiverRockCalculator from '../../components/calculators/RiverRockCalculator';
+import LoamCalculator from '../../components/calculators/LoamCalculator';
+import TopsoilCalculator from '../../components/calculators/TopsoilCalculator';
+// Sod
+import SodCalculator from '../../components/calculators/SodCalculator';
+import SodCostCalculator from '../../components/calculators/SodCostCalculator';
+// Pool & Pond
+import PoolGallonsCalculator from '../../components/calculators/PoolGallonsCalculator';
+import PondVolumeCalculator from '../../components/calculators/PondVolumeCalculator';
+// Stairs & Ramp
+import StairCalculator from '../../components/calculators/StairCalculator';
+import RampCalculator from '../../components/calculators/RampCalculator';
+// Construction
+import GutterCalculator from '../../components/calculators/GutterCalculator';
+import FenceCalculator from '../../components/calculators/FenceCalculator';
+import BoardFootCalculator from '../../components/calculators/BoardFootCalculator';
+import CinderBlockCalculator from '../../components/calculators/CinderBlockCalculator';
+// Sand
+import SandCalculator from '../../components/calculators/SandCalculator';
+// Batch 2 — Insulation & Construction
+import InsulationCalculator from '../../components/calculators/InsulationCalculator';
+import SprayFoamCostCalculator from '../../components/calculators/SprayFoamCostCalculator';
+import DrywallCalculator from '../../components/calculators/DrywallCalculator';
+// Deck
+import DeckJoistCalculator from '../../components/calculators/DeckJoistCalculator';
+// Paint
+import PaintCostCalculator from '../../components/calculators/PaintCostCalculator';
+// Landscape
+import LandscapeCostCalculator from '../../components/calculators/LandscapeCostCalculator';
+// Cost Estimators
+import BathroomRemodelCost from '../../components/calculators/BathroomRemodelCost';
+import BasementWaterproofCost from '../../components/calculators/BasementWaterproofCost';
+import MoldRemediationCost from '../../components/calculators/MoldRemediationCost';
+import SwimmingPoolCost from '../../components/calculators/SwimmingPoolCost';
+import ConstructionCostCalculator from '../../components/calculators/ConstructionCostCalculator';
+import BayWindowCost from '../../components/calculators/BayWindowCost';
+import AdditionCostCalculator from '../../components/calculators/AdditionCostCalculator';
+
+const COMPONENTS = [
+  // Batch 1
+  'AsphaltCalculator',
+  'AsphaltTonsToCubicYards',
+  'AsphaltSqYardsToTons',
+  'AsphaltCostCalculator',
+  'RoofPitchCalculator',
+  'GambrelRoofCalculator',
+  'RoofPitchRatios',
+  'SidingCalculator',
+  'SidingSquareFootage',
+  'SidingCostCalculator',
+  'PeaGravelCalculator',
+  'PeaGravelCostCalculator',
+  'RiverRockCalculator',
+  'LoamCalculator',
+  'TopsoilCalculator',
+  'SodCalculator',
+  'SodCostCalculator',
+  'PoolGallonsCalculator',
+  'PondVolumeCalculator',
+  'StairCalculator',
+  'RampCalculator',
+  'GutterCalculator',
+  'FenceCalculator',
+  'BoardFootCalculator',
+  'CinderBlockCalculator',
+  // Batch 2
+  'InsulationCalculator',
+  'SprayFoamCostCalculator',
+  'DeckJoistCalculator',
+  'PaintCostCalculator',
+  'DrywallCalculator',
+  'LandscapeCostCalculator',
+  'BathroomRemodelCost',
+  'BasementWaterproofCost',
+  'MoldRemediationCost',
+  'SwimmingPoolCost',
+  'ConstructionCostCalculator',
+  'BayWindowCost',
+  'AdditionCostCalculator',
+  // Batch 3
+  'SandCalculator',
+] as const;
+
+type ComponentName = typeof COMPONENTS[number];
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const calculators = await getCollection('calculators');
+  return calculators.map((calc) => ({
+    params: { category: calc.data.category, slug: calc.data.slug },
+    props: { data: calc.data },
+  }));
+};
+
+const { data } = Astro.props;
+const name = data.calculator.component as string;
+const hasComponent = COMPONENTS.includes(name as ComponentName);
+---
+
+<CalculatorLayout data={data}>
+  <fragment slot="calculator">
+    {/* Asphalt */}
+    {name === 'AsphaltCalculator' && <AsphaltCalculator client:idle />}
+    {name === 'AsphaltTonsToCubicYards' && <AsphaltTonsToCubicYards client:idle />}
+    {name === 'AsphaltSqYardsToTons' && <AsphaltSqYardsToTons client:idle />}
+    {name === 'AsphaltCostCalculator' && <AsphaltCostCalculator client:idle />}
+    {/* Roofing */}
+    {name === 'RoofPitchCalculator' && <RoofPitchCalculator client:idle />}
+    {name === 'GambrelRoofCalculator' && <GambrelRoofCalculator client:idle />}
+    {name === 'RoofPitchRatios' && <RoofPitchRatios client:idle />}
+    {/* Siding */}
+    {name === 'SidingCalculator' && <SidingCalculator client:idle />}
+    {name === 'SidingSquareFootage' && <SidingSquareFootage client:idle />}
+    {name === 'SidingCostCalculator' && <SidingCostCalculator client:idle />}
+    {/* Gravel & Soil */}
+    {name === 'PeaGravelCalculator' && <PeaGravelCalculator client:idle />}
+    {name === 'PeaGravelCostCalculator' && <PeaGravelCostCalculator client:idle />}
+    {name === 'RiverRockCalculator' && <RiverRockCalculator client:idle />}
+    {name === 'LoamCalculator' && <LoamCalculator client:idle />}
+    {name === 'TopsoilCalculator' && <TopsoilCalculator client:idle />}
+    {/* Sod */}
+    {name === 'SodCalculator' && <SodCalculator client:idle />}
+    {name === 'SodCostCalculator' && <SodCostCalculator client:idle />}
+    {/* Pool & Pond */}
+    {name === 'PoolGallonsCalculator' && <PoolGallonsCalculator client:idle />}
+    {name === 'PondVolumeCalculator' && <PondVolumeCalculator client:idle />}
+    {/* Stairs & Ramp */}
+    {name === 'StairCalculator' && <StairCalculator client:idle />}
+    {name === 'RampCalculator' && <RampCalculator client:idle />}
+    {/* Construction */}
+    {name === 'GutterCalculator' && <GutterCalculator client:idle />}
+    {name === 'FenceCalculator' && <FenceCalculator client:idle />}
+    {name === 'BoardFootCalculator' && <BoardFootCalculator client:idle />}
+    {name === 'CinderBlockCalculator' && <CinderBlockCalculator client:idle />}
+    {/* Sand */}
+    {name === 'SandCalculator' && <SandCalculator client:idle />}
+    {/* Batch 2 — Insulation & Construction */}
+    {name === 'InsulationCalculator' && <InsulationCalculator client:idle />}
+    {name === 'SprayFoamCostCalculator' && <SprayFoamCostCalculator client:idle />}
+    {name === 'DrywallCalculator' && <DrywallCalculator client:idle />}
+    {/* Deck */}
+    {name === 'DeckJoistCalculator' && <DeckJoistCalculator client:idle />}
+    {/* Paint */}
+    {name === 'PaintCostCalculator' && <PaintCostCalculator client:idle />}
+    {/* Landscape */}
+    {name === 'LandscapeCostCalculator' && <LandscapeCostCalculator client:idle />}
+    {/* Cost Estimators */}
+    {name === 'BathroomRemodelCost' && <BathroomRemodelCost client:idle />}
+    {name === 'BasementWaterproofCost' && <BasementWaterproofCost client:idle />}
+    {name === 'MoldRemediationCost' && <MoldRemediationCost client:idle />}
+    {name === 'SwimmingPoolCost' && <SwimmingPoolCost client:idle />}
+    {name === 'ConstructionCostCalculator' && <ConstructionCostCalculator client:idle />}
+    {name === 'BayWindowCost' && <BayWindowCost client:idle />}
+    {name === 'AdditionCostCalculator' && <AdditionCostCalculator client:idle />}
+    {!hasComponent && (
+      <p class="text-slate-500 text-center py-8">Calculator coming soon.</p>
+    )}
+  </fragment>
+</CalculatorLayout>

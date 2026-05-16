@@ -1,0 +1,91 @@
+title: "Ramp Calculator"
+h1: "Ramp Calculator – Length, Angle & Volume"
+description: "Calculate ramp length, angle, surface area, and concrete volume for any slope ratio. Supports ADA 1:12, residential, and custom slope ratios."
+category: "stair-calculators"
+slug: "ramp-calculator"
+keywords:
+  - "volume of a ramp formula"
+  - "volume of ramp"
+  - "volume of a ramp"
+  - "how to find volume of a ramp"
+  - "ramp incline chart"
+  - "ramp slope ratio calculator"
+  - "ramp gradient calculator"
+  - "ramp calculator slope"
+  - "concrete ramp calculator"
+  - "ramp volume"
+  - "trailer ramp calculator"
+  - "rampcalc"
+  - "area of a ramp"
+  - "maximum slope of a ramp"
+
+calculator:
+  component: "RampCalculator"
+  inputs:
+    - name: "rise"
+      label: "Rise"
+      unit: "in"
+      type: "number"
+      placeholder: "24"
+      required: true
+    - name: "slopeRatio"
+      label: "Slope Ratio"
+      unit: ""
+      type: "select"
+      options:
+        - value: "8"
+          label: "1:8"
+        - value: "10"
+          label: "1:10"
+        - value: "12"
+          label: "1:12 (ADA)"
+        - value: "14"
+          label: "1:14"
+        - value: "16"
+          label: "1:16"
+        - value: "20"
+          label: "1:20"
+      required: true
+    - name: "rampWidth"
+      label: "Ramp Width"
+      unit: "ft"
+      type: "number"
+      placeholder: "5 (optional)"
+
+formula:
+  expression: "Ramp Length = Rise ÷ Slope Ratio × Slope Ratio; Angle = atan(Rise / Length)"
+  steps:
+    - "1. Convert rise to feet if given in inches: Rise (ft) = Rise (in) ÷ 12"
+    - "2. Calculate ramp length: Length (ft) = Rise (ft) × Slope Ratio"
+    - "3. Calculate angle: Angle = atan(Rise / Length) × (180/π)"
+    - "4. Calculate surface area: Area = Length × Width (if width provided)"
+    - "5. Calculate volume: Volume = (Length × Width × Rise) / 2 (triangular prism)"
+
+example:
+  scenario: "building an ADA-compliant ramp for a 24-inch rise with 5ft width"
+  values:
+    rise: 24
+    slopeRatio: 12
+    width: 5
+  result: "Ramp length = 24 ft, angle = 4.8°, surface area = 120 sq ft, volume = 50.0 ft³"
+
+tips:
+  - "ADA requires a maximum 1:12 slope ratio (1 foot of rise per 12 feet of run) for wheelchair ramps"
+  - "For every 30 feet of ramp length, ADA requires a 5-foot level landing"
+  - "Residential ramps can use steeper slopes (1:8 to 1:10) but 1:12 is the safest"
+  - "Add 5–10% extra concrete for waste when ordering for ramp construction"
+
+faq:
+  - question: "What is the standard slope for a wheelchair ramp?"
+    answer: "The ADA standard is a 1:12 slope ratio, meaning for every 1 inch of rise you need 12 inches (1 foot) of ramp length. For example, a 24-inch rise requires a 24-foot long ramp."
+  - question: "How do you calculate the volume of a ramp?"
+    answer: "The volume of a triangular ramp is calculated as: Volume = (Length × Width × Rise) / 2. This is because the cross-section is a triangle. Measure all dimensions in the same unit (feet)."
+  - question: "What is the maximum slope for a ramp?"
+    answer: "ADA maximum is 1:12 (4.8°) for wheelchair access. For general pedestrian use, a maximum of 1:8 (7.1°) is acceptable. For vehicle ramps, slopes up to 1:5 (11.3°) may be used. Steeper slopes require handrails."
+  - question: "How long should a ramp be for 3 steps?"
+    answer: "Three standard steps have a total rise of about 21–24 inches. At a 1:12 ADA slope, you need 21–24 feet of ramp length. At a steeper 1:8 slope, you need 14–16 feet."
+
+related:
+  - "stair-calculator"
+  - "pool-gallons-calculator"
+  - "gutter-calculator"

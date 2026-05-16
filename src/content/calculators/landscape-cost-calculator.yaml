@@ -1,0 +1,76 @@
+title: "Landscape Cost Calculator"
+h1: "Landscape Cost Calculator – Estimate Your Landscaping Budget"
+description: "Estimate the cost of your landscaping project based on area and project type. Get low, mid, and high cost ranges for basic lawn, standard landscape, and premium hardscape projects."
+category: "landscaping-calculators"
+slug: "landscape-cost-calculator"
+keywords:
+  - "landscape cost calculator"
+  - "ground cover calculator"
+  - "landscaping cost estimator"
+  - "yard renovation cost"
+  - "landscape budget calculator"
+  - "hardscape cost calculator"
+  - "lawn installation cost"
+  - "landscape design cost"
+  - "landscaping price per square foot"
+
+calculator:
+  component: "LandscapeCostCalculator"
+  inputs:
+    - name: "area"
+      label: "Area"
+      unit: "sq ft"
+      type: "number"
+      placeholder: "1000"
+      required: true
+    - name: "projectType"
+      label: "Project Type"
+      unit: ""
+      type: "select"
+      options:
+        - value: "basic"
+          label: "Basic Lawn Installation"
+        - value: "standard"
+          label: "Standard Landscape"
+        - value: "premium"
+          label: "Premium Hardscape"
+      required: true
+
+formula:
+  expression: "Cost = Area × Rate; Rate varies by project type: Basic $5–10/sqft, Standard $10–25/sqft, Premium $25–50/sqft"
+  steps:
+    - "1. Enter the total project area in square feet"
+    - "2. Select the project type to determine the cost rate per square foot"
+    - "3. Low Estimate = Area × Low Rate (Basic: $5, Standard: $10, Premium: $25)"
+    - "4. Mid Estimate = Area × Mid Rate (Basic: $7.50, Standard: $17.50, Premium: $37.50)"
+    - "5. High Estimate = Area × High Rate (Basic: $10, Standard: $25, Premium: $50)"
+
+example:
+  scenario: "estimating cost for a 1,000 sq ft standard landscape project"
+  values:
+    area: 1000
+    projectType: "standard"
+  result: "Low estimate: $10,000, Mid estimate: $17,500, High estimate: $25,000 at $10–25 per sq ft"
+
+tips:
+  - "Basic lawn projects include grading, seeding, and basic plantings — ideal for new construction"
+  - "Standard landscape projects typically include sod, shrubs, trees, mulch beds, and basic edging"
+  - "Premium hardscape projects include patios, walkways, retaining walls, outdoor kitchens, and irrigation"
+  - "Get at least 3 quotes from licensed landscapers — prices vary significantly by region and season"
+  - "Add 10–20% to your budget for unexpected issues like soil amendments or drainage corrections"
+
+faq:
+  - question: "How much does landscaping cost per square foot?"
+    answer: "Landscaping costs range from $5–10/sq ft for basic lawn installation, $10–25/sq ft for standard landscaping with plants and mulch, and $25–50/sq ft for premium hardscape projects with patios, walls, and outdoor living features."
+  - question: "What is the cheapest way to landscape a yard?"
+    answer: "The most affordable option is basic lawn installation at $5–10/sq ft, which includes grading, seeding or sod, and minimal plantings. DIY seeding can reduce costs further, but professional grading ensures proper drainage."
+  - question: "How much does a full yard renovation cost?"
+    answer: "A full yard renovation for a typical 1,500 sq ft yard costs $7,500–15,000 for basic work, $15,000–37,500 for standard landscaping, and $37,500–75,000 for premium hardscape. Costs depend on materials, slope, access, and local labor rates."
+  - question: "Does landscaping add value to a home?"
+    answer: "Yes. According to real estate studies, quality landscaping can increase home value by 5–15%. A $20,000 landscaping investment can return $20,000–30,000 in added home value, making it one of the best ROI home improvements."
+
+related:
+  - "mulch-calculator"
+  - "fence-calculator"
+  - "concrete-calculator"
+  - "gravel-calculator"

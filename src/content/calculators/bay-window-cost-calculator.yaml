@@ -1,0 +1,85 @@
+title: "Bay Window Cost Calculator"
+h1: "Bay Window Cost Calculator – Estimate Window & Installation Costs"
+description: "Calculate the cost of bay, bow, and garden windows including materials and installation. Compare vinyl, wood, and fiberglass options for accurate budgeting."
+category: "cost-calculators"
+slug: "bay-window-cost-calculator"
+keywords:
+  - "bay window cost calculator"
+  - "bay window price estimator"
+  - "bow window cost"
+  - "garden window cost"
+  - "window installation cost"
+  - "bay window replacement cost"
+
+calculator:
+  component: "BayWindowCost"
+  inputs:
+    - name: "windowWidth"
+      label: "Window Width"
+      unit: "ft"
+      type: "number"
+      placeholder: "6"
+      required: true
+    - name: "windowType"
+      label: "Window Type"
+      unit: ""
+      type: "select"
+      options:
+        - value: "standard_bay"
+          label: "Standard Bay"
+        - value: "bow"
+          label: "Bow Window"
+        - value: "garden"
+          label: "Garden Window"
+      required: true
+    - name: "material"
+      label: "Material"
+      unit: ""
+      type: "select"
+      options:
+        - value: "vinyl"
+          label: "Vinyl"
+        - value: "wood"
+          label: "Wood"
+        - value: "fiberglass"
+          label: "Fiberglass"
+      required: true
+
+formula:
+  expression: "Total = Window Cost + Installation Cost; Window Cost = Base Cost × Material Multiplier × Width Factor; Installation = 50–100% of Window Cost"
+  steps:
+    - "1. Determine base cost by type: Standard Bay $1,000–$3,500, Bow $1,500–$4,500, Garden $2,000–$5,000"
+    - "2. Apply material multiplier: Vinyl ×1.0, Fiberglass ×1.25, Wood ×1.4"
+    - "3. Scale by width factor: actual width ÷ 6 ft (standard width)"
+    - "4. Installation cost adds 50–100% of the window cost"
+    - "5. Total = Window Cost + Installation Cost"
+
+example:
+  scenario: "estimating cost for a 6 ft standard bay window in vinyl"
+  values:
+    windowWidth: 6
+    windowType: "standard_bay"
+    material: "vinyl"
+  result: "Window cost: $1,000–$3,500, Installation cost: $500–$3,500, Total estimate: $1,500–$7,000"
+
+tips:
+  - "Vinyl windows are the most affordable and require minimal maintenance, making them the most popular choice"
+  - "Wood windows offer the best aesthetic appeal but need regular painting or staining and cost about 40% more than vinyl"
+  - "Bow windows have more glass area and gentler curves than standard bay windows, providing more light but at a higher cost"
+  - "Professional installation is strongly recommended — improper installation can lead to water infiltration and structural issues"
+
+faq:
+  - question: "How much does a bay window cost installed?"
+    answer: "A bay window typically costs $1,500–$7,000 fully installed. The window itself ranges from $1,000–$5,000 depending on type and material, and installation adds another 50–100%. Standard bay windows are the most affordable, while garden windows tend to cost the most."
+  - question: "What is the difference between a bay and bow window?"
+    answer: "A bay window typically has three panels at 30–40 degree angles creating a more pronounced projection. A bow window has four or more panels at gentler 10–20 degree angles creating a curved appearance. Bow windows generally cost more due to the additional glass panels and more complex framing."
+  - question: "Which window material is best for a bay window?"
+    answer: "Vinyl is the most popular choice due to its affordability, low maintenance, and good insulation. Fiberglass offers superior durability and slightly better energy efficiency at about 25% more cost. Wood provides the best traditional look but requires the most maintenance and costs about 40% more than vinyl."
+  - question: "Does a bay window add value to a home?"
+    answer: "Yes, bay windows typically add value by increasing natural light, creating the perception of more space, and improving curb appeal. They can add $1,000–$5,000 in home value depending on quality and location. They also create a natural window seat or display area."
+
+related:
+  - "window-calculator"
+  - "construction-cost-calculator"
+  - "siding-cost-calculator"
+  - "addition-cost-calculator"

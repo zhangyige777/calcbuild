@@ -1,0 +1,87 @@
+title: "Fence Calculator"
+h1: "Fence Calculator – Posts, Rails, Pickets & Materials"
+description: "Calculate how many fence posts, rails, pickets, and concrete bags you need. Supports picket, chain link, and privacy fence styles."
+category: "construction-calculators"
+slug: "fence-calculator"
+keywords:
+  - "chain link fence estimate calculator"
+  - "picket fence spacing calculator"
+  - "fence installation cost calculator"
+  - "fence costs calculator"
+  - "picket fence calculator"
+
+calculator:
+  component: "FenceCalculator"
+  inputs:
+    - name: "perimeter"
+      label: "Perimeter"
+      unit: "ft"
+      type: "number"
+      placeholder: "200"
+      required: true
+    - name: "postSpacing"
+      label: "Post Spacing"
+      unit: "ft"
+      type: "number"
+      placeholder: "8"
+      required: true
+    - name: "numRails"
+      label: "Number of Rails"
+      unit: ""
+      type: "select"
+      options:
+        - value: "2"
+          label: "2 Rails"
+        - value: "3"
+          label: "3 Rails"
+    - name: "style"
+      label: "Fence Style"
+      unit: ""
+      type: "select"
+      options:
+        - value: "picket"
+          label: "Picket"
+        - value: "chainlink"
+          label: "Chain Link"
+        - value: "privacy"
+          label: "Privacy"
+      required: true
+
+formula:
+  expression: "Posts = ⌈Perimeter / Post Spacing⌉; Rails = Posts × Rails per Section; Pickets = ⌈Section Length / (Picket Width + Spacing)⌉ × Sections"
+  steps:
+    - "1. Calculate number of posts: Posts = ⌈Perimeter / Post Spacing⌉"
+    - "2. Calculate total rails: Rails = Posts × Rails per section"
+    - "3. Calculate concrete bags: Bags = ⌈Posts × 0.5⌉ (one 60lb bag per 2 posts)"
+    - "4. For picket fences: Pickets per section = ⌈(Spacing in × 12) / (Picket Width + Gap)⌉"
+    - "5. For privacy fences: Boards per section = ⌈(Spacing in × 12) / Board Width⌉"
+
+example:
+  scenario: "building a 200ft picket fence with 8ft post spacing and 2 rails"
+  values:
+    perimeter: 200
+    postSpacing: 8
+    numRails: "2"
+    style: "picket"
+  result: "25 posts, 50 rails, 13 concrete bags (60lb), and approximately 175 pickets (3.5in width with 2.5in spacing)"
+
+tips:
+  - "Standard post spacing is 6–8 feet for wood fences"
+  - "Use pressure-treated posts and set them in concrete for longevity"
+  - "A 60lb bag of concrete sets one fence post — buy 1 bag per post plus a few extra"
+  - "For picket fences, typical spacing is 2–3 inches between pickets"
+  - "For privacy fences, boards are placed edge-to-edge with no gaps"
+
+faq:
+  - question: "How many fence posts do I need for 200 feet?"
+    answer: "For a 200-foot fence with 8-foot post spacing, you need 25 posts (200 ÷ 8 = 25). With 6-foot spacing, you need 34 posts. Always add 1–2 extra posts for gates and corners."
+  - question: "How much concrete do I need for fence posts?"
+    answer: "Each fence post requires about one 60lb bag of concrete. For 25 posts, you need approximately 25 bags (about 13 if sharing bags between posts). Buy a few extra bags for waste."
+  - question: "How far apart should fence posts be?"
+    answer: "Standard wood fence post spacing is 6–8 feet. For picket fences, 6–8 feet works well. For chain link fences, posts are typically spaced 10 feet apart. Shorter spacing provides more strength in windy areas."
+
+related:
+  - "gutter-calculator"
+  - "board-foot-calculator"
+  - "stair-calculator"
+  - "cinder-block-calculator"

@@ -1,0 +1,100 @@
+title: "Pea Gravel Calculator"
+h1: "Pea Gravel Calculator – Estimate Cubic Yards, Tons & Coverage"
+description: "Use our free pea gravel calculator to estimate how much pea gravel you need in cubic yards, tons, pounds, or 50lb bags. Get coverage per ton at any depth."
+category: "landscaping-calculators"
+slug: "pea-gravel-calculator"
+keywords:
+  - "pea gravel per ton"
+  - "pea stone calculator"
+  - "pea gravel density"
+  - "weight of pea gravel"
+  - "pea gravel weight per cubic foot"
+  - "pea gravel ton"
+  - "cost of pea gravel per ton"
+  - "price of pea gravel per ton"
+  - "50 lb bag of pea gravel"
+  - "1 ton pea gravel"
+  - "ton of pea gravel"
+  - "load of pea gravel"
+  - "how much is pea gravel a ton"
+  - "pea rock calculator"
+  - "how many yards in a ton of pea gravel"
+  - "how many yards of pea gravel in a ton"
+  - "how many tons in a yard of pea gravel"
+  - "how many yards of pea gravel do i need"
+  - "how much does a ton of pea gravel cover"
+  - "how much does a yard of pea gravel cover"
+  - "how much pea gravel do i need calculator"
+  - "cubic yard of pea gravel"
+  - "pea gravel cubic yard"
+  - "how much will a ton of pea gravel cover"
+  - "1 ton of pea gravel"
+  - "2 tons of pea gravel"
+  - "weight of one yard of gravel"
+  - "weight of 1 yard gravel"
+  - "how many pounds is a yard of gravel"
+  - "weight of 5 cubic feet of pea gravel"
+  - "density of pea gravel"
+
+calculator:
+  component: "PeaGravelCalculator"
+  inputs:
+    - name: "length"
+      label: "Length"
+      unit: "ft"
+      type: "number"
+      placeholder: "20"
+      required: true
+    - name: "width"
+      label: "Width"
+      unit: "ft"
+      type: "number"
+      placeholder: "10"
+      required: true
+    - name: "depth"
+      label: "Depth"
+      unit: "in"
+      type: "number"
+      placeholder: "3"
+      required: true
+
+formula:
+  expression: "Cubic Yards = (Length × Width × Depth in ft) ÷ 27"
+  steps:
+    - "1. Convert depth from inches to feet: Depth (ft) = Depth (in) ÷ 12"
+    - "2. Calculate cubic yards: Cubic Yards = (Length × Width × Depth) ÷ 27"
+    - "3. Calculate tons: Tons = Cubic Yards × 1.3 (pea gravel density)"
+    - "4. Calculate coverage: Coverage (sq ft/ton) = (Tons × 2000) ÷ (Depth in inches × 100)"
+    - "5. Calculate weight: Weight (lbs) = Cubic Yards × 2600 (1.3 tons/yd³ × 2000)"
+    - "6. Calculate 50lb bags: Bags = Weight ÷ 50"
+
+example:
+  scenario: "filling a 20ft × 10ft area with 3 inches of pea gravel"
+  values:
+    length: 20
+    width: 10
+    depth: 3
+  result: "You need approximately 1.85 cubic yards or 2.41 tons of pea gravel, weighing about 4,815 lbs (97 fifty-pound bags)"
+
+tips:
+  - "Order 5–10% extra to account for compaction and uneven surfaces"
+  - "Pea gravel density is approximately 1.3 tons per cubic yard (2,600 lbs/yd³)"
+  - "A 50lb bag of pea gravel covers about 0.5 cubic feet"
+  - "For pathways, a 2–3 inch depth is usually sufficient; for driveways use 4+ inches"
+  - "Consider installing edging to keep pea gravel contained in the desired area"
+
+faq:
+  - question: "How much does a ton of pea gravel cover?"
+    answer: "One ton of pea gravel covers approximately 100 square feet at a 2-inch depth, or about 80 square feet at a 3-inch depth. Coverage varies based on the actual depth of application."
+  - question: "How many yards are in a ton of pea gravel?"
+    answer: "One ton of pea gravel equals approximately 0.77 cubic yards, since pea gravel has a density of about 1.3 tons per cubic yard. To convert tons to yards, divide the number of tons by 1.3."
+  - question: "How much pea gravel do I need for my project?"
+    answer: "Measure the length and width of your area in feet and the desired depth in inches. Use the formula: Cubic Yards = (Length × Width × Depth in inches ÷ 12) ÷ 27. Then multiply by 1.3 to get tons. Always add 5–10% extra."
+  - question: "How much does a 50lb bag of pea gravel cover?"
+    answer: "A 50-pound bag of pea gravel covers approximately 0.5 cubic feet, which is roughly a 6-square-foot area at a 1-inch depth. For deeper applications, you will need more bags."
+
+related:
+  - "pea-gravel-cost-calculator"
+  - "river-rock-calculator"
+  - "topsoil-calculator"
+  - "loam-calculator"

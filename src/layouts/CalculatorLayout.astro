@@ -1,0 +1,125 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import RelatedLinks from '../components/common/RelatedLinks.astro';
+import StructuredData from '../components/seo/StructuredData.astro';
+import type { CalculatorData } from '../utils/types';
+
+interface Props {
+  data: CalculatorData;
+}
+
+const { data } = Astro.props;
+const categoryName = data.category.replace(/-calculators$/, '').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  canonical={`/${data.category}/${data.slug}/`}
+>
+  <Breadcrumb
+    items={[
+      { name: 'Home', href: '/' },
+      { name: `${categoryName}`, href: `/${data.category}/` },
+      { name: data.title }
+    ]}
+  />
+
+  <article class="max-w-ic-content mx-auto px-[20px] pb-[40px]">
+    <!-- Title -->
+    <h1 class="text-[3.5rem] max-[480px]:text-[2.8rem] font-semibold text-[#444] dark:text-grey-100 mt-[20px] mb-[12px]">{data.h1}</h1>
+    <p class="text-[1.8rem] text-grey-600 dark:text-[#D4D4D4] mb-[30px] leading-[1.55]">{data.description}</p>
+
+    <!-- Calculator Widget -->
+    <section id="calculator" class="mb-[40px]">
+      <div class="mt-[15px] p-[30px] border border-brand-700 dark:border-brand-600 rounded-ic-md">
+        <div class="p-[20px] border border-grey-500 dark:border-grey-600 rounded-ic-md">
+          <slot name="calculator" />
+        </div>
+      </div>
+    </section>
+
+    <!-- On this page -->
+    <nav class="mb-[40px] p-[30px] bg-grey-200 dark:bg-grey-850 rounded-ic-md">
+      <h2 class="text-[1.8rem] font-bold text-[#444] dark:text-grey-100 uppercase tracking-wide mb-[15px]">On this page</h2>
+      <ol class="space-y-[8px] text-[1.6rem]">
+        <li><a href="#formula" class="text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-500 transition-colors font-medium">Formula</a></li>
+        <li><a href="#how-to-calculate" class="text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-500 transition-colors font-medium">How to Calculate</a></li>
+        <li><a href="#example" class="text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-500 transition-colors font-medium">Example</a></li>
+        <li><a href="#tips" class="text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-500 transition-colors font-medium">Tips</a></li>
+        <li><a href="#faq" class="text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-500 transition-colors font-medium">FAQ</a></li>
+      </ol>
+    </nav>
+
+    <!-- Formula -->
+    <section id="formula" class="mb-[30px]">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">{data.title} Formula</h2>
+      <div class="bg-grey-200 dark:bg-grey-850 border border-grey-400 dark:border-grey-700 rounded-ic-md p-[20px] font-mono text-[1.6rem]">
+        {data.formula.expression}
+      </div>
+    </section>
+
+    <!-- How to Calculate -->
+    <section id="how-to-calculate" class="mb-[30px]">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">How to Calculate {data.title.replace(' Calculator', '')}</h2>
+      <ol class="list-decimal pl-[25px] space-y-[10px] text-[1.8rem] text-grey-700 dark:text-grey-300 leading-[1.55]">
+        {data.formula.steps.map((step) => (
+          <li>{step}</li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Example -->
+    <section id="example" class="mb-[30px]">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Example Calculation</h2>
+      <div class="text-[1.8rem] text-grey-700 dark:text-grey-300 leading-[1.55] space-y-[10px]">
+        <p class="mt-0">Let's say you're {data.example.scenario}.</p>
+        <ul class="space-y-[5px]">
+          {Object.entries(data.example.values).map(([key, value]) => (
+            <li><strong class="text-grey-800 dark:text-grey-200 capitalize">{key}:</strong> {value}</li>
+          ))}
+        </ul>
+        <p class="font-medium text-grey-800 dark:text-grey-200 mt-[10px]">{data.example.result}</p>
+      </div>
+    </section>
+
+    <!-- Tips -->
+    <section id="tips" class="mb-[30px]">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Tips</h2>
+      <ul class="list-disc pl-[25px] space-y-[8px] text-[1.8rem] text-grey-700 dark:text-grey-300 leading-[1.55]">
+        {data.tips.map((tip) => (
+          <li>{tip}</li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="mb-[30px]">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Frequently Asked Questions</h2>
+      <div class="divide-y divide-grey-400 dark:divide-grey-700 border border-grey-400 dark:border-grey-700 rounded-ic-md overflow-hidden">
+        {data.faq.map((item) => (
+          <details class="group">
+            <summary class="flex items-center justify-between px-[20px] py-[15px] cursor-pointer text-[1.8rem] text-grey-800 dark:text-grey-200 font-medium hover:text-brand-700 dark:hover:text-brand-600 transition-colors">
+              <span class="pr-[20px]">{item.question}</span>
+              <svg class="w-[16px] h-[16px] text-grey-500 dark:text-[#D4D4D4] transition-transform group-open:rotate-180 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </summary>
+            <div class="px-[20px] pb-[15px] text-[1.6rem] text-grey-600 dark:text-[#D4D4D4] leading-[1.55]">
+              {item.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related -->
+    <section class="mb-[30px]">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Related Calculators</h2>
+      <RelatedLinks related={data.related} />
+    </section>
+  </article>
+
+  <StructuredData data={data} />
+</BaseLayout>

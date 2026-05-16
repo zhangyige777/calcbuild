@@ -1,0 +1,96 @@
+title: "Pool Gallons Calculator"
+h1: "Pool Gallons Calculator – Estimate Pool Water Volume"
+description: "Calculate how many gallons of water your pool holds. Supports rectangular, circular, and oval pool shapes. Enter dimensions for instant results."
+category: "plumbing-calculators"
+slug: "pool-gallons-calculator"
+keywords:
+  - "how many gallons in a 24 round pool"
+  - "average gallons in a pool"
+  - "above ground pool water capacity"
+  - "how many gallons in 27 ft round pool"
+  - "27 foot round pool how many gallons"
+  - "gallons in a 24 foot round pool"
+  - "how many gallons in 15 ft round pool"
+  - "15x30 above ground pool gallons"
+  - "how many gallons 15x30 pool"
+  - "how many gallons are in a 15x30 pool"
+  - "above ground pool gallons"
+  - "18x33 pool gallons"
+  - "gallons 30 foot round pool"
+  - "how many gallons of water in a 27ft round pool"
+  - "30 foot above ground pool gallons"
+  - "average inground pool gallons"
+  - "how many gallons in a 12 foot round pool"
+  - "how many gallons in 15 round pool"
+  - "how many gallons in a 24 ft above ground pool"
+
+calculator:
+  component: "PoolGallonsCalculator"
+  inputs:
+    - name: "shape"
+      label: "Pool Shape"
+      unit: ""
+      type: "select"
+      options:
+        - value: "rectangular"
+          label: "Rectangular"
+        - value: "circular"
+          label: "Circular"
+        - value: "oval"
+          label: "Oval"
+      required: true
+    - name: "length"
+      label: "Length"
+      unit: "ft"
+      type: "number"
+      placeholder: "24"
+      required: true
+    - name: "width"
+      label: "Width"
+      unit: "ft"
+      type: "number"
+      placeholder: "12"
+      required: true
+    - name: "depth"
+      label: "Average Depth"
+      unit: "ft"
+      type: "number"
+      placeholder: "4"
+      required: true
+
+formula:
+  expression: "Rectangular: L x W x D x 7.48; Circular: π x (D/2)² x D x 7.48; Oval: π x (L/2) x (W/2) x D x 7.48"
+  steps:
+    - "1. Measure the pool dimensions in feet (length, width, diameter, depth)"
+    - "2. For rectangular pools: Volume (cu ft) = Length x Width x Depth"
+    - "3. For circular pools: Volume (cu ft) = π x (Diameter/2)² x Depth"
+    - "4. For oval pools: Volume (cu ft) = π x (Long Diameter/2) x (Short Diameter/2) x Depth"
+    - "5. Convert to gallons: Gallons = Volume (cu ft) x 7.48"
+
+example:
+  scenario: "filling a 24ft round above-ground pool with 4ft average depth"
+  values:
+    shape: "circular"
+    diameter: 24
+    depth: 4
+  result: "The pool holds approximately 13,526 gallons of water"
+
+tips:
+  - "Use the average depth if your pool has a shallow and deep end — measure both and divide by 2"
+  - "One cubic foot of water contains 7.48 gallons"
+  - "A standard garden hose flows at about 8-12 gallons per minute, so filling a 13,000 gallon pool takes roughly 18-27 hours"
+  - "For irregular pool shapes, break the pool into sections and calculate each separately, then add them together"
+  - "Knowing your pool's gallon capacity is essential for proper chemical treatment and filter sizing"
+
+faq:
+  - question: "How many gallons in a 24ft round pool?"
+    answer: "A 24-foot round pool with a 4-foot average depth holds approximately 13,526 gallons. At 3 feet deep it holds about 10,145 gallons, and at 4.5 feet deep it holds about 15,218 gallons."
+  - question: "How many gallons in a 15x30 pool?"
+    answer: "A 15x30 rectangular pool with a 4-foot average depth holds approximately 13,464 gallons. This is calculated as 15 x 30 x 4 x 7.48 = 13,464 gallons."
+  - question: "What is the average gallons in an inground pool?"
+    answer: "An average inground pool holds between 15,000 and 20,000 gallons. Small pools may hold 10,000-15,000 gallons, while large pools can hold 25,000+ gallons."
+
+related:
+  - "pond-volume-calculator"
+  - "sod-calculator"
+  - "sod-cost-calculator"

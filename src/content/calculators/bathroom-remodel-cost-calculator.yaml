@@ -1,0 +1,87 @@
+title: "Bathroom Remodel Cost Calculator"
+h1: "Bathroom Remodel Cost Calculator – Estimate Your Renovation Budget"
+description: "Calculate the estimated cost of your bathroom remodel based on size, quality tier, and scope. Get cost breakdowns for fixtures, labor, and materials."
+category: "cost-calculators"
+slug: "bathroom-remodel-cost-calculator"
+keywords:
+  - "bathroom remodeling cost calculator"
+  - "bathroom remodel cost estimator"
+  - "bathroom renovation cost"
+  - "bathroom remodel budget"
+  - "small bathroom remodel cost"
+  - "bathroom renovation calculator"
+  - "bathroom remodel price per square foot"
+
+calculator:
+  component: "BathroomRemodelCost"
+  inputs:
+    - name: "bathroomSize"
+      label: "Bathroom Size"
+      unit: "sq ft"
+      type: "number"
+      placeholder: "50"
+      required: true
+    - name: "qualityTier"
+      label: "Quality Tier"
+      unit: ""
+      type: "select"
+      options:
+        - value: "budget"
+          label: "Budget"
+        - value: "standard"
+          label: "Standard"
+        - value: "upscale"
+          label: "Upscale"
+      required: true
+    - name: "tubReplacement"
+      label: "Tub / Shower Replacement"
+      unit: ""
+      type: "select"
+      options:
+        - value: "yes"
+          label: "Yes"
+        - value: "no"
+          label: "No"
+      required: true
+
+formula:
+  expression: "Cost = Size × Rate × Tub Multiplier; Budget: $70–120/sqft, Standard: $120–250/sqft, Upscale: $250–400/sqft; Tub/shower adds +15%"
+  steps:
+    - "1. Enter the bathroom size in square feet"
+    - "2. Select the quality tier to determine the base cost rate"
+    - "3. If tub/shower replacement is included, add 15% surcharge"
+    - "4. Low Estimate = Size × Low Rate × Multiplier"
+    - "5. Mid Estimate = Size × Mid Rate × Multiplier"
+    - "6. High Estimate = Size × High Rate × Multiplier"
+    - "7. Cost breakdown: Fixtures ~30%, Labor ~40%, Materials ~30%"
+
+example:
+  scenario: "estimating cost for a 50 sq ft standard bathroom remodel without tub replacement"
+  values:
+    bathroomSize: 50
+    qualityTier: "standard"
+    tubReplacement: "no"
+  result: "Low estimate: $6,000, Mid estimate: $9,250, High estimate: $12,500 at $120–250 per sq ft"
+
+tips:
+  - "Budget remodels ($70–120/sqft) typically include cosmetic updates: paint, fixtures, and flooring"
+  - "Standard remodels ($120–250/sqft) include new tile, vanity, toilet, and plumbing updates"
+  - "Upscale remodels ($250–400/sqft) include premium materials, custom cabinetry, heated floors, and luxury fixtures"
+  - "Replacing a tub or shower adds 10–20% to total cost due to plumbing and waterproofing requirements"
+  - "Labor typically accounts for 40–50% of total bathroom remodel cost"
+
+faq:
+  - question: "How much does a bathroom remodel cost?"
+    answer: "A bathroom remodel costs $70–400 per square foot depending on quality. A budget remodel for a 50 sq ft bathroom costs $3,500–6,000, a standard remodel costs $6,000–12,500, and an upscale remodel costs $12,500–20,000."
+  - question: "What is the most expensive part of a bathroom remodel?"
+    answer: "Labor is typically the most expensive part at 40–50% of total cost. Plumbing and tile work are the largest labor expenses. Among materials, custom tile, natural stone, and freestanding tubs are the biggest cost drivers."
+  - question: "Can I remodel a bathroom for $5,000?"
+    answer: "Yes, but it will be a budget-level remodel focused on cosmetic updates: painting, replacing fixtures, installing a prefabricated vanity, and updating lighting. You'll need to keep existing plumbing layout and avoid moving walls or major tile work."
+  - question: "Does a bathroom remodel add value to a home?"
+    answer: "Yes. A mid-range bathroom remodel typically recoups 60–70% of its cost in home value. An upscale remodel recoups about 55–60%. Bathrooms and kitchens are among the top ROI home improvements for resale."
+
+related:
+  - "tile-calculator"
+  - "paint-calculator"
+  - "concrete-calculator"
+  - "landscape-cost-calculator"

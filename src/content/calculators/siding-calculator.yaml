@@ -1,0 +1,82 @@
+title: "Siding Calculator"
+h1: "Siding Calculator – Hardie Board, Plank & Lap Siding"
+description: "Calculate how much siding you need for your project. Free siding calculator for James Hardie, vinyl, and wood siding materials."
+category: "landscaping-calculators"
+slug: "siding-calculator"
+keywords:
+  - "james hardie siding calculator"
+  - "hardie plank siding calculator"
+  - "siding calculator hardie"
+  - "hardie board siding calculator"
+  - "hardie lap siding calculator"
+  - "james hardie lap siding calculator"
+  - "hardieplank siding calculator"
+
+calculator:
+  component: "SidingCalculator"
+  inputs:
+    - name: "wallHeight"
+      label: "Wall Height"
+      unit: "ft"
+      type: "number"
+      placeholder: "10"
+      required: true
+    - name: "wallWidth"
+      label: "Wall Width"
+      unit: "ft"
+      type: "number"
+      placeholder: "40"
+      required: true
+    - name: "numWalls"
+      label: "Number of Walls"
+      unit: ""
+      type: "number"
+      placeholder: "4"
+      required: true
+    - name: "openingsArea"
+      label: "Openings Area (doors/windows)"
+      unit: "sq ft"
+      type: "number"
+      placeholder: "80"
+    - name: "wasteFactor"
+      label: "Waste Factor"
+      unit: "%"
+      type: "number"
+      placeholder: "10"
+
+formula:
+  expression: "Net Area = (Wall Height × Wall Width × Number of Walls) - Openings Area"
+  steps:
+    - "1. Measure the height and width of each wall in feet"
+    - "2. Calculate total wall area: height × width × number of walls"
+    - "3. Subtract the area of all doors and windows"
+    - "4. Add waste factor (typically 10%) for cuts and mistakes"
+    - "5. Divide by 100 to get the number of squares"
+
+example:
+  scenario: "calculating siding for a house with four 10ft × 40ft walls, 80 sq ft of openings, and 10% waste"
+  values:
+    wallHeight: 10
+    wallWidth: 40
+    numWalls: 4
+    openingsArea: 80
+    wasteFactor: 10
+  result: "Total area = 1,600 sq ft, minus 80 sq ft openings = 1,520 sq ft net, plus 10% waste = 1,672 sq ft (16.72 squares)"
+
+tips:
+  - "Siding is sold in 'squares' — one square equals 100 square feet"
+  - "Always add 10-15% waste factor for cuts, mistakes, and future repairs"
+  - "Hardie plank siding comes in 12ft lengths with various widths (5.25\", 6.25\", 7.25\", 8.25\")"
+  - "Measure each wall separately for the most accurate estimate"
+
+faq:
+  - question: "How do I calculate how much siding I need?"
+    answer: "Measure each wall's height and width, multiply to get area, subtract door and window areas, then add 10-15% for waste. Divide the total by 100 to get squares."
+  - question: "How much Hardie plank siding do I need?"
+    answer: "Calculate your net wall area in square feet, add 10% waste, then divide by 100 for squares. A typical 1,500 sq ft home needs about 15-17 squares of siding."
+  - question: "How many pieces of Hardie siding are in a square?"
+    answer: "The number depends on the plank width. For 8.25-inch wide planks, approximately 18 pieces cover one square. For 6.25-inch planks, about 24 pieces per square."
+
+related:
+  - "siding-square-footage-calculator"
+  - "siding-cost-calculator"

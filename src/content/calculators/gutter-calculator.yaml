@@ -1,0 +1,77 @@
+title: "Gutter Calculator"
+h1: "Gutter Calculator – Size, Downspouts & Drainage Capacity"
+description: "Calculate the right gutter size and number of downspouts for your roof. Based on IPC standards. Supports 5-inch and 6-inch K-style gutters."
+category: "construction-calculators"
+slug: "gutter-calculator"
+keywords:
+  - "gutter sizing calculator"
+  - "concrete curb and gutter calculator"
+  - "concrete calculator curb and gutter"
+  - "curb and gutter calculator"
+  - "curb and gutter concrete calculator"
+  - "gutter calculator"
+  - "gutter cleaning cost calculator"
+  - "rain gutter calculator"
+  - "rainwater gutter calculator"
+  - "gutter and downspout calculator"
+  - "gutter and downspout sizing calculator"
+  - "gutter estimate calculator"
+  - "gutter size calculation"
+
+calculator:
+  component: "GutterCalculator"
+  inputs:
+    - name: "roofArea"
+      label: "Roof Area"
+      unit: "sq ft"
+      type: "number"
+      placeholder: "2000"
+      required: true
+    - name: "rainfallIntensity"
+      label: "Rainfall Intensity"
+      unit: "in/hr"
+      type: "number"
+      placeholder: "1"
+      required: true
+    - name: "roofPitch"
+      label: "Roof Pitch"
+      unit: "in/ft"
+      type: "number"
+      placeholder: "6 (optional)"
+
+formula:
+  expression: "Gutter Size = f(Effective Drainage Area); Downspouts = ⌈Effective Area / (340 × Rainfall)⌉"
+  steps:
+    - "1. Calculate effective drainage area: Effective Area = Roof Area × Rainfall Intensity × Pitch Factor"
+    - "2. Pitch Factor = √(1 + (pitch/12)²) — if pitch provided"
+    - "3. If effective area ≤ 5,520 sq ft: use 5-inch K-style gutters"
+    - "4. If effective area > 5,520 sq ft: use 6-inch K-style gutters"
+    - "5. Downspouts = ⌈Effective Area / (340 × Rainfall Intensity)⌉ (minimum 1)"
+
+example:
+  scenario: "sizing gutters for a 2,000 sq ft roof with 1 in/hr rainfall and 6/12 pitch"
+  values:
+    roofArea: 2000
+    rainfallIntensity: 1
+    roofPitch: 6
+  result: "Recommended: 5-inch K-style gutters with 5 downspouts, drainage capacity covers 107% of effective area"
+
+tips:
+  - "A 5-inch K-style gutter can handle up to 5,520 sq ft of drainage area at 1 inch/hour rainfall"
+  - "A 6-inch K-style gutter handles up to 7,960 sq ft — use for larger roofs or heavy rainfall areas"
+  - "Standard 2×3 inch downspouts handle about 340 sq ft of roof area per downspout at 1 in/hr"
+  - "Check your local rainfall intensity data — some areas experience 3+ inches per hour during storms"
+
+faq:
+  - question: "What size gutters do I need for a 2,000 sq ft roof?"
+    answer: "For most homes with a 2,000 sq ft roof and moderate rainfall (1 in/hr), 5-inch K-style gutters are sufficient. If you have steep roof pitch or heavy local rainfall, consider 6-inch gutters. You'll typically need 3–5 downspouts."
+  - question: "How many downspouts do I need?"
+    answer: "A general rule is one downspout for every 30–40 feet of gutter run. For a 2,000 sq ft roof with 1 in/hr rainfall, you need approximately 5 downspouts. More downspouts are needed in areas with heavy rainfall."
+  - question: "How do I calculate gutter size?"
+    answer: "Multiply your roof area by the local rainfall intensity (in/hr) and a pitch adjustment factor. If the result is under 5,520 sq ft, 5-inch gutters work. Over that, use 6-inch gutters. The pitch factor for a 6/12 pitch roof is about 1.12."
+
+related:
+  - "asphalt-calculator"
+  - "roof-pitch-calculator"
+  - "fence-calculator"
+  - "stair-calculator"

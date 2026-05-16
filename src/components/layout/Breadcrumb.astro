@@ -1,0 +1,41 @@
+---
+import { SITE_URL } from '../../utils/constants';
+
+interface Props {
+  items: { name: string; href?: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class="max-w-ic-content mx-auto px-[20px] mt-[20px] mb-[30px]">
+  <div class="bg-grey-200 dark:bg-grey-850 rounded-ic-pill px-[24px] py-[8px]">
+    <ol class="bg-white dark:bg-grey-900 rounded-ic-pill px-[28px] py-[6px] flex items-center gap-[5px] text-[1.4rem] flex-wrap list-none">
+      {items.map((item, i) => (
+        <li class="flex items-center gap-[5px]">
+          {i > 0 && (
+            <svg class="w-[10px] h-[10px] text-grey-600 dark:text-[#D4D4D4]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          )}
+          {item.href ? (
+            <a href={item.href} class="text-grey-700 dark:text-grey-300 hover:text-brand-700 dark:hover:text-brand-600 transition-colors">{item.name}</a>
+          ) : (
+            <span class="text-brand-700 dark:text-brand-600 font-medium">{item.name}</span>
+          )}
+        </li>
+      ))}
+    </ol>
+  </div>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((item, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": item.name,
+    ...(item.href ? { "item": `${SITE_URL}${item.href}` } : {})
+  }))
+})} />

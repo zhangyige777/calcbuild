@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_DESCRIPTION, CATEGORIES } from '../utils/constants';
+import { getCollection } from 'astro:content';
+
+const allCalculators = await getCollection('calculators');
+const allCategories = await getCollection('categories');
+
+const categoryMap = new Map<string, typeof allCalculators>();
+for (const calc of allCalculators) {
+  const cat = calc.data.category;
+  if (!categoryMap.has(cat)) categoryMap.set(cat, []);
+  categoryMap.get(cat)!.push(calc);
+}
+
+// Category icons - Heroicons paths
+const categoryIcons: Record<string, string> = {
+  construction: 'M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085',
+  roofing: 'M2.25 12l8.954-8.955a1.126 1.126 0 011.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25',
+  landscaping: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418',
+  deck: 'M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 0h.008v.008H17.25v-.008zm0 3h.008v.008H17.25v-.008zm0 3h.008v.008H17.25v-.008z',
+  stairs: 'M3.75 3v11.25h4.5V18h4.5v3.75h4.5V21',
+  flooring: 'M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3',
+  electrical: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+  plumbing: 'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z',
+  paint: 'M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42',
+  conversion: 'M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3',
+  cost: 'M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  measurement: 'M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15',
+};
+
+// Category accent colors for variety
+const categoryAccents: Record<string, { bg: string; darkBg: string; text: string; darkText: string }> = {
+  construction: { bg: 'bg-teal-50', darkBg: 'dark:bg-teal-900/30', text: 'text-teal-700', darkText: 'dark:text-teal-400' },
+  roofing: { bg: 'bg-orange-50', darkBg: 'dark:bg-orange-900/30', text: 'text-orange-700', darkText: 'dark:text-orange-400' },
+  landscaping: { bg: 'bg-green-50', darkBg: 'dark:bg-green-900/30', text: 'text-green-700', darkText: 'dark:text-green-400' },
+  deck: { bg: 'bg-amber-50', darkBg: 'dark:bg-amber-900/30', text: 'text-amber-700', darkText: 'dark:text-amber-400' },
+  stairs: { bg: 'bg-sky-50', darkBg: 'dark:bg-sky-900/30', text: 'text-sky-700', darkText: 'dark:text-sky-400' },
+  flooring: { bg: 'bg-violet-50', darkBg: 'dark:bg-violet-900/30', text: 'text-violet-700', darkText: 'dark:text-violet-400' },
+  electrical: { bg: 'bg-yellow-50', darkBg: 'dark:bg-yellow-900/30', text: 'text-yellow-700', darkText: 'dark:text-yellow-400' },
+  plumbing: { bg: 'bg-blue-50', darkBg: 'dark:bg-blue-900/30', text: 'text-blue-700', darkText: 'dark:text-blue-400' },
+  paint: { bg: 'bg-pink-50', darkBg: 'dark:bg-pink-900/30', text: 'text-pink-700', darkText: 'dark:text-pink-400' },
+  conversion: { bg: 'bg-indigo-50', darkBg: 'dark:bg-indigo-900/30', text: 'text-indigo-700', darkText: 'dark:text-indigo-400' },
+  cost: { bg: 'bg-emerald-50', darkBg: 'dark:bg-emerald-900/30', text: 'text-emerald-700', darkText: 'dark:text-emerald-400' },
+  measurement: { bg: 'bg-cyan-50', darkBg: 'dark:bg-cyan-900/30', text: 'text-cyan-700', darkText: 'dark:text-cyan-400' },
+};
+---
+
+<BaseLayout title="Free Construction & Home Improvement Calculators" description={SITE_DESCRIPTION}>
+
+  <!-- Hero Section -->
+  <section class="max-w-ic-content mx-auto px-[20px] pt-[40px] pb-[30px] text-center">
+    <h1 class="text-[3.5rem] max-[480px]:text-[2.8rem] font-semibold text-[#444] dark:text-grey-100 mb-[12px]">Find Your Calculator</h1>
+    <p class="text-[1.8rem] text-grey-600 dark:text-[#D4D4D4] mb-[30px] max-w-[700px] mx-auto leading-[1.55]">Explore free calculators designed for construction, home improvement, and more.</p>
+
+    <!-- Search -->
+    <div class="relative max-w-[600px] mx-auto">
+      <svg class="absolute left-[15px] top-1/2 -translate-y-1/2 w-[25px] h-[25px] text-grey-600 dark:text-[#B6B6B6]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
+      </svg>
+      <input
+        type="text"
+        placeholder="Search for a calculator"
+        class="w-full pl-[48px] pr-[15px] py-[10px] text-[1.8rem] border border-grey-400 dark:border-grey-700 rounded-ic-md bg-white dark:bg-grey-850 focus:border-brand-700 dark:focus:border-brand-600 focus:outline-none transition-colors min-h-[40px]"
+      />
+    </div>
+  </section>
+
+  <!-- Category Grid -->
+  <section class="max-w-ic-content mx-auto px-[20px] pb-[30px]">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-[15px] max-w-[900px] mx-auto">
+      {allCategories.map((cat) => {
+        const iconPath = categoryIcons[cat.data.icon] || categoryIcons.construction;
+        const accent = categoryAccents[cat.data.icon] || categoryAccents.construction;
+        const calcCount = categoryMap.get(cat.data.slug)?.length || 0;
+        return (
+          <a
+            href={`/${cat.data.slug}/`}
+            class:list={[
+              'group flex flex-col items-center gap-[12px] p-[20px] border border-grey-400 dark:border-grey-700 rounded-ic-md hover:border-brand-600 dark:hover:border-brand-500 hover:shadow-md transition-all',
+              accent.bg, accent.darkBg,
+            ]}
+          >
+            <div class:list={['w-[48px] h-[48px] flex items-center justify-center rounded-ic-sm transition-colors', accent.text, accent.darkText]}>
+              <svg class="w-[28px] h-[28px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={iconPath} />
+              </svg>
+            </div>
+            <div class="text-center">
+              <span class="block text-[1.6rem] font-semibold text-grey-800 dark:text-grey-100 group-hover:text-brand-700 dark:group-hover:text-brand-500 transition-colors leading-tight">{cat.data.name}</span>
+              {calcCount > 0 && (
+                <span class="block text-[1.2rem] text-grey-500 dark:text-[#B6B6B6] mt-[3px]">{calcCount} calculator{calcCount !== 1 ? 's' : ''}</span>
+              )}
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="max-w-[800px] mx-auto px-[20px] py-[30px] text-center border-t border-grey-300 dark:border-grey-700">
+    <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[18px]">About CalcBuild</h2>
+    <p class="text-[1.8rem] text-grey-600 dark:text-[#D4D4D4] leading-[1.55] mt-0">We provide accurate, easy-to-use calculators and tools to simplify life for contractors, homeowners, and DIY enthusiasts.</p>
+    <p class="text-[1.8rem] text-grey-600 dark:text-[#D4D4D4] leading-[1.55]">We thoughtfully design each tool to deliver just the right amount of information—whether you need a quick answer or a deeper understanding of the solution.</p>
+    <a href="/about/" class="inline-block mt-[15px] text-[1.6rem] font-semibold text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-500 transition-colors">Learn more about us →</a>
+  </section>
+
+  <!-- Popular Calculators -->
+  {allCalculators.length > 0 && (
+    <section class="max-w-ic-content mx-auto px-[20px] pb-[40px] border-t border-grey-300 dark:border-grey-700 pt-[30px]">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[30px] text-center">Popular Calculators</h2>
+      <p class="text-[1.8rem] text-grey-600 dark:text-[#D4D4D4] mb-[25px] text-center">Browse our most-used calculators to tackle any challenge.</p>
+      <div class="grid grid-cols-[repeat(auto-fill,300px)] gap-[25px] justify-center max-[990px]:grid-cols-[repeat(auto-fill,250px)] max-[640px]:grid-cols-1 max-[640px]:max-w-[400px] max-[640px]:mx-auto">
+        {allCalculators.map((calc) => {
+          const catData = allCategories.find(c => c.data.slug === calc.data.category);
+          const iconPath = categoryIcons[catData?.data.icon || 'construction'] || categoryIcons.construction;
+          const accent = categoryAccents[catData?.data.icon || 'construction'] || categoryAccents.construction;
+          return (
+            <a
+              href={`/${calc.data.category}/${calc.data.slug}/`}
+              class="group flex flex-col border border-grey-400 dark:border-grey-700 rounded-ic-md overflow-hidden hover:border-brand-600 dark:hover:border-brand-500 hover:shadow-md transition-all"
+            >
+              <div class:list={['px-[20px] py-[18px] border-b border-grey-400 dark:border-grey-700 flex items-center gap-[10px]', accent.bg, accent.darkBg]}>
+                <div class:list={['w-[30px] h-[30px] flex items-center justify-center', accent.text, accent.darkText]}>
+                  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d={iconPath} />
+                  </svg>
+                </div>
+                <h3 class="text-[1.8rem] font-semibold text-grey-800 dark:text-grey-100 group-hover:text-brand-700 dark:group-hover:text-brand-500 transition-colors">{calc.data.title}</h3>
+              </div>
+              <div class="px-[20px] py-[15px] flex items-center justify-between bg-white dark:bg-grey-950">
+                <span class="text-[1.6rem] text-grey-600 dark:text-[#D4D4D4] line-clamp-1">{calc.data.description}</span>
+                <svg class="w-[1.4rem] h-[1.4rem] text-brand-700 dark:text-brand-600 shrink-0 ml-[10px] transition-transform group-hover:translate-x-[3px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  )}
+
+</BaseLayout>

@@ -1,0 +1,75 @@
+title: "Cinder Block Calculator"
+h1: "Cinder Block Calculator – Estimate Blocks, Mortar & Fill"
+description: "Calculate how many cinder blocks you need for your wall. Estimates blocks, mortar bags, and fill volume. Supports 8×8×16, 6×8×16, and 12×8×16 blocks."
+category: "construction-calculators"
+slug: "cinder-block-calculator"
+keywords:
+  - "cinder block calculator"
+  - "cinderblock calculator"
+  - "cinder block estimator"
+
+calculator:
+  component: "CinderBlockCalculator"
+  inputs:
+    - name: "wallLength"
+      label: "Wall Length"
+      unit: "ft"
+      type: "number"
+      placeholder: "50"
+      required: true
+    - name: "wallHeight"
+      label: "Wall Height"
+      unit: "ft"
+      type: "number"
+      placeholder: "8"
+      required: true
+    - name: "blockSize"
+      label: "Block Size"
+      unit: ""
+      type: "select"
+      options:
+        - value: "8x8x16"
+          label: "8×8×16 Standard"
+        - value: "6x8x16"
+          label: "6×8×16"
+        - value: "12x8x16"
+          label: "12×8×16"
+      required: true
+
+formula:
+  expression: "Blocks = ⌈Wall Area / Block Face Area⌉; Mortar Bags = ⌈(Blocks × 0.03 × 1.1) / 0.7⌉"
+  steps:
+    - "1. Calculate wall area: Area = Wall Length × Wall Height (sq ft)"
+    - "2. Determine block face area: Standard 8×8×16 = 0.89 sq ft per block"
+    - "3. Calculate blocks needed: Blocks = ⌈Wall Area / Block Face Area⌉"
+    - "4. Calculate mortar: Each block uses ~0.03 cu ft of mortar, add 10% for waste"
+    - "5. Mortar bags: Total mortar cu ft ÷ 0.7 (one 80lb bag ≈ 0.7 cu ft)"
+    - "6. Calculate fill volume for block cores if needed"
+
+example:
+  scenario: "building a 50ft × 8ft wall with standard 8×8×16 cinder blocks"
+  values:
+    wallLength: 50
+    wallHeight: 8
+    blockSize: "8x8x16"
+  result: "You need 450 blocks, 22 bags of mortar (80lb), and approximately 7.99 cubic yards of fill material"
+
+tips:
+  - "A standard 8×8×16 cinder block covers 0.89 sq ft of wall area (including mortar joint)"
+  - "One 80lb bag of mortar mix yields about 0.7 cubic feet — enough for roughly 23 blocks"
+  - "Always order 5–10% extra blocks to account for breakage and cuts"
+  - "For load-bearing walls, fill block cores with concrete and add rebar per local building codes"
+
+faq:
+  - question: "How many cinder blocks do I need for a wall?"
+    answer: "For a standard 8×8×16 block covering 0.89 sq ft, divide your wall area (length × height) by 0.89. For example, a 50ft × 8ft wall (400 sq ft) needs about 450 blocks. Always add 5–10% extra."
+  - question: "How many bags of mortar do I need for 100 blocks?"
+    answer: "For 100 standard cinder blocks, you need approximately 5 bags of 80lb mortar mix. Each bag covers about 23 blocks when applied at standard joint thickness (3/8 inch)."
+  - question: "What size cinder block should I use?"
+    answer: "The standard 8×8×16 inch block is the most common for residential walls. Use 12-inch blocks for retaining walls or load-bearing applications. 6-inch blocks are used for non-load-bearing interior walls."
+
+related:
+  - "board-foot-calculator"
+  - "fence-calculator"
+  - "gutter-calculator"
+  - "asphalt-calculator"

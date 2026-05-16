@@ -1,0 +1,7 @@
+slug: "stair-calculators"
+name: "Stairs"
+description: "Free stair calculators for rise, run, tread, riser height, and stringer length."
+icon: "stairs"
+calculators:
+  - "stair-calculator"
+  - "ramp-calculator"

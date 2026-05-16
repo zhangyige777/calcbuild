@@ -1,0 +1,77 @@
+title: "Stair Calculator"
+h1: "Stair Calculator – Rise, Run & Angle"
+description: "Free stair calculator to determine the number of steps, riser height, going, and stair angle. Enter total rise and run for instant results."
+category: "stair-calculators"
+slug: "stair-calculator"
+keywords:
+  - "winder stair calculator"
+  - "winder staircase calculator"
+  - "calculating stair angle"
+  - "how to figure rise and run on stairs"
+  - "how to calculate stair angle"
+  - "stair calculator with landing turn"
+  - "staircase with landing calculator"
+  - "ship ladder calculator"
+  - "stair step calculator"
+  - "3d stair calculator"
+  - "stair tread depth calculator"
+
+calculator:
+  component: "StairCalculator"
+  inputs:
+    - name: "totalRise"
+      label: "Total Rise"
+      unit: "in"
+      type: "number"
+      placeholder: "108"
+      required: true
+    - name: "totalRun"
+      label: "Total Run"
+      unit: "in"
+      type: "number"
+      placeholder: "120"
+    - name: "treadDepth"
+      label: "Tread Depth"
+      unit: "in"
+      type: "number"
+      placeholder: "10"
+
+formula:
+  expression: "Steps = Total Rise ÷ Ideal Riser Height; Angle = arctan(Rise / Run)"
+  steps:
+    - "1. Determine number of steps: Steps = round(Total Rise ÷ 7.5)"
+    - "2. Calculate actual riser height: Riser = Total Rise ÷ Steps"
+    - "3. Calculate going per step: Going = Total Run ÷ Steps (or use default tread depth)"
+    - "4. Calculate stair angle: Angle = arctan(Total Rise ÷ Total Run) × (180 / π)"
+    - "5. Ideal riser height is between 7 and 7.5 inches per building codes"
+
+example:
+  scenario: "building a staircase with a total rise of 108 inches and a total run of 120 inches"
+  values:
+    totalRise: 108
+    totalRun: 120
+    treadDepth: 10
+  result: "14 steps with 7.71 in risers, 10 in going, and a 42.0° stair angle"
+
+tips:
+  - "Ideal riser height is 7–7.5 inches. Most building codes require risers between 4–7.75 inches"
+  - "Tread depth should be at least 10 inches per IRC and IBC standards"
+  - "All risers in a flight must be within 3/8 inch of each other for uniformity"
+  - "The rule of thumb: 2×Riser + 1×Going should equal 24–25 inches for comfortable stairs"
+  - "Add 5% extra material for waste when ordering treads and risers"
+
+faq:
+  - question: "What is the ideal riser height for stairs?"
+    answer: "The ideal riser height is between 7 and 7.5 inches. This provides a comfortable stride for most people. Residential codes typically allow 4–7.75 inches, but 7–7.5 is the sweet spot."
+  - question: "How do you calculate the angle of stairs?"
+    answer: "The stair angle is calculated using arctan(total rise ÷ total run) converted to degrees. A comfortable residential stair angle is between 30° and 37°."
+  - question: "How many steps do I need for a 9-foot ceiling?"
+    answer: "For a 9-foot ceiling (108 inches total rise), you need approximately 14–15 steps at 7.2–7.7 inches per riser."
+  - question: "What is the 2R+G rule for stairs?"
+    answer: "The 2R+G rule states that twice the riser height plus the going (tread depth) should equal 24–25 inches. For example, 2×7 + 11 = 25 inches, which is a comfortable stair proportion."
+
+related:
+  - "ramp-calculator"
+  - "roof-pitch-calculator"
+  - "board-foot-calculator"
+  - "cinder-block-calculator"

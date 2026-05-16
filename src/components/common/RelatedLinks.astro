@@ -1,0 +1,32 @@
+---
+interface Props {
+  related: string[];
+  showTitle?: boolean;
+}
+
+const { related, showTitle = false } = Astro.props;
+---
+
+<div>
+  {showTitle && (
+    <h2 class="text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Related Calculators</h2>
+  )}
+  <ul class="space-y-[8px]">
+    {related.map((slug) => {
+      const name = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      return (
+        <li>
+          <a
+            href={`/${slug}/`}
+            class="text-[1.6rem] font-semibold text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-500 transition-colors flex items-center gap-[5px]"
+          >
+            <svg class="w-[14px] h-[14px] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+            {name}
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+</div>

@@ -1,0 +1,76 @@
+title: "Sand Calculator"
+h1: "Sand Calculator – Estimate Cubic Yards, Tons & Weight"
+description: "Use our free sand calculator to estimate how much sand you need in cubic yards, tons, and pounds. Enter dimensions and get instant results with cost estimate."
+category: "landscaping-calculators"
+slug: "sand-calculator"
+keywords:
+  - "weight of one yard of sand"
+  - "how much does a half yard of sand weigh"
+  - "how much does 1 yard of sand weight"
+  - "sand cost per cubic yard"
+  - "weight yard sand"
+
+calculator:
+  component: "SandCalculator"
+  inputs:
+    - name: "length"
+      label: "Length"
+      unit: "ft"
+      type: "number"
+      placeholder: "20"
+      required: true
+    - name: "width"
+      label: "Width"
+      unit: "ft"
+      type: "number"
+      placeholder: "10"
+      required: true
+    - name: "depth"
+      label: "Depth"
+      unit: "in"
+      type: "number"
+      placeholder: "3"
+      required: true
+    - name: "pricePerYard"
+      label: "Price per Cubic Yard"
+      unit: "$"
+      type: "number"
+      placeholder: "30 (optional)"
+      min: 0
+
+formula:
+  expression: "Cubic Yards = (Length × Width × Depth in ft) ÷ 27; Tons = Cubic Yards × 1.35"
+  steps:
+    - "1. Convert depth from inches to feet: Depth (ft) = Depth (in) ÷ 12"
+    - "2. Calculate cubic yards: Cubic Yards = (Length × Width × Depth) ÷ 27"
+    - "3. Calculate tons: Tons = Cubic Yards × 1.35 (sand density)"
+    - "4. Calculate weight: Weight (lbs) = Cubic Yards × 2,700"
+    - "5. Estimate cost: Cost = Cubic Yards × Price per Yard"
+
+example:
+  scenario: "filling a 20ft × 10ft sandbox with 6 inches of sand"
+  values:
+    length: 20
+    width: 10
+    depth: 6
+  result: "You need approximately 3.70 cubic yards or 5.00 tons of sand, weighing about 9,999 lbs"
+
+tips:
+  - "Order 5–10% extra — sand compacts and settles, especially when wet"
+  - "Sand density is approximately 1.35 tons per cubic yard (2,700 lbs/yd³)"
+  - "Play sand and construction sand have different densities — play sand is lighter"
+  - "For paver base, use 1 inch of sand over 4-6 inches of gravel"
+
+faq:
+  - question: "How much does a yard of sand weigh?"
+    answer: "One cubic yard of sand weighs approximately 2,700 pounds (1.35 tons). The weight varies slightly depending on moisture content — wet sand can weigh up to 3,000 pounds per cubic yard."
+  - question: "How much does sand cost per cubic yard?"
+    answer: "Sand costs between $15–$50 per cubic yard depending on the type and your location. Fill sand is cheapest ($15-25/yd³), while masonry sand and play sand cost more ($25-50/yd³). Delivery adds $50-100."
+  - question: "How much sand do I need for a sandbox?"
+    answer: "For a rectangular sandbox, measure length × width × desired depth in inches. Calculate: Cubic Yards = (Length × Width × Depth ÷ 12) ÷ 27. A 4×4 foot sandbox with 12 inches of sand needs about 0.6 cubic yards."
+
+related:
+  - "pea-gravel-calculator"
+  - "river-rock-calculator"
+  - "topsoil-calculator"
+  - "loam-calculator"

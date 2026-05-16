@@ -1,0 +1,42 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import CalculatorCard from '../components/common/CalculatorCard.astro';
+import type { CategoryData, CalculatorData } from '../utils/types';
+
+interface Props {
+  category: CategoryData;
+  calculators: CalculatorData[];
+}
+
+const { category, calculators } = Astro.props;
+const categoryName = category.name;
+---
+
+<BaseLayout
+  title={`${categoryName} Calculators`}
+  description={category.description}
+  canonical={`/${category.slug}/`}
+>
+  <Breadcrumb
+    items={[
+      { name: 'Home', href: '/' },
+      { name: `${categoryName} Calculators` }
+    ]}
+  />
+
+  <div class="max-w-ic-content mx-auto px-[20px] pb-[40px]">
+    <h1 class="text-[3.5rem] max-[480px]:text-[2.8rem] font-semibold text-[#444] dark:text-grey-100 mb-[12px]">{categoryName} Calculators</h1>
+    <p class="text-[1.8rem] text-grey-600 dark:text-[#D4D4D4] leading-[1.55] mb-[30px] max-w-[800px]">{category.description}</p>
+
+    <div class="grid grid-cols-[repeat(auto-fill,300px)] gap-[25px] justify-center max-[990px]:grid-cols-[repeat(auto-fill,250px)] max-[640px]:grid-cols-1 max-[640px]:max-w-[400px] max-[640px]:mx-auto">
+      {calculators.map((calc) => (
+        <CalculatorCard
+          title={calc.title}
+          description={calc.description}
+          href={`/${category.slug}/${calc.slug}/`}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

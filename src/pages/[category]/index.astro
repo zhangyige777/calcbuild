@@ -1,0 +1,24 @@
+---
+import type { GetStaticPaths } from 'astro';
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+import { getCollection } from 'astro:content';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const categories = await getCollection('categories');
+  const calculators = await getCollection('calculators');
+
+  return categories.map((cat) => ({
+    params: { category: cat.data.slug },
+    props: {
+      category: cat.data,
+      calculators: calculators
+        .filter((calc) => calc.data.category === cat.data.slug)
+        .map((calc) => calc.data),
+    },
+  }));
+};
+
+const { category, calculators } = Astro.props;
+---
+
+<CategoryLayout category={category} calculators={calculators} />

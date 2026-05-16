@@ -1,0 +1,72 @@
+title: "Roof Pitch Calculator"
+h1: "Roof Pitch Calculator – Chart, Multiplier & Angle"
+description: "Calculate roof pitch, angle, and multiplier factor. Free online roof pitch calculator with chart for common roof slopes."
+category: "roofing-calculators"
+slug: "roof-pitch-calculator"
+keywords:
+  - "roof pitch chart"
+  - "roof pitch multiplier"
+  - "roof pitch factor"
+  - "roof slope multiplier"
+  - "pitch factor chart"
+  - "roofing slope factor"
+  - "roof pitch factor chart"
+  - "roofing pitch chart"
+  - "roof pitch diagram"
+
+calculator:
+  component: "RoofPitchCalculator"
+  inputs:
+    - name: "rise"
+      label: "Rise"
+      unit: "in"
+      type: "number"
+      placeholder: "6"
+      required: true
+    - name: "run"
+      label: "Run"
+      unit: "in"
+      type: "number"
+      placeholder: "12"
+      required: true
+    - name: "baseArea"
+      label: "Base Area (optional)"
+      unit: "sq ft"
+      type: "number"
+      placeholder: "1000"
+
+formula:
+  expression: "Pitch Factor = √(Rise² + Run²) / Run"
+  steps:
+    - "1. Determine the rise (vertical distance) per 12 inches of run"
+    - "2. Calculate the pitch factor: √(Rise² + Run²) ÷ Run"
+    - "3. Calculate the angle: Angle = arctan(Rise ÷ Run) in degrees"
+    - "4. If you have a base area, multiply by the pitch factor to get actual roof area"
+
+example:
+  scenario: "calculating the pitch for a roof with 6 inches of rise per 12 inches of run"
+  values:
+    rise: 6
+    run: 12
+    baseArea: "1000 sq ft"
+  result: "Pitch ratio is 6/12, angle is 26.57°, pitch factor is 1.118. Actual roof area for 1000 sq ft base = 1,118 sq ft"
+
+tips:
+  - "A 6/12 pitch means the roof rises 6 inches for every 12 inches of horizontal run"
+  - "Standard roof pitch is between 4/12 and 9/12 — most residential roofs fall in this range"
+  - "Low-slope roofs (below 4/12) may require special waterproofing membranes"
+  - "The pitch factor is essential for ordering the correct amount of roofing materials"
+
+faq:
+  - question: "What is a good roof pitch?"
+    answer: "A pitch between 4/12 and 9/12 is considered standard for most residential roofs. Pitches above 9/12 are steep roofs, while those below 4/12 are considered low-slope and may need special materials."
+  - question: "What is the most common roof pitch?"
+    answer: "The most common residential roof pitch in the US is between 6/12 and 8/12. This range provides good water drainage while remaining walkable for maintenance."
+  - question: "How do you calculate roof pitch from the ground?"
+    answer: "Measure 12 inches horizontally (the run) on a level from the roof surface, then measure the vertical distance (rise) at that point. The ratio of rise to 12 inches of run is your pitch."
+  - question: "What does a 6/12 roof pitch mean?"
+    answer: "A 6/12 pitch means the roof rises 6 inches vertically for every 12 inches of horizontal distance. This equals an angle of approximately 26.57 degrees and a pitch factor of 1.118."
+
+related:
+  - "gambrel-roof-calculator"
+  - "roof-pitch-ratios"

@@ -1,0 +1,57 @@
+title: "Asphalt Tons to Cubic Yards Calculator"
+h1: "Asphalt Tons to Cubic Yards Calculator"
+description: "Convert between asphalt tons and cubic yards instantly. Free online converter using standard asphalt density of 1.4 tons per cubic yard."
+category: "construction-calculators"
+slug: "asphalt-tons-to-cubic-yards"
+keywords:
+  - "asphalt tons to cubic yards"
+  - "asphalt cubic yards to tons"
+  - "cy to tons of asphalt"
+  - "asphalt cubic yards to tons calculator"
+  - "asphalt tons per cubic yard"
+  - "calculating tons of asphalt"
+  - "cubic yards to tons of asphalt"
+  - "asphalt cy to ton"
+
+calculator:
+  component: "AsphaltTonsToCubicYards"
+  inputs:
+    - name: "value"
+      label: "Value"
+      unit: "tons"
+      type: "number"
+      placeholder: "10"
+      required: true
+
+formula:
+  expression: "Cubic Yards = Tons ÷ 1.4 | Tons = Cubic Yards × 1.4"
+  steps:
+    - "1. Identify your starting unit (tons or cubic yards)"
+    - "2. To convert tons to cubic yards: divide tons by 1.4"
+    - "3. To convert cubic yards to tons: multiply cubic yards by 1.4"
+    - "4. The density factor 1.4 represents standard hot mix asphalt"
+
+example:
+  scenario: "converting 10 tons of asphalt to cubic yards"
+  values:
+    tons: 10
+  result: "10 tons ÷ 1.4 = 7.14 cubic yards of asphalt"
+
+tips:
+  - "Standard hot mix asphalt density is approximately 1.4 tons per cubic yard (145 lbs/ft³)"
+  - "Cold mix asphalt may have a slightly different density (around 1.3 tons/cubic yard)"
+  - "Always confirm the density with your asphalt supplier for precise calculations"
+  - "Add 5–10% extra material to account for compaction and waste"
+
+faq:
+  - question: "How many cubic yards are in a ton of asphalt?"
+    answer: "One ton of asphalt equals approximately 0.714 cubic yards. Divide the number of tons by 1.4 to get cubic yards."
+  - question: "How many tons are in a cubic yard of asphalt?"
+    answer: "One cubic yard of asphalt weighs approximately 1.4 tons (2,800 lbs). Multiply cubic yards by 1.4 to get tons."
+  - question: "What is the density of asphalt?"
+    answer: "Standard hot mix asphalt has a density of approximately 145 pounds per cubic foot, which equals 1.4 tons per cubic yard or 2,400 kg per cubic meter."
+
+related:
+  - "asphalt-calculator"
+  - "asphalt-square-yards-to-tons"
+  - "asphalt-cost-calculator"

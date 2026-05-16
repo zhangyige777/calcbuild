@@ -1,0 +1,12 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return [];
+};
+---
+
+<BlogLayout title="" description="">
+  <p>Blog post not found.</p>
+</BlogLayout>

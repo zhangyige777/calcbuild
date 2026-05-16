@@ -1,0 +1,76 @@
+title: "Sod Cost Calculator"
+h1: "Sod Cost Calculator – Estimate Sod Installation Cost"
+description: "Calculate the total cost of sod for your project. Enter your area and price per pallet to estimate pallets needed, total cost, and cost per square foot."
+category: "landscaping-calculators"
+slug: "sod-cost-calculator"
+keywords:
+  - "how many sq ft in a pallet of sod"
+  - "how much will one pallet of sod cover"
+  - "cost of pallet of sod"
+  - "how much is sod per pallet"
+  - "sq ft per pallet of sod"
+  - "how much does a pallet of sod weight"
+  - "weight of sod pallet"
+  - "how much does sod weight pallet"
+  - "how much area does pallet of sod cover"
+  - "weight of sod"
+  - "1 2 pallet of sod"
+  - "how many pallets of sod for 1/2 acre"
+  - "how much does a pallet of grass cover"
+  - "sod piece size"
+  - "how many square feet come on a pallet of sod"
+  - "how many square feet on a pallet of grass"
+
+calculator:
+  component: "SodCostCalculator"
+  inputs:
+    - name: "area"
+      label: "Area"
+      unit: "sq ft"
+      type: "number"
+      placeholder: "1000"
+      required: true
+    - name: "pricePerPallet"
+      label: "Price per Pallet"
+      unit: "$"
+      type: "number"
+      placeholder: "150"
+      required: false
+
+formula:
+  expression: "Pallets = Area / 450; Total Cost = Pallets x Price per Pallet; Cost/sq ft = Total Cost / Area"
+  steps:
+    - "1. Calculate pallets needed: Pallets = Area (sq ft) / 450"
+    - "2. Round up to the nearest whole pallet (you can't buy partial pallets)"
+    - "3. Calculate total cost: Total Cost = Whole Pallets x Price per Pallet"
+    - "4. Calculate cost per square foot: Cost/sq ft = Total Cost / Area"
+    - "5. Estimate weight: Weight = Whole Pallets x 2,000 lbs"
+
+example:
+  scenario: "sodding a 1,000 sq ft yard at $150 per pallet"
+  values:
+    area: 1000
+    pricePerPallet: 150
+  result: "3 pallets needed (2.22 exact), total cost $450.00, cost per sq ft $0.45, estimated weight 6,000 lbs"
+
+tips:
+  - "Sod typically costs between $130-$200 per pallet depending on grass variety and region"
+  - "Installation labor adds $0.15-$0.60 per square foot on top of the sod cost"
+  - "A half-acre (21,780 sq ft) would require approximately 49 pallets of sod"
+  - "Factor in delivery fees — most suppliers charge $50-$150 for delivery depending on distance"
+  - "Fresh sod should be installed within 24 hours of harvest for best results"
+
+faq:
+  - question: "How much does a pallet of sod cost?"
+    answer: "A pallet of sod typically costs between $130 and $200, depending on the grass variety, region, and season. Premium varieties like zoysia or St. Augustine can cost $200-$400 per pallet."
+  - question: "How much area does one pallet of sod cover?"
+    answer: "One standard pallet of sod covers approximately 450 square feet. This is roughly equal to a 15 ft x 30 ft area."
+  - question: "How much does a pallet of sod weigh?"
+    answer: "A pallet of sod weighs approximately 1,500 to 2,500 lbs depending on moisture content and soil type. On average, expect about 2,000 lbs per pallet. This means a standard pickup truck can typically carry 1-2 pallets."
+  - question: "How many pallets of sod do I need for a half acre?"
+    answer: "A half acre is 21,780 square feet. Dividing by 450 sq ft per pallet, you would need approximately 49 pallets of sod. Always round up and add 5-10% extra for waste."
+
+related:
+  - "sod-calculator"
+  - "pond-volume-calculator"
+  - "pool-gallons-calculator"

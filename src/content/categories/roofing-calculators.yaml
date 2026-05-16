@@ -1,0 +1,8 @@
+slug: "roofing-calculators"
+name: "Roofing"
+description: "Free roofing calculators for pitch, angles, materials, and costs. Calculate roof area, pitch factor, and material estimates for your roofing project."
+icon: "roofing"
+calculators:
+  - "roof-pitch-calculator"
+  - "gambrel-roof-calculator"
+  - "roof-pitch-ratios"

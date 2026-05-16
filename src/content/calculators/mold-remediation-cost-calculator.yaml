@@ -1,0 +1,91 @@
+title: "Mold Remediation Cost Calculator"
+h1: "Mold Remediation Cost Calculator – Estimate Mold Removal Expenses"
+description: "Calculate the cost of professional mold remediation based on affected area, severity, and location. Get detailed cost breakdowns for testing, removal, and repairs."
+category: "cost-calculators"
+slug: "mold-remediation-cost-calculator"
+keywords:
+  - "mold remediation cost calculator"
+  - "mold removal cost estimator"
+  - "mold cleanup cost"
+  - "black mold removal cost"
+  - "mold remediation price"
+  - "mold damage repair cost"
+  - "mold inspection cost"
+
+calculator:
+  component: "MoldRemediationCost"
+  inputs:
+    - name: "affectedArea"
+      label: "Affected Area"
+      unit: "sq ft"
+      type: "number"
+      placeholder: "100"
+      required: true
+    - name: "severity"
+      label: "Mold Severity"
+      unit: ""
+      type: "select"
+      options:
+        - value: "surface"
+          label: "Surface Mold"
+        - value: "moderate"
+          label: "Moderate Growth"
+        - value: "severe"
+          label: "Severe Infestation"
+      required: true
+    - name: "location"
+      label: "Location"
+      unit: ""
+      type: "select"
+      options:
+        - value: "basement"
+          label: "Basement"
+        - value: "bathroom"
+          label: "Bathroom"
+        - value: "attic"
+          label: "Attic"
+        - value: "other"
+          label: "Other"
+      required: true
+
+formula:
+  expression: "Cost = Area × Rate × Location Factor; Surface: $10–15/sqft, Moderate: $15–30/sqft, Severe: $30–50/sqft; Attic +10%, Bathroom −5%"
+  steps:
+    - "1. Enter the affected area in square feet"
+    - "2. Select the mold severity level"
+    - "3. Select the location (affects accessibility and containment costs)"
+    - "4. Low Estimate = Area × Low Rate × Location Factor"
+    - "5. Mid Estimate = Area × Mid Rate × Location Factor"
+    - "6. High Estimate = Area × High Rate × Location Factor"
+    - "7. Breakdown: Testing & Inspection ~10%, Mold Removal ~55%, Repairs & Restoration ~35%"
+
+example:
+  scenario: "estimating cost for 100 sq ft of moderate mold growth in a basement"
+  values:
+    affectedArea: 100
+    severity: "moderate"
+    location: "basement"
+  result: "Low estimate: $1,500, Mid estimate: $2,250, High estimate: $3,000 including testing ($225), removal ($1,238), and repairs ($788)"
+
+tips:
+  - "Surface mold (less than 10 sq ft) can sometimes be handled with DIY cleaning — larger areas require professional remediation"
+  - "Moderate growth typically involves mold behind walls or under flooring and requires professional containment"
+  - "Severe infestations may require structural material removal, HEPA filtration, and extended containment procedures"
+  - "Always get a professional mold inspection before remediation — hidden mold can significantly increase costs"
+  - "Check your homeowners insurance — some policies cover mold remediation if caused by a covered water damage event"
+
+faq:
+  - question: "How much does mold remediation cost?"
+    answer: "Professional mold remediation costs $10–15 per sq ft for surface mold, $15–30/sq ft for moderate growth, and $30–50/sq ft for severe infestations. A typical 100 sq ft moderate remediation project costs $1,500–3,000 including testing, removal, and repairs."
+  - question: "Can I remove mold myself?"
+    answer: "You can clean surface mold on non-porous materials if the affected area is under 10 sq ft using detergent and water. For larger areas, mold behind walls, or any suspected toxic black mold (Stachybotrys), hire a professional. DIY removal without proper containment can spread spores throughout your home."
+  - question: "How long does mold remediation take?"
+    answer: "Small surface mold remediation takes 1–2 days. Moderate remediation with containment typically takes 3–5 days. Severe infestations requiring structural repairs can take 1–2 weeks. Timeline depends on area size, severity, and whether structural materials need replacement."
+  - question: "Does homeowners insurance cover mold remediation?"
+    answer: "It depends on the cause. Most policies cover mold remediation if it results from a covered peril like a burst pipe or roof leak. Mold from ongoing moisture problems, flooding (without flood insurance), or neglected maintenance is typically not covered. Check your policy details and file claims promptly."
+
+related:
+  - "basement-waterproofing-cost-calculator"
+  - "bathroom-remodel-cost-calculator"
+  - "paint-calculator"
+  - "landscape-cost-calculator"

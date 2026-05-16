@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CalcBuild 绿色配色方案选择</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f5; padding: 40px 20px; }
+  h1 { text-align: center; font-size: 28px; color: #333; margin-bottom: 10px; }
+  .subtitle { text-align: center; color: #888; font-size: 16px; margin-bottom: 40px; }
+  .schemes { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
+  .scheme { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.2s; }
+  .scheme:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+  .scheme-header { padding: 24px; color: #fff; }
+  .scheme-header h2 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .scheme-header p { font-size: 14px; opacity: 0.85; }
+  .scheme-body { padding: 24px; }
+  .swatches { display: flex; gap: 6px; margin-bottom: 20px; }
+  .swatch { flex: 1; height: 48px; border-radius: 10px; position: relative; }
+  .swatch span { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); font-size: 11px; color: #999; white-space: nowrap; }
+  .preview { border: 1px solid #e5e5e5; border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
+  .preview-header { padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+  .preview-logo { width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+  .preview-logo svg { width: 20px; height: 20px; fill: #fff; }
+  .preview-title { font-size: 16px; font-weight: 700; }
+  .preview-btn { padding: 8px 20px; border-radius: 16px; color: #fff; font-size: 14px; font-weight: 600; border: none; cursor: pointer; display: inline-block; }
+  .preview-link { font-size: 14px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+  .preview-card { padding: 16px; border-top: 1px solid #e5e5e5; }
+  .preview-input { width: 100%; padding: 8px 12px; border-radius: 12px; border: 1px solid #d4d4d4; font-size: 14px; margin-bottom: 8px; }
+  .colors { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .color-item { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 8px; background: #fafafa; }
+  .color-dot { width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0; border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.15); }
+  .color-label { font-size: 12px; color: #666; }
+  .color-hex { font-size: 11px; color: #999; font-family: monospace; }
+
+  /* Dark mode previews */
+  .dark-preview { background: #222; border-radius: 12px; padding: 16px; margin-top: 12px; }
+  .dark-preview .preview-link-d { font-size: 14px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+  .dark-preview .preview-btn-d { padding: 8px 20px; border-radius: 16px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; display: inline-block; }
+</style>
+</head>
+<body>
+<h1>CalcBuild 绿色配色方案</h1>
+<p class="subtitle">选择你喜欢的一款，序号告诉我</p>
+
+<div class="schemes">
+
+  <!-- Scheme 1: Forest Green -->
+  <div class="scheme">
+    <div class="scheme-header" style="background: linear-gradient(135deg, #2D6A4F, #40916C)">
+      <h2>1. Forest 森林绿</h2>
+      <p>沉稳自然，适合建筑工具类网站</p>
+    </div>
+    <div class="scheme-body">
+      <div class="swatches">
+        <div class="swatch" style="background:#D8F3DC"><span>50</span></div>
+        <div class="swatch" style="background:#B7E4C7"><span>100</span></div>
+        <div class="swatch" style="background:#74C69D"><span>300</span></div>
+        <div class="swatch" style="background:#40916C"><span>500</span></div>
+        <div class="swatch" style="background:#2D6A4F"><span>700</span></div>
+        <div class="swatch" style="background:#1B4332"><span>900</span></div>
+      </div>
+      <div class="preview">
+        <div class="preview-header" style="background:#f5f5f5">
+          <div class="preview-logo" style="background:#2D6A4F"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5" opacity="0.6"/><rect x="4" y="13" width="7" height="7" rx="1.5" opacity="0.6"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div>
+          <span class="preview-title" style="color:#444">CalcBuild</span>
+        </div>
+        <div class="preview-card">
+          <div class="preview-btn" style="background:#2D6A4F">Calculate</div>
+          <div style="margin-top:12px"><a href="#" class="preview-link" style="color:#2D6A4F">Asphalt Calculator →</a></div>
+        </div>
+      </div>
+      <div class="dark-preview">
+        <div class="preview-btn-d" style="background:#40916C; color:#fff">Calculate</div>
+        <div style="margin-top:8px"><a href="#" class="preview-link-d" style="color:#74C69D">Asphalt Calculator →</a></div>
+        <div style="margin-top:8px; color:#D4D4D4; font-size:14px">暗黑模式文字预览</div>
+      </div>
+      <div class="colors" style="margin-top:16px">
+        <div class="color-item"><div class="color-dot" style="background:#2D6A4F"></div><div><div class="color-label">Primary</div><div class="color-hex">#2D6A4F</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#40916C"></div><div><div class="color-label">Hover</div><div class="color-hex">#40916C</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#74C69D"></div><div><div class="color-label">Light</div><div class="color-hex">#74C69D</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#D8F3DC"></div><div><div class="color-label">Bg tint</div><div class="color-hex">#D8F3DC</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scheme 2: Emerald -->
+  <div class="scheme">
+    <div class="scheme-header" style="background: linear-gradient(135deg, #047857, #10B981)">
+      <h2>2. Emerald 翡翠绿</h2>
+      <p>鲜亮现代，活力感强</p>
+    </div>
+    <div class="scheme-body">
+      <div class="swatches">
+        <div class="swatch" style="background:#ECFDF5"><span>50</span></div>
+        <div class="swatch" style="background:#A7F3D0"><span>100</span></div>
+        <div class="swatch" style="background:#6EE7B7"><span>300</span></div>
+        <div class="swatch" style="background:#10B981"><span>500</span></div>
+        <div class="swatch" style="background:#047857"><span>700</span></div>
+        <div class="swatch" style="background:#064E3B"><span>900</span></div>
+      </div>
+      <div class="preview">
+        <div class="preview-header" style="background:#f5f5f5">
+          <div class="preview-logo" style="background:#047857"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5" opacity="0.6"/><rect x="4" y="13" width="7" height="7" rx="1.5" opacity="0.6"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div>
+          <span class="preview-title" style="color:#444">CalcBuild</span>
+        </div>
+        <div class="preview-card">
+          <div class="preview-btn" style="background:#047857">Calculate</div>
+          <div style="margin-top:12px"><a href="#" class="preview-link" style="color:#047857">Asphalt Calculator →</a></div>
+        </div>
+      </div>
+      <div class="dark-preview">
+        <div class="preview-btn-d" style="background:#10B981; color:#fff">Calculate</div>
+        <div style="margin-top:8px"><a href="#" class="preview-link-d" style="color:#6EE7B7">Asphalt Calculator →</a></div>
+        <div style="margin-top:8px; color:#D4D4D4; font-size:14px">暗黑模式文字预览</div>
+      </div>
+      <div class="colors" style="margin-top:16px">
+        <div class="color-item"><div class="color-dot" style="background:#047857"></div><div><div class="color-label">Primary</div><div class="color-hex">#047857</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#10B981"></div><div><div class="color-label">Hover</div><div class="color-hex">#10B981</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#6EE7B7"></div><div><div class="color-label">Light</div><div class="color-hex">#6EE7B7</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#ECFDF5"></div><div><div class="color-label">Bg tint</div><div class="color-hex">#ECFDF5</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scheme 3: Lime -->
+  <div class="scheme">
+    <div class="scheme-header" style="background: linear-gradient(135deg, #4D7C0F, #84CC16)">
+      <h2>3. Lime 青柠绿</h2>
+      <p>年轻时尚，清新明快</p>
+    </div>
+    <div class="scheme-body">
+      <div class="swatches">
+        <div class="swatch" style="background:#F7FEE7"><span>50</span></div>
+        <div class="swatch" style="background:#D9F99D"><span>100</span></div>
+        <div class="swatch" style="background:#BEF264"><span>300</span></div>
+        <div class="swatch" style="background:#84CC16"><span>500</span></div>
+        <div class="swatch" style="background:#4D7C0F"><span>700</span></div>
+        <div class="swatch" style="background:#365314"><span>900</span></div>
+      </div>
+      <div class="preview">
+        <div class="preview-header" style="background:#f5f5f5">
+          <div class="preview-logo" style="background:#4D7C0F"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5" opacity="0.6"/><rect x="4" y="13" width="7" height="7" rx="1.5" opacity="0.6"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div>
+          <span class="preview-title" style="color:#444">CalcBuild</span>
+        </div>
+        <div class="preview-card">
+          <div class="preview-btn" style="background:#4D7C0F">Calculate</div>
+          <div style="margin-top:12px"><a href="#" class="preview-link" style="color:#4D7C0F">Asphalt Calculator →</a></div>
+        </div>
+      </div>
+      <div class="dark-preview">
+        <div class="preview-btn-d" style="background:#84CC16; color:#fff">Calculate</div>
+        <div style="margin-top:8px"><a href="#" class="preview-link-d" style="color:#BEF264">Asphalt Calculator →</a></div>
+        <div style="margin-top:8px; color:#D4D4D4; font-size:14px">暗黑模式文字预览</div>
+      </div>
+      <div class="colors" style="margin-top:16px">
+        <div class="color-item"><div class="color-dot" style="background:#4D7C0F"></div><div><div class="color-label">Primary</div><div class="color-hex">#4D7C0F</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#84CC16"></div><div><div class="color-label">Hover</div><div class="color-hex">#84CC16</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#BEF264"></div><div><div class="color-label">Light</div><div class="color-hex">#BEF264</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#F7FEE7"></div><div><div class="color-label">Bg tint</div><div class="color-hex">#F7FEE7</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scheme 4: Teal -->
+  <div class="scheme">
+    <div class="scheme-header" style="background: linear-gradient(135deg, #0F766E, #14B8A6)">
+      <h2>4. Teal 青碧绿（当前）</h2>
+      <p>目前网站使用的配色</p>
+    </div>
+    <div class="scheme-body">
+      <div class="swatches">
+        <div class="swatch" style="background:#F0FDFA"><span>50</span></div>
+        <div class="swatch" style="background:#99F6E4"><span>200</span></div>
+        <div class="swatch" style="background:#2DD4BF"><span>400</span></div>
+        <div class="swatch" style="background:#14B8A6"><span>500</span></div>
+        <div class="swatch" style="background:#0F766E"><span>700</span></div>
+        <div class="swatch" style="background:#134E4A"><span>900</span></div>
+      </div>
+      <div class="preview">
+        <div class="preview-header" style="background:#f5f5f5">
+          <div class="preview-logo" style="background:#0F766E"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5" opacity="0.6"/><rect x="4" y="13" width="7" height="7" rx="1.5" opacity="0.6"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div>
+          <span class="preview-title" style="color:#444">CalcBuild</span>
+        </div>
+        <div class="preview-card">
+          <div class="preview-btn" style="background:#0F766E">Calculate</div>
+          <div style="margin-top:12px"><a href="#" class="preview-link" style="color:#0F766E">Asphalt Calculator →</a></div>
+        </div>
+      </div>
+      <div class="dark-preview">
+        <div class="preview-btn-d" style="background:#14B8A6; color:#fff">Calculate</div>
+        <div style="margin-top:8px"><a href="#" class="preview-link-d" style="color:#2DD4BF">Asphalt Calculator →</a></div>
+        <div style="margin-top:8px; color:#D4D4D4; font-size:14px">暗黑模式文字预览</div>
+      </div>
+      <div class="colors" style="margin-top:16px">
+        <div class="color-item"><div class="color-dot" style="background:#0F766E"></div><div><div class="color-label">Primary</div><div class="color-hex">#0F766E</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#14B8A6"></div><div><div class="color-label">Hover</div><div class="color-hex">#14B8A6</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#2DD4BF"></div><div><div class="color-label">Light</div><div class="color-hex">#2DD4BF</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#F0FDFA"></div><div><div class="color-label">Bg tint</div><div class="color-hex">#F0FDFA</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scheme 5: Sage -->
+  <div class="scheme">
+    <div class="scheme-header" style="background: linear-gradient(135deg, #3D5A3E, #6B8F71)">
+      <h2>5. Sage 鼠尾草绿</h2>
+      <p>高级灰绿，质感优雅</p>
+    </div>
+    <div class="scheme-body">
+      <div class="swatches">
+        <div class="swatch" style="background:#F2F5F2"><span>50</span></div>
+        <div class="swatch" style="background:#D4DDD5"><span>100</span></div>
+        <div class="swatch" style="background:#A3B8A5"><span>300</span></div>
+        <div class="swatch" style="background:#6B8F71"><span>500</span></div>
+        <div class="swatch" style="background:#3D5A3E"><span>700</span></div>
+        <div class="swatch" style="background:#2A3D2B"><span>900</span></div>
+      </div>
+      <div class="preview">
+        <div class="preview-header" style="background:#f5f5f5">
+          <div class="preview-logo" style="background:#3D5A3E"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5" opacity="0.6"/><rect x="4" y="13" width="7" height="7" rx="1.5" opacity="0.6"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div>
+          <span class="preview-title" style="color:#444">CalcBuild</span>
+        </div>
+        <div class="preview-card">
+          <div class="preview-btn" style="background:#3D5A3E">Calculate</div>
+          <div style="margin-top:12px"><a href="#" class="preview-link" style="color:#3D5A3E">Asphalt Calculator →</a></div>
+        </div>
+      </div>
+      <div class="dark-preview">
+        <div class="preview-btn-d" style="background:#6B8F71; color:#fff">Calculate</div>
+        <div style="margin-top:8px"><a href="#" class="preview-link-d" style="color:#A3B8A5">Asphalt Calculator →</a></div>
+        <div style="margin-top:8px; color:#D4D4D4; font-size:14px">暗黑模式文字预览</div>
+      </div>
+      <div class="colors" style="margin-top:16px">
+        <div class="color-item"><div class="color-dot" style="background:#3D5A3E"></div><div><div class="color-label">Primary</div><div class="color-hex">#3D5A3E</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#6B8F71"></div><div><div class="color-label">Hover</div><div class="color-hex">#6B8F71</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#A3B8A5"></div><div><div class="color-label">Light</div><div class="color-hex">#A3B8A5</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#F2F5F2"></div><div><div class="color-label">Bg tint</div><div class="color-hex">#F2F5F2</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scheme 6: Cyan-Teal -->
+  <div class="scheme">
+    <div class="scheme-header" style="background: linear-gradient(135deg, #0E7490, #06B6D4)">
+      <h2>6. Cyan 蓝绿色</h2>
+      <p>科技感强，蓝绿之间</p>
+    </div>
+    <div class="scheme-body">
+      <div class="swatches">
+        <div class="swatch" style="background:#ECFEFF"><span>50</span></div>
+        <div class="swatch" style="background:#A5F3FC"><span>200</span></div>
+        <div class="swatch" style="background:#22D3EE"><span>400</span></div>
+        <div class="swatch" style="background:#06B6D4"><span>500</span></div>
+        <div class="swatch" style="background:#0E7490"><span>700</span></div>
+        <div class="swatch" style="background:#164E63"><span>900</span></div>
+      </div>
+      <div class="preview">
+        <div class="preview-header" style="background:#f5f5f5">
+          <div class="preview-logo" style="background:#0E7490"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5" opacity="0.6"/><rect x="4" y="13" width="7" height="7" rx="1.5" opacity="0.6"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div>
+          <span class="preview-title" style="color:#444">CalcBuild</span>
+        </div>
+        <div class="preview-card">
+          <div class="preview-btn" style="background:#0E7490">Calculate</div>
+          <div style="margin-top:12px"><a href="#" class="preview-link" style="color:#0E7490">Asphalt Calculator →</a></div>
+        </div>
+      </div>
+      <div class="dark-preview">
+        <div class="preview-btn-d" style="background:#06B6D4; color:#fff">Calculate</div>
+        <div style="margin-top:8px"><a href="#" class="preview-link-d" style="color:#22D3EE">Asphalt Calculator →</a></div>
+        <div style="margin-top:8px; color:#D4D4D4; font-size:14px">暗黑模式文字预览</div>
+      </div>
+      <div class="colors" style="margin-top:16px">
+        <div class="color-item"><div class="color-dot" style="background:#0E7490"></div><div><div class="color-label">Primary</div><div class="color-hex">#0E7490</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#06B6D4"></div><div><div class="color-label">Hover</div><div class="color-hex">#06B6D4</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#22D3EE"></div><div><div class="color-label">Light</div><div class="color-hex">#22D3EE</div></div></div>
+        <div class="color-item"><div class="color-dot" style="background:#ECFEFF"></div><div><div class="color-label">Bg tint</div><div class="color-hex">#ECFEFF</div></div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
