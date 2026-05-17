@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Breadcrumb from '../components/layout/Breadcrumb.astro';
 import CalculatorCard from '../components/common/CalculatorCard.astro';
+import { SITE_URL } from '../utils/constants';
 import type { CategoryData, CalculatorData } from '../utils/types';
 
 interface Props {
@@ -24,6 +25,21 @@ const categoryName = category.name;
       { name: `${categoryName} Calculators` }
     ]}
   />
+
+  <!-- ItemList Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": `${categoryName} Calculators`,
+    "description": category.description,
+    "numberOfItems": calculators.length,
+    "itemListElement": calculators.map((calc, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": calc.title,
+      "url": `${SITE_URL}/${category.slug}/${calc.slug}/`
+    }))
+  })} />
 
   <div class="max-w-ic-content mx-auto px-[20px] pb-[40px]">
     <h1 class="text-[3.5rem] max-[480px]:text-[2.8rem] font-semibold text-[#444] dark:text-grey-100 mb-[12px]">{categoryName} Calculators</h1>

@@ -8,11 +8,14 @@ interface Props {
   title: string;
   description: string;
   canonical?: string;
+  image?: string;
+  keywords?: string[];
 }
 
-const { title, description, canonical } = Astro.props;
+const { title, description, canonical, image, keywords } = Astro.props;
 const fullTitle = `${title} | ${SITE_NAME}`;
 const canonicalURL = canonical ? `${SITE_URL}${canonical}` : Astro.url.href;
+const ogImage = image ? `${SITE_URL}${image}` : `${SITE_URL}/og-default.svg`;
 ---
 
 <!DOCTYPE html>
@@ -32,6 +35,19 @@ const canonicalURL = canonical ? `${SITE_URL}${canonical}` : Astro.url.href;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Keywords -->
+    {keywords && keywords.length > 0 && (
+      <meta name="keywords" content={keywords.join(', ')} />
+    )}
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

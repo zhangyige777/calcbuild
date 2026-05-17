@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE_DESCRIPTION, CATEGORIES } from '../utils/constants';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, CATEGORIES } from '../utils/constants';
 import { getCollection } from 'astro:content';
 
 const allCalculators = await getCollection('calculators');
@@ -47,6 +47,28 @@ const categoryAccents: Record<string, { bg: string; darkBg: string; text: string
 ---
 
 <BaseLayout title="Free Construction & Home Improvement Calculators" description={SITE_DESCRIPTION}>
+
+  <!-- WebSite Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": SITE_NAME,
+    "url": SITE_URL,
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": `${SITE_URL}/?q={search_term_string}`,
+      "query-input": "required name=search_term_string"
+    }
+  })} />
+
+  <!-- Organization Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": SITE_NAME,
+    "url": SITE_URL,
+    "logo": `${SITE_URL}/favicon.svg`
+  })} />
 
   <!-- Hero Section -->
   <section class="max-w-ic-content mx-auto px-[20px] pt-[40px] pb-[30px] text-center">

@@ -7,8 +7,6 @@ interface Props {
 }
 
 const { data } = Astro.props;
-const categorySlug = data.category;
-const categoryName = categorySlug.replace(/-calculators$/, '').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 ---
 
 <!-- WebApplication Schema -->
@@ -25,32 +23,6 @@ const categoryName = categorySlug.replace(/-calculators$/, '').replace(/-/g, ' '
     "priceCurrency": "USD"
   },
   "description": data.description
-})} />
-
-<!-- BreadcrumbList Schema -->
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": SITE_URL + "/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": categoryName,
-      "item": `${SITE_URL}/${categorySlug}/`
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": data.title,
-      "item": `${SITE_URL}/${data.category}/${data.slug}/`
-    }
-  ]
 })} />
 
 <!-- FAQPage Schema -->
