@@ -8,6 +8,7 @@ export const CATEGORIES = [
   { slug: 'construction-calculators', name: 'Construction', icon: 'construction' },
   { slug: 'roofing-calculators', name: 'Roofing', icon: 'roofing' },
   { slug: 'landscaping-calculators', name: 'Landscaping', icon: 'landscaping' },
+  { slug: 'siding-calculators', name: 'Siding', icon: 'siding' },
   { slug: 'deck-fence-calculators', name: 'Deck & Fence', icon: 'deck' },
   { slug: 'stair-calculators', name: 'Stairs', icon: 'stairs' },
   { slug: 'plumbing-calculators', name: 'Plumbing', icon: 'plumbing' },

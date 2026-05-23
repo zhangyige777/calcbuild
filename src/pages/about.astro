@@ -2,20 +2,50 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="About" description="Learn about CalcBuild — free online construction and home improvement calculators.">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <h1 class="text-2xl sm:text-3xl font-bold text-slate-800 mb-6">About CalcBuild</h1>
-    <div class="prose prose-slate max-w-none">
-      <p class="text-slate-600 leading-relaxed mb-4">
-        CalcBuild is a free online resource for construction and home improvement calculators. Our tools help homeowners, contractors, and DIY enthusiasts estimate materials, costs, and quantities for a wide range of projects.
+<BaseLayout title="About CalcBuild" description="Learn about CalcBuild — free online construction and home improvement calculators for homeowners, contractors, and DIYers.">
+  <div class="max-w-3xl mx-auto px-[20px] sm:px-6 lg:px-8 py-12">
+    <h1 class="text-[3.5rem] max-[480px]:text-[2.8rem] font-semibold text-[#444] dark:text-grey-100 mb-[20px]">About CalcBuild</h1>
+
+    <div class="space-y-[20px] text-[1.8rem] text-grey-700 dark:text-grey-300 leading-[1.55]">
+      <p>
+        CalcBuild is a free online resource providing construction, landscaping, and home improvement calculators. Our tools help homeowners, contractors, and DIY enthusiasts estimate materials, costs, and quantities for a wide range of projects — from pouring a concrete driveway to calculating river rock for a garden bed.
       </p>
-      <h2 class="text-xl font-semibold text-slate-800 border-b-2 border-slate-200 pb-2 mb-4 mt-8">Our Mission</h2>
-      <p class="text-slate-600 leading-relaxed mb-4">
-        We believe accurate estimates should be accessible to everyone. Whether you're planning a new driveway, re-roofing your house, or calculating materials for a landscaping project, our calculators provide instant, reliable results.
+
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 border-b-2 border-grey-300 dark:border-grey-700 pb-[10px] mb-[10px] mt-[30px]">Who Is CalcBuild For?</h2>
+      <p>
+        Whether you're a homeowner planning a kitchen renovation, a contractor bidding on a roofing job, or a DIYer building a deck, CalcBuild gives you instant, reliable estimates. You don't need to be an engineer — just enter your project dimensions and get answers in seconds.
       </p>
-      <h2 class="text-xl font-semibold text-slate-800 border-b-2 border-slate-200 pb-2 mb-4 mt-8">Accuracy</h2>
-      <p class="text-slate-600 leading-relaxed">
-        All our calculators use industry-standard formulas and material densities. Results include helpful tips and recommendations to ensure you order the right amount of materials for your project.
+
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 border-b-2 border-grey-300 dark:border-grey-700 pb-[10px] mb-[10px] mt-[30px]">How Our Formulas Work</h2>
+      <p>
+        Each calculator uses industry-standard formulas and material densities sourced from construction reference guides, manufacturer specifications, and national cost databases. For example, concrete calculations use standard mix densities, and cost estimators draw from RSMeans and national average cost data.
+      </p>
+      <p>
+        Every calculator page shows the exact formula used, step-by-step calculation instructions, and a worked example so you can verify the math yourself.
+      </p>
+
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 border-b-2 border-grey-300 dark:border-grey-700 pb-[10px] mb-[10px] mt-[30px]">Important Limitations</h2>
+      <div class="p-[20px] bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-ic-md">
+        <ul class="space-y-[8px] list-disc pl-[20px]">
+          <li>All cost estimates are for <strong>planning purposes only</strong> and should not be treated as contractor quotes.</li>
+          <li>Material prices vary significantly by region, supplier, and market conditions.</li>
+          <li>Always consult with a licensed contractor for accurate project pricing.</li>
+          <li>Verify all calculations with local building codes and requirements.</li>
+        </ul>
+      </div>
+
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 border-b-2 border-grey-300 dark:border-grey-700 pb-[10px] mb-[10px] mt-[30px]">Our Commitment</h2>
+      <p>
+        We regularly review and update our calculators to reflect current material costs, building practices, and user feedback. If you notice an error or have a suggestion for a new calculator, we'd love to hear from you.
+      </p>
+
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 border-b-2 border-grey-300 dark:border-grey-700 pb-[10px] mb-[10px] mt-[30px]">Contact Us</h2>
+      <p>
+        Questions, corrections, or suggestions? Email us at <a href="mailto:contact@calcbuild.online" class="text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-500 font-medium">contact@calcbuild.online</a>. We typically respond within 1–2 business days.
+      </p>
+
+      <p class="text-[1.4rem] text-grey-500 dark:text-grey-400 pt-[20px]">
+        Last reviewed: May 2026
       </p>
     </div>
   </div>

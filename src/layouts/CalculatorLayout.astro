@@ -6,7 +6,14 @@ import StructuredData from '../components/seo/StructuredData.astro';
 import type { CalculatorData } from '../utils/types';
 
 interface Props {
-  data: CalculatorData;
+  data: CalculatorData & {
+    assumptions?: string[];
+    showEstimateDisclaimer?: boolean;
+    costFactors?: { factor: string; description: string; estimate: string; }[];
+    commonProjects?: { project: string; description: string; estimate: string; }[];
+    referenceTable?: { title: string; headers: string[]; rows: string[][]; };
+    lastUpdated?: string;
+  };
 }
 
 const { data } = Astro.props;
@@ -39,6 +46,13 @@ const categoryName = data.category.replace(/-calculators$/, '').replace(/-/g, ' 
           <slot name="calculator" />
         </div>
       </div>
+      {data.showEstimateDisclaimer && (
+        <div class="mt-[15px] p-[15px] bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-ic-md">
+          <p class="text-[1.4rem] text-amber-800 dark:text-amber-200 leading-[1.55]">
+            <strong>Estimate only.</strong> Prices are approximate and vary by region. This is not a contractor quote. Use for planning purposes only.
+          </p>
+        </div>
+      )}
     </section>
 
     <!-- On this page -->
@@ -60,6 +74,86 @@ const categoryName = data.category.replace(/-calculators$/, '').replace(/-/g, ' 
         {data.formula.expression}
       </div>
     </section>
+
+    <!-- Assumptions -->
+    {data.assumptions && data.assumptions.length > 0 && (
+      <section class="mb-[30px]">
+        <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Assumptions</h2>
+        <ul class="list-disc pl-[25px] space-y-[8px] text-[1.8rem] text-grey-700 dark:text-grey-300 leading-[1.55]">
+          {data.assumptions.map((a: string) => <li>{a}</li>)}
+        </ul>
+      </section>
+    )}
+
+    <!-- Cost Factors -->
+    {data.costFactors && data.costFactors.length > 0 && (
+      <section class="mb-[30px]">
+        <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Cost Breakdown</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-[1.6rem] border border-grey-400 dark:border-grey-700 rounded-ic-md">
+            <thead>
+              <tr class="bg-grey-200 dark:bg-grey-850">
+                <th class="text-left px-[15px] py-[10px] font-semibold text-grey-800 dark:text-grey-100">Factor</th>
+                <th class="text-left px-[15px] py-[10px] font-semibold text-grey-800 dark:text-grey-100">Description</th>
+                <th class="text-left px-[15px] py-[10px] font-semibold text-grey-800 dark:text-grey-100">Typical Estimate</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.costFactors.map((cf: { factor: string; description: string; estimate: string }) => (
+                <tr class="border-t border-grey-300 dark:border-grey-700">
+                  <td class="px-[15px] py-[10px] font-medium text-grey-800 dark:text-grey-200">{cf.factor}</td>
+                  <td class="px-[15px] py-[10px] text-grey-600 dark:text-grey-300">{cf.description}</td>
+                  <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-200">{cf.estimate}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
+
+    <!-- Common Projects -->
+    {data.commonProjects && data.commonProjects.length > 0 && (
+      <section class="mb-[30px]">
+        <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Common Project Examples</h2>
+        <div class="grid gap-[15px]">
+          {data.commonProjects.map((proj: { project: string; description: string; estimate: string }) => (
+            <div class="p-[20px] border border-grey-400 dark:border-grey-700 rounded-ic-md">
+              <h3 class="text-[1.8rem] font-semibold text-grey-800 dark:text-grey-100 mb-[5px]">{proj.project}</h3>
+              <p class="text-[1.6rem] text-grey-600 dark:text-grey-300 mb-[8px]">{proj.description}</p>
+              <p class="text-[1.6rem] font-medium text-brand-700 dark:text-brand-600">{proj.estimate}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Reference Table -->
+    {data.referenceTable && (
+      <section class="mb-[30px]">
+        <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">{data.referenceTable.title}</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-[1.6rem] border border-grey-400 dark:border-grey-700 rounded-ic-md">
+            <thead>
+              <tr class="bg-grey-200 dark:bg-grey-850">
+                {data.referenceTable.headers.map((h: string) => (
+                  <th class="text-left px-[15px] py-[10px] font-semibold text-grey-800 dark:text-grey-100">{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {data.referenceTable.rows.map((row: string[]) => (
+                <tr class="border-t border-grey-300 dark:border-grey-700">
+                  {row.map((cell: string) => (
+                    <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
 
     <!-- How to Calculate -->
     <section id="how-to-calculate" class="mb-[30px]">
@@ -120,6 +214,11 @@ const categoryName = data.category.replace(/-calculators$/, '').replace(/-/g, ' 
       <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Related Calculators</h2>
       <RelatedLinks related={data.related} />
     </section>
+
+    <!-- Last Updated -->
+    {data.lastUpdated && (
+      <p class="text-[1.4rem] text-grey-500 dark:text-grey-400 mt-[20px]">Last updated: {data.lastUpdated}</p>
+    )}
   </article>
 
   <StructuredData data={data} />

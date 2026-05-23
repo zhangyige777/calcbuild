@@ -18,6 +18,7 @@ const categoryIcons: Record<string, string> = {
   construction: 'M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085',
   roofing: 'M2.25 12l8.954-8.955a1.126 1.126 0 011.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25',
   landscaping: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418',
+  siding: 'M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085',
   deck: 'M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 0h.008v.008H17.25v-.008zm0 3h.008v.008H17.25v-.008zm0 3h.008v.008H17.25v-.008z',
   stairs: 'M3.75 3v11.25h4.5V18h4.5v3.75h4.5V21',
   flooring: 'M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3',
@@ -34,6 +35,7 @@ const categoryAccents: Record<string, { bg: string; darkBg: string; text: string
   construction: { bg: 'bg-teal-50', darkBg: 'dark:bg-teal-900/30', text: 'text-teal-700', darkText: 'dark:text-teal-400' },
   roofing: { bg: 'bg-orange-50', darkBg: 'dark:bg-orange-900/30', text: 'text-orange-700', darkText: 'dark:text-orange-400' },
   landscaping: { bg: 'bg-green-50', darkBg: 'dark:bg-green-900/30', text: 'text-green-700', darkText: 'dark:text-green-400' },
+  siding: { bg: 'bg-stone-50', darkBg: 'dark:bg-stone-900/30', text: 'text-stone-700', darkText: 'dark:text-stone-400' },
   deck: { bg: 'bg-amber-50', darkBg: 'dark:bg-amber-900/30', text: 'text-amber-700', darkText: 'dark:text-amber-400' },
   stairs: { bg: 'bg-sky-50', darkBg: 'dark:bg-sky-900/30', text: 'text-sky-700', darkText: 'dark:text-sky-400' },
   flooring: { bg: 'bg-violet-50', darkBg: 'dark:bg-violet-900/30', text: 'text-violet-700', darkText: 'dark:text-violet-400' },
@@ -53,12 +55,7 @@ const categoryAccents: Record<string, { bg: string; darkBg: string; text: string
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": SITE_NAME,
-    "url": SITE_URL,
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": `${SITE_URL}/?q={search_term_string}`,
-      "query-input": "required name=search_term_string"
-    }
+    "url": SITE_URL
   })} />
 
   <!-- Organization Schema -->
@@ -72,20 +69,47 @@ const categoryAccents: Record<string, { bg: string; darkBg: string; text: string
 
   <!-- Hero Section -->
   <section class="max-w-ic-content mx-auto px-[20px] pt-[40px] pb-[30px] text-center">
-    <h1 class="text-[3.5rem] max-[480px]:text-[2.8rem] font-semibold text-[#444] dark:text-grey-100 mb-[12px]">Find Your Calculator</h1>
-    <p class="text-[1.8rem] text-grey-600 dark:text-[#D4D4D4] mb-[30px] max-w-[700px] mx-auto leading-[1.55]">Explore free calculators designed for construction, home improvement, and more.</p>
+    <h1 class="text-[3.5rem] max-[480px]:text-[2.8rem] font-semibold text-[#444] dark:text-grey-100 mb-[12px]">Construction & Home Improvement Calculators</h1>
+    <p class="text-[1.8rem] text-grey-600 dark:text-[#D4D4D4] mb-[30px] max-w-[700px] mx-auto leading-[1.55]">Free estimating tools for building, renovation, materials, and costs — designed for homeowners, contractors, and DIYers.</p>
 
     <!-- Search -->
-    <div class="relative max-w-[600px] mx-auto">
-      <svg class="absolute left-[15px] top-1/2 -translate-y-1/2 w-[25px] h-[25px] text-grey-600 dark:text-[#B6B6B6]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <div class="relative max-w-[600px] mx-auto" id="homepage-search">
+      <svg class="absolute left-[15px] top-[10px] w-[25px] h-[25px] text-grey-600 dark:text-[#B6B6B6]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
       </svg>
       <input
         type="text"
         placeholder="Search for a calculator"
+        data-search-input
         class="w-full pl-[48px] pr-[15px] py-[10px] text-[1.8rem] border border-grey-400 dark:border-grey-700 rounded-ic-md bg-white dark:bg-grey-850 focus:border-brand-700 dark:focus:border-brand-600 focus:outline-none transition-colors min-h-[40px]"
       />
+      <div data-search-results class="absolute top-full left-0 right-0 mt-[4px] bg-white dark:bg-grey-950 border border-grey-400 dark:border-grey-700 rounded-ic-md shadow-lg z-50 hidden max-h-[400px] overflow-y-auto"></div>
     </div>
+
+    <script define:vars={{ calculators: allCalculators.map(c => ({ title: c.data.title, description: c.data.description, slug: c.data.slug, category: c.data.category })) }}>
+      const input = document.querySelector('[data-search-input]');
+      const results = document.querySelector('[data-search-results]');
+      if (input && results) {
+        input.addEventListener('input', () => {
+          const q = input.value.trim().toLowerCase();
+          if (!q) { results.classList.add('hidden'); results.innerHTML = ''; return; }
+          const matches = calculators.filter(c => c.title.toLowerCase().includes(q) || c.description.toLowerCase().includes(q)).slice(0, 7);
+          if (matches.length === 0) {
+            results.innerHTML = '<div class="px-[15px] py-[12px] text-[1.4rem] text-grey-500">No calculators found</div>';
+          } else {
+            results.innerHTML = matches.map(c =>
+              '<a href="/' + c.category + '/' + c.slug + '/" class="block px-[15px] py-[10px] text-[1.4rem] hover:bg-grey-100 dark:hover:bg-grey-800 border-b border-grey-200 dark:border-grey-700 last:border-b-0">' +
+              '<span class="font-semibold text-grey-800 dark:text-grey-100">' + c.title + '</span>' +
+              '<span class="block text-[1.2rem] text-grey-500 dark:text-grey-400 line-clamp-1">' + c.description + '</span></a>'
+            ).join('');
+          }
+          results.classList.remove('hidden');
+        });
+        document.addEventListener('click', (e) => {
+          if (!e.target.closest('#homepage-search')) { results.classList.add('hidden'); }
+        });
+      }
+    </script>
   </section>
 
   <!-- Category Grid -->

@@ -6,7 +6,11 @@ import { SITE_URL } from '../utils/constants';
 import type { CategoryData, CalculatorData } from '../utils/types';
 
 interface Props {
-  category: CategoryData;
+  category: CategoryData & {
+    intro?: string;
+    howToChoose?: string[];
+    scenarios?: { title: string; description: string; }[];
+  };
   calculators: CalculatorData[];
 }
 
@@ -45,6 +49,11 @@ const categoryName = category.name;
     <h1 class="text-[3.5rem] max-[480px]:text-[2.8rem] font-semibold text-[#444] dark:text-grey-100 mb-[12px]">{categoryName} Calculators</h1>
     <p class="text-[1.8rem] text-grey-600 dark:text-[#D4D4D4] leading-[1.55] mb-[30px] max-w-[800px]">{category.description}</p>
 
+    {category.intro && (
+      <p class="text-[1.8rem] text-grey-700 dark:text-grey-300 leading-[1.55] mb-[30px] max-w-[800px]">{category.intro}</p>
+    )}
+
+    <!-- Calculator Cards -->
     <div class="grid grid-cols-[repeat(auto-fill,300px)] gap-[25px] justify-center max-[990px]:grid-cols-[repeat(auto-fill,250px)] max-[640px]:grid-cols-1 max-[640px]:max-w-[400px] max-[640px]:mx-auto">
       {calculators.map((calc) => (
         <CalculatorCard
@@ -54,5 +63,30 @@ const categoryName = category.name;
         />
       ))}
     </div>
+
+    <!-- How to Choose section -->
+    {category.howToChoose && category.howToChoose.length > 0 && (
+      <section class="mt-[40px] pt-[30px] border-t border-grey-300 dark:border-grey-700">
+        <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">How to Choose the Right Calculator</h2>
+        <ul class="space-y-[10px] text-[1.8rem] text-grey-700 dark:text-grey-300 leading-[1.55]">
+          {category.howToChoose.map((tip: string) => <li class="flex gap-[10px]"><span class="text-brand-700 dark:text-brand-600 shrink-0">•</span><span>{tip}</span></li>)}
+        </ul>
+      </section>
+    )}
+
+    <!-- Common Scenarios section -->
+    {category.scenarios && category.scenarios.length > 0 && (
+      <section class="mt-[30px]">
+        <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Common Estimation Scenarios</h2>
+        <div class="grid gap-[15px] sm:grid-cols-2">
+          {category.scenarios.map((s: { title: string; description: string }) => (
+            <div class="p-[20px] border border-grey-400 dark:border-grey-700 rounded-ic-md">
+              <h3 class="text-[1.8rem] font-semibold text-grey-800 dark:text-grey-100 mb-[5px]">{s.title}</h3>
+              <p class="text-[1.6rem] text-grey-600 dark:text-grey-300">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
   </div>
 </BaseLayout>

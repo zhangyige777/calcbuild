@@ -12,9 +12,14 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
-      filter: (page) => !page.includes('/404'),
+      filter: (page) => !page.includes('/404') && !page.includes('/blog'),
     }),
   ],
+  redirects: {
+    '/landscaping-calculators/siding-calculator/': '/siding-calculators/siding-calculator/',
+    '/landscaping-calculators/siding-cost-calculator/': '/siding-calculators/siding-cost-calculator/',
+    '/landscaping-calculators/siding-square-footage-calculator/': '/siding-calculators/siding-square-footage-calculator/',
+  },
   build: {
     inlineStylesheets: 'auto',
   },

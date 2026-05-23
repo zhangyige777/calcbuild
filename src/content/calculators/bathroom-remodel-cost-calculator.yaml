@@ -85,3 +85,12 @@ related:
   - "paint-calculator"
   - "concrete-calculator"
   - "landscape-cost-calculator"
+
+assumptions:
+  - "Cost ranges are based on 2024–2025 national averages for the United States"
+  - "Basic remodel replaces fixtures and finishes without changing layout; mid-range includes some layout changes; upscale uses premium materials and custom features"
+  - "Costs include materials, labor, and permits but not design fees or structural changes"
+  - "Labor typically accounts for 40–60% of total bathroom remodel cost"
+
+showEstimateDisclaimer: true
+lastUpdated: "2026-05-23"

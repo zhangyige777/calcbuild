@@ -1,8 +1,11 @@
 ---
 import { SITE_NAME, CATEGORIES } from '../../utils/constants';
+import { getCollection } from 'astro:content';
 import MobileMenu from './MobileMenu.astro';
 
 const currentPath = Astro.url.pathname;
+const allCalcs = await getCollection('calculators');
+const searchData = allCalcs.map(c => ({ title: c.data.title, description: c.data.description, slug: c.data.slug, category: c.data.category }));
 ---
 
 <header class="bg-white border-b border-grey-400 shadow-header sticky top-0 z-50 dark:bg-grey-950 dark:border-grey-850 dark:shadow-none">
@@ -21,16 +24,18 @@ const currentPath = Astro.url.pathname;
       </a>
 
       <!-- Search (desktop) -->
-      <div class="hidden md:flex flex-1 max-w-[500px] mx-[20px] max-[1199px]:max-w-[400px] max-[1099px]:max-w-[350px]">
+      <div class="hidden md:flex flex-1 max-w-[500px] mx-[20px] max-[1199px]:max-w-[400px] max-[1099px]:max-w-[350px]" id="header-search">
         <div class="relative w-full">
-          <svg class="absolute left-[15px] top-1/2 -translate-y-1/2 w-[25px] h-[25px] text-grey-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <svg class="absolute left-[15px] top-[10px] w-[25px] h-[25px] text-grey-600 dark:text-[#B6B6B6]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
           </svg>
           <input
             type="text"
             placeholder="search for a calculator"
+            data-search-input
             class="w-full pl-[48px] pr-[15px] py-[10px] text-[1.6rem] border border-grey-400 rounded-ic-md bg-white focus:border-brand-700 focus:outline-none transition-colors min-h-[40px] dark:bg-grey-850 dark:border-grey-700 dark:text-grey-100 dark:placeholder:text-[#949494]"
           />
+          <div data-search-results class="absolute top-full left-0 right-0 mt-[4px] bg-white dark:bg-grey-950 border border-grey-400 dark:border-grey-700 rounded-ic-md shadow-lg z-50 hidden max-h-[400px] overflow-y-auto"></div>
         </div>
       </div>
 
@@ -121,4 +126,29 @@ const currentPath = Astro.url.pathname;
     applyTheme(next);
     localStorage.setItem('theme', next);
   });
+</script>
+
+<script define:vars={{ calculators: searchData }}>
+  const input = document.querySelector('#header-search [data-search-input]');
+  const results = document.querySelector('#header-search [data-search-results]');
+  if (input && results) {
+    input.addEventListener('input', () => {
+      const q = input.value.trim().toLowerCase();
+      if (!q) { results.classList.add('hidden'); results.innerHTML = ''; return; }
+      const matches = calculators.filter(c => c.title.toLowerCase().includes(q) || c.description.toLowerCase().includes(q)).slice(0, 7);
+      if (matches.length === 0) {
+        results.innerHTML = '<div class="px-[15px] py-[12px] text-[1.4rem] text-grey-500 dark:text-grey-400">No calculators found</div>';
+      } else {
+        results.innerHTML = matches.map(c =>
+          '<a href="/' + c.category + '/' + c.slug + '/" class="block px-[15px] py-[10px] text-[1.4rem] hover:bg-grey-100 dark:hover:bg-grey-800 border-b border-grey-200 dark:border-grey-700 last:border-b-0">' +
+          '<span class="font-semibold text-grey-800 dark:text-grey-100">' + c.title + '</span>' +
+          '<span class="block text-[1.2rem] text-grey-500 dark:text-grey-400 line-clamp-1">' + c.description + '</span></a>'
+        ).join('');
+      }
+      results.classList.remove('hidden');
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#header-search')) { results.classList.add('hidden'); }
+    });
+  }
 </script>

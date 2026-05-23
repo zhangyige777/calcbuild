@@ -10,3 +10,18 @@ calculators:
   - "construction-cost-calculator"
   - "bay-window-cost-calculator"
   - "addition-cost-calculator"
+intro: "Planning a construction or renovation project? Our cost calculators help you estimate realistic budgets before you talk to contractors. Each tool breaks down costs by category — materials, labor, permits, and more — so you know where your money goes."
+howToChoose:
+  - "For whole-house or room additions, start with the Home Addition Cost Calculator — it gives you a per-square-foot breakdown including foundation, framing, and finishes."
+  - "Remodeling a bathroom? Use the Bathroom Remodel Cost Calculator to estimate materials, fixtures, and labor for your specific scope."
+  - "If you're comparing project costs (pool vs. basement vs. addition), use each relevant calculator to get side-by-side estimates."
+  - "All cost estimates are based on national averages. Your actual costs may be 20–50% higher in major metro areas or if you choose premium materials."
+scenarios:
+  - title: "Budgeting a Room Addition"
+    description: "A homeowner planning a 12×24 family room addition uses the cost calculator to get a low/average/high range, then adds 15% contingency before getting contractor bids."
+  - title: "Comparing Renovation ROI"
+    description: "A homeowner compares bathroom remodel costs vs. basement waterproofing costs to decide which project to prioritize based on return on investment."
+  - title: "Planning a Swimming Pool Budget"
+    description: "A family uses the pool cost calculator to understand the full scope of expenses — excavation, materials, equipment, and finishing — before committing to a contractor."
+  - title: "Estimating Mold Remediation"
+    description: "After discovering water damage, a homeowner uses the mold remediation calculator to understand typical costs and decide whether to file an insurance claim."

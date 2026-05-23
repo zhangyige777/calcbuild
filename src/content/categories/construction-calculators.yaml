@@ -1,6 +1,6 @@
 slug: "construction-calculators"
 name: "Construction"
-description: "Free construction calculators for concrete, asphalt, masonry, lumber, and more. Estimate materials and quantities for any construction project."
+description: "Free construction calculators for asphalt, masonry, lumber, drywall, and more. Estimate materials and quantities for any building project."
 icon: "construction"
 calculators:
   - "asphalt-calculator"
@@ -14,3 +14,18 @@ calculators:
   - "gutter-calculator"
   - "insulation-calculator"
   - "spray-foam-cost-calculator"
+intro: "From pouring an asphalt driveway to framing a wall with the right amount of lumber, our construction calculators cover the materials you need. Each tool provides exact quantities, conversion between units, and cost estimates where applicable."
+howToChoose:
+  - "For asphalt paving projects, start with the Asphalt Calculator for base quantities, then use the Cost Calculator for budgeting. Use the conversion tools (tons-to-yards, yards-to-tons) if your supplier quotes in different units."
+  - "For framing and lumber projects, the Board Foot Calculator converts between board feet, linear feet, and square feet to help you order the right amount."
+  - "For wall construction, the Cinder Block Calculator determines how many blocks you need based on wall dimensions, accounting for mortar gaps."
+  - "For interior finishing, the Drywall Calculator estimates number of sheets, screws, and joint compound for your room dimensions."
+scenarios:
+  - title: "Paving a Driveway with Asphalt"
+    description: "A homeowner measures their driveway and uses the asphalt calculator to determine tons needed, then checks the cost calculator to budget for materials and installation."
+  - title: "Estimating Lumber for a Framing Project"
+    description: "A DIYer planning a shed build uses the board foot calculator to convert their cut list into total board feet and estimate lumber costs."
+  - title: "Calculating Insulation for an Attic"
+    description: "A homeowner measures attic space and uses the insulation calculator to determine R-value coverage and number of rolls or batts needed."
+  - title: "Building a Block Wall"
+    description: "A contractor uses the cinder block calculator to estimate the number of blocks for a retaining wall, including 5% waste factor for cuts and breaks."

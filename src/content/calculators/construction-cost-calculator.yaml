@@ -85,3 +85,12 @@ related:
   - "lumber-calculator"
   - "roof-pitch-calculator"
   - "addition-cost-calculator"
+
+assumptions:
+  - "Cost per square foot ranges are based on 2024–2025 national averages for the United States"
+  - "Residential construction costs include foundation, framing, roofing, electrical, plumbing, HVAC, and basic finishes"
+  - "Commercial and multi-family construction costs are typically 10–30% higher than residential"
+  - "Regional costs vary significantly: major metro areas can be 30–50% above national averages"
+
+showEstimateDisclaimer: true
+lastUpdated: "2026-05-23"

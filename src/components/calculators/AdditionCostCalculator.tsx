@@ -14,25 +14,26 @@ const QUALITY_OPTIONS = [
   { value: 'custom', label: 'Custom' },
 ];
 
-// Cost per sq ft ranges
 const QUALITY_COSTS: Record<string, { low: number; high: number }> = {
   standard: { low: 100, high: 200 },
   custom: { low: 200, high: 350 },
 };
 
-// Second story adds 20-30% (use 25% average for mid, 20% for low, 30% for high)
 const SECOND_STORY_LOW = 1.20;
 const SECOND_STORY_HIGH = 1.30;
 
-// Breakdown percentages
-const BREAKDOWN = {
-  materials: 0.50,
-  labor: 0.35,
-  permits: 0.08,
-  design: 0.07,
-};
+const COST_BREAKDOWN = [
+  { label: 'Foundation', pct: 0.125 },
+  { label: 'Framing', pct: 0.175 },
+  { label: 'Roofing', pct: 0.125 },
+  { label: 'Electrical', pct: 0.10 },
+  { label: 'Plumbing', pct: 0.10 },
+  { label: 'HVAC', pct: 0.09 },
+  { label: 'Permits & Fees', pct: 0.065 },
+  { label: 'Design & Engineering', pct: 0.06 },
+  { label: 'Finishes & Misc', pct: 0.16 },
+];
 
-// Timeline: roughly 1 week per 100 sq ft for standard, 1.5 weeks for custom
 const WEEKS_PER_100SQFT: Record<string, { low: number; high: number }> = {
   standard: { low: 0.8, high: 1.2 },
   custom: { low: 1.2, high: 1.8 },
@@ -63,10 +64,7 @@ export default function AdditionCostCalculator() {
     let lowCost = totalSqft * costs.low;
     let highCost = totalSqft * costs.high;
 
-    // Apply second story multiplier
     if (debouncedStories === '2') {
-      // Second story doubles the sqft (addition is now 2 levels)
-      // But the second level costs 20-30% more per sqft
       const firstFloorLow = totalSqft * costs.low;
       const firstFloorHigh = totalSqft * costs.high;
       const secondFloorLow = totalSqft * costs.low * SECOND_STORY_LOW;
@@ -76,12 +74,9 @@ export default function AdditionCostCalculator() {
     }
 
     const avgCost = (lowCost + highCost) / 2;
-    const materialsCost = avgCost * BREAKDOWN.materials;
-    const laborCost = avgCost * BREAKDOWN.labor;
-    const permitsCost = avgCost * BREAKDOWN.permits;
-    const designCost = avgCost * BREAKDOWN.design;
+    const contingencyLow = lowCost * 0.10;
+    const contingencyHigh = highCost * 0.20;
 
-    // Timeline estimate
     const effectiveSqft = debouncedStories === '2' ? totalSqft * 2 : totalSqft;
     const timelineWeeks = WEEKS_PER_100SQFT[debouncedQuality] || WEEKS_PER_100SQFT.standard;
     const weeksLow = Math.ceil((effectiveSqft / 100) * timelineWeeks.low);
@@ -89,33 +84,28 @@ export default function AdditionCostCalculator() {
 
     return [
       {
-        label: 'Total Square Feet',
+        label: 'Total Area',
         value: effectiveSqft.toLocaleString(),
         unit: 'sq ft',
       },
       {
-        label: 'Construction Cost',
-        value: `${fmt(lowCost)} – ${fmt(highCost)}`,
+        label: 'Low Estimate',
+        value: fmt(lowCost),
         unit: '',
       },
       {
-        label: 'Materials (50%)',
-        value: fmt(materialsCost),
+        label: 'Average Estimate',
+        value: fmt(avgCost),
         unit: '',
       },
       {
-        label: 'Labor (35%)',
-        value: fmt(laborCost),
+        label: 'High Estimate',
+        value: fmt(highCost),
         unit: '',
       },
       {
-        label: 'Permits & Fees (8%)',
-        value: fmt(permitsCost),
-        unit: '',
-      },
-      {
-        label: 'Design & Engineering (7%)',
-        value: fmt(designCost),
+        label: 'Contingency (10–20%)',
+        value: `${fmt(contingencyLow)} – ${fmt(contingencyHigh)}`,
         unit: '',
       },
       {
@@ -126,11 +116,31 @@ export default function AdditionCostCalculator() {
     ];
   }, [debouncedLength, debouncedWidth, debouncedStories, debouncedQuality]);
 
+  const breakdownRows = useMemo(() => {
+    const l = parseFloat(debouncedLength);
+    const w = parseFloat(debouncedWidth);
+    if (!l || l <= 0 || !w || w <= 0) return null;
+
+    const totalSqft = l * w;
+    const costs = QUALITY_COSTS[debouncedQuality] || QUALITY_COSTS.standard;
+    let lowCost = totalSqft * costs.low;
+    let highCost = totalSqft * costs.high;
+    if (debouncedStories === '2') {
+      lowCost = totalSqft * costs.low + totalSqft * costs.low * SECOND_STORY_LOW;
+      highCost = totalSqft * costs.high + totalSqft * costs.high * SECOND_STORY_HIGH;
+    }
+    const avgCost = (lowCost + highCost) / 2;
+
+    return COST_BREAKDOWN.map(b => ({
+      label: b.label,
+      avg: avgCost * b.pct,
+    }));
+  }, [debouncedLength, debouncedWidth, debouncedStories, debouncedQuality]);
+
   const hasValidInput = parseFloat(length) > 0 && parseFloat(width) > 0;
 
   return (
     <div className="border-2 border-primary-200 dark:border-[#525252] rounded-xl p-5 sm:p-6 bg-white dark:bg-[#2a2a2a]">
-      {/* Inputs */}
       <div className="space-y-4">
         <CalcInput
           label="Addition Length"
@@ -168,7 +178,6 @@ export default function AdditionCostCalculator() {
         />
       </div>
 
-      {/* Calculate + Reset */}
       <div className="flex items-center gap-3 mt-5">
         <button
           type="button"
@@ -186,8 +195,21 @@ export default function AdditionCostCalculator() {
         </button>
       </div>
 
-      {/* Results */}
       <CalcResult results={results} visible={hasValidInput} />
+
+      {breakdownRows && (
+        <div className="mt-4 pt-4 border-t border-grey-300 dark:border-grey-600">
+          <h4 className="text-[1.5rem] font-semibold text-[#444] dark:text-grey-100 mb-3">Cost Breakdown (Average)</h4>
+          <div className="space-y-2">
+            {breakdownRows.map(row => (
+              <div key={row.label} className="flex justify-between items-center text-[1.4rem]">
+                <span className="text-grey-600 dark:text-grey-300">{row.label}</span>
+                <span className="font-medium text-grey-800 dark:text-grey-100">{fmt(row.avg)}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

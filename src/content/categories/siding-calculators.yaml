@@ -1,0 +1,20 @@
+slug: "siding-calculators"
+name: "Siding"
+description: "Free siding calculators for estimating materials, square footage, and replacement costs for Hardie board, plank, and lap siding projects."
+icon: "siding"
+calculators:
+  - "siding-calculator"
+  - "siding-cost-calculator"
+  - "siding-square-footage-calculator"
+intro: "Replacing or installing siding is a significant investment. Our siding calculators help you estimate exactly how much material you need and what it will cost — whether you're working with vinyl, Hardie board, cedar, or other materials."
+howToChoose:
+  - "Start with the Siding Square Footage Calculator to determine the total area to be covered, accounting for doors and windows."
+  - "Use the Siding Calculator to convert square footage into the number of boards or panels needed for your specific material type."
+  - "Use the Siding Cost Calculator to estimate the total project budget including materials, labor, and removal of old siding."
+scenarios:
+  - title: "Re-siding a Whole House"
+    description: "A homeowner measures all exterior walls and uses the square footage calculator first, then the cost calculator to compare vinyl vs. Hardie board pricing."
+  - title: "Estimating Siding for a New Addition"
+    description: "A contractor uses the siding calculator to determine materials needed for a room addition's exterior walls."
+  - title: "Budgeting a Siding Replacement"
+    description: "A homeowner gets multiple contractor quotes and uses the siding cost calculator to verify whether the quotes are reasonable for their area and material choice."

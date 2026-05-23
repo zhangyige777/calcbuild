@@ -40,6 +40,24 @@ const calculators = defineCollection({
       answer: z.string(),
     })),
     related: z.array(z.string()),
+    assumptions: z.array(z.string()).optional(),
+    showEstimateDisclaimer: z.boolean().optional(),
+    costFactors: z.array(z.object({
+      factor: z.string(),
+      description: z.string(),
+      estimate: z.string(),
+    })).optional(),
+    commonProjects: z.array(z.object({
+      project: z.string(),
+      description: z.string(),
+      estimate: z.string(),
+    })).optional(),
+    referenceTable: z.object({
+      title: z.string(),
+      headers: z.array(z.string()),
+      rows: z.array(z.array(z.string())),
+    }).optional(),
+    lastUpdated: z.string().optional(),
   }),
 });
 
@@ -51,6 +69,12 @@ const categories = defineCollection({
     description: z.string(),
     icon: z.string(),
     calculators: z.array(z.string()),
+    intro: z.string().optional(),
+    howToChoose: z.array(z.string()).optional(),
+    scenarios: z.array(z.object({
+      title: z.string(),
+      description: z.string(),
+    })).optional(),
   }),
 });
 

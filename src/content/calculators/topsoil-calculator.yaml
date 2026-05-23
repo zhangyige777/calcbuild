@@ -84,3 +84,10 @@ related:
   - "pea-gravel-calculator"
   - "river-rock-calculator"
   - "sod-calculator"
+
+assumptions:
+  - "Topsoil density is approximately 1.1 tons per cubic yard (2,200 lbs/yd³) when loose and dry"
+  - "Wet topsoil can weigh 30–40% more than dry topsoil"
+  - "Bagged topsoil (40 lbs) equals approximately 0.5 cubic feet per bag"
+
+lastUpdated: "2026-05-23"

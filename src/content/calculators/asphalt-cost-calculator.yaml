@@ -77,3 +77,12 @@ related:
   - "asphalt-calculator"
   - "asphalt-tons-to-cubic-yards"
   - "asphalt-square-yards-to-tons"
+
+assumptions:
+  - "Cost per ton is based on 2024–2025 national averages for the United States"
+  - "Asphalt density is approximately 1.4 tons per cubic yard"
+  - "Prices include material only — installation labor, grading, and base preparation are additional"
+  - "Hot mix asphalt prices fluctuate with crude oil prices and seasonal demand"
+
+showEstimateDisclaimer: true
+lastUpdated: "2026-05-23"

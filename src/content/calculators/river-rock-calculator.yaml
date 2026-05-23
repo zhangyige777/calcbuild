@@ -1,35 +1,27 @@
 title: "River Rock Calculator"
-h1: "River Rock Calculator – Estimate Cubic Yards, Tons & Cost"
-description: "Use our free river rock calculator to estimate how much river rock you need in cubic yards, tons, or by weight. Supports 1-3 inch, 2 inch, and 3/4 inch rock sizes."
+h1: "River Rock Calculator"
+description: "Calculate how much river rock you need in cubic yards, tons, or by coverage area. Estimate costs per ton, per cubic yard, and for delivery."
 category: "landscaping-calculators"
 slug: "river-rock-calculator"
 keywords:
+  - "river rock calculator"
   - "river stone calculator"
   - "river rock coverage calculator"
-  - "river rock stone calculator"
-  - "riverstone calculator"
-  - "rock coverage calculator square feet"
-  - "how much river rock will i need"
-  - "calculate river rock"
-  - "how do i calculate how much river rock i need"
-  - "calculating river rock"
+  - "how much river rock do i need"
+  - "river rock cubic yards"
+  - "river rock tons"
+  - "river rock cost per ton"
+  - "river rock cost per cubic yard"
+  - "river rock coverage per ton"
+  - "river rock delivery cost"
+  - "river rock for garden bed"
+  - "river rock for walkway"
+  - "river rock for drainage"
   - "1-3 river rock calculator"
-  - "1 3 river rock calculator"
   - "2 inch river rock calculator"
   - "3/4 river rock calculator"
-  - "calculating river rock coverage"
-  - "river rock calculator square feet"
-  - "river rock coverage per ton"
-  - "1 ton of river rock coverage"
-  - "how much does river rock cost"
-  - "cost per ton river rock"
-  - "river rock coverage chart"
-  - "river rock coverage"
-  - "weight of a yard of river rock"
-  - "yard of river rock weight"
-  - "weight of 1 yard of river rock"
-  - "weight of river rock per yard"
-  - "river rock cost per cubic yard"
+  - "river rock weight per yard"
+  - "calculate river rock coverage"
 
 calculator:
   component: "RiverRockCalculator"
@@ -66,41 +58,94 @@ calculator:
       required: true
 
 formula:
-  expression: "Cubic Yards = (Length × Width × Depth in ft) ÷ 27; Tons = Cubic Yards × Density"
+  expression: "Cubic Yards = (Length × Width × Depth in ft) ÷ 27; Tons = Cubic Yards × Density; Cost = Tons × Price per Ton + Delivery"
   steps:
     - "1. Convert depth from inches to feet: Depth (ft) = Depth (in) ÷ 12"
-    - "2. Calculate cubic yards: Cubic Yards = (Length × Width × Depth) ÷ 27"
-    - "3. Calculate tons: Tons = Cubic Yards × density (1-3 inch: 1.35; 2 inch: 1.4; 3/4 inch: 1.45)"
-    - "4. Calculate coverage: Coverage (sq ft/ton) = (Tons × 2000) ÷ (Depth in inches × 100)"
-    - "5. Calculate weight: Weight (lbs) = Cubic Yards × density × 2000"
+    - "2. Calculate volume in cubic yards: Cubic Yards = (Length × Width × Depth) ÷ 27"
+    - "3. Calculate tons using density: Tons = Cubic Yards × density (1-3 inch: 1.35; 2 inch: 1.40; 3/4 inch: 1.45 tons/yd³)"
+    - "4. Calculate coverage: Coverage (sq ft/ton) = (27 ÷ depth in ft) ÷ density"
+    - "5. Calculate weight: Weight (lbs) = Tons × 2000"
+    - "6. Estimate cost: Cost = Tons × Price per Ton + Delivery Fee"
 
 example:
-  scenario: "covering a 20ft × 10ft area with 3 inches of 1-3 inch river rock"
+  scenario: "covering a 20ft × 10ft garden bed with 3 inches of 1-3 inch river rock"
   values:
     length: 20
     width: 10
     depth: 3
     rockSize: "1-3"
-  result: "You need approximately 1.85 cubic yards or 2.50 tons of 1-3 inch river rock, covering about 167 sq ft per ton"
+  result: "You need approximately 1.85 cubic yards or 2.50 tons of 1-3 inch river rock. At $75/ton + $75 delivery, estimated total cost: $262.50. Coverage: approximately 80 sq ft per ton at 3-inch depth."
+
+assumptions:
+  - "River rock density varies by size: 1-3 inch ≈ 1.35 tons/yd³ (2,700 lbs/yd³), 2 inch ≈ 1.40 tons/yd³ (2,800 lbs/yd³), 3/4 inch ≈ 1.45 tons/yd³ (2,900 lbs/yd³)"
+  - "Calculations assume loose, uncompacted rock — compaction may reduce volume by 5-10%"
+  - "Cost estimates use national averages and may vary significantly by region and supplier"
+  - "Delivery costs depend on distance from the supplier and order size"
+
+showEstimateDisclaimer: true
+
+referenceTable:
+  title: "River Rock Coverage per Ton by Depth"
+  headers:
+    - "Rock Size"
+    - "1 inch Depth"
+    - "2 inch Depth"
+    - "3 inch Depth"
+    - "4 inch Depth"
+  rows:
+    - ["3/4 inch", "~120 sq ft", "~60 sq ft", "~40 sq ft", "~30 sq ft"]
+    - ["1-3 inch", "~100 sq ft", "~50 sq ft", "~33 sq ft", "~25 sq ft"]
+    - ["2 inch", "~90 sq ft", "~45 sq ft", "~30 sq ft", "~22 sq ft"]
+
+commonProjects:
+  - project: "Garden Bed (10×5 ft, 3 inch depth)"
+    description: "A decorative garden bed border using 1-3 inch river rock for weed suppression and aesthetics."
+    estimate: "~0.55 yd³ or ~0.75 tons | Cost: ~$56–$113 + delivery"
+  - project: "Walkway (20×3 ft, 2 inch depth)"
+    description: "A garden walkway using 3/4 inch river rock for a smooth walking surface."
+    estimate: "~0.37 yd³ or ~0.54 tons | Cost: ~$40–$81 + delivery"
+  - project: "Drainage Trench (30×2 ft, 6 inch depth)"
+    description: "A French drain or drainage trench using 1-3 inch river rock for water flow."
+    estimate: "~1.11 yd³ or ~1.50 tons | Cost: ~$112–$225 + delivery"
+  - project: "Large Landscape Area (25×15 ft, 3 inch depth)"
+    description: "Full ground cover for a front yard landscape area using 2 inch river rock."
+    estimate: "~3.47 yd³ or ~4.86 tons | Cost: ~$365–$729 + delivery"
 
 tips:
-  - "Order 5–10% extra to account for gaps between irregularly shaped rocks"
-  - "River rock density varies by size: 1-3 inch ≈ 1.35 tons/yd³, 2 inch ≈ 1.4 tons/yd³, 3/4 inch ≈ 1.45 tons/yd³"
-  - "For drainage projects, use larger rock (1-3 inch); for decorative ground cover, smaller rock (3/4 inch) works well"
+  - "Order 5–10% extra to account for gaps between irregularly shaped rocks and settling"
   - "River rock is sold by the ton at most landscape supply yards — a typical pickup truck carries about 1 ton"
+  - "For drainage projects (French drains, swales), use larger 1-3 inch rock; for decorative ground cover, smaller 3/4 inch works well"
+  - "Delivery fees typically range from $50–$150 depending on distance; ordering larger quantities may qualify for free delivery"
+  - "Install landscape fabric under river rock to prevent weed growth and keep rocks from sinking into soil"
+  - "Cost per ton ranges from $50–$150 depending on rock size, color, and region. Colored or specialty river rock costs more"
+  - "For a polished look, use smaller 3/4 inch rock on top of larger 1-3 inch rock as a base layer"
 
 faq:
   - question: "How much does a ton of river rock cover?"
-    answer: "One ton of river rock covers approximately 80–100 square feet at a 2-inch depth, or 50–60 square feet at a 3-inch depth. Coverage depends on the rock size and how tightly it is packed."
+    answer: "One ton of 1-3 inch river rock covers approximately 50 sq ft at 2-inch depth or 33 sq ft at 3-inch depth. Smaller 3/4 inch rock covers slightly more (~60 sq ft at 2 inches) because it packs tighter. Coverage decreases with larger rock sizes and greater depths."
   - question: "How much does river rock cost per ton?"
-    answer: "River rock costs between $50–$150 per ton depending on your location, the rock size, and the color. Delivery fees may add $50–$100 depending on distance."
+    answer: "River rock costs $50–$150 per ton depending on rock size, color, and your location. Plain gray/brown river rock is typically $50–$80/ton. Specialty colors (white, red, rainbow) can cost $100–$150/ton. Delivery adds $50–$150 depending on distance."
+  - question: "How much does river rock cost per cubic yard?"
+    answer: "River rock costs approximately $70–$200 per cubic yard depending on rock type and region. Since most suppliers sell by the ton, expect to pay $70–$135 per cubic yard for standard river rock (1.35–1.45 tons per cubic yard × $50–$100/ton)."
   - question: "How do I calculate how much river rock I need?"
-    answer: "Measure your area's length and width in feet and the desired depth in inches. Calculate: Cubic Yards = (Length × Width × Depth ÷ 12) ÷ 27. Then multiply by the density (1.35–1.45 tons per cubic yard) to get tons. Add 5–10% extra."
+    answer: "Measure your area's length and width in feet and desired depth in inches. Calculate cubic yards: (Length × Width × Depth ÷ 12) ÷ 27. Then multiply by density (1.35–1.45 tons/yd³) to get tons. Add 5–10% extra for gaps and settling."
   - question: "How much does a yard of river rock weigh?"
-    answer: "One cubic yard of river rock weighs approximately 2,700–2,900 pounds (1.35–1.45 tons), depending on the rock size. Smaller rock tends to be denser than larger rock."
+    answer: "One cubic yard of river rock weighs approximately 2,700–2,900 pounds (1.35–1.45 tons), depending on the rock size. Smaller rock is denser: 3/4 inch ≈ 2,900 lbs/yd³, 2 inch ≈ 2,800 lbs/yd³, 1-3 inch ≈ 2,700 lbs/yd³."
+  - question: "How much does river rock delivery cost?"
+    answer: "River rock delivery typically costs $50–$150 depending on distance from the supplier. Some suppliers offer free delivery for orders over 5–10 tons. Most delivery trucks can carry 10–20 tons, so ordering in bulk reduces the per-ton delivery cost."
+  - question: "What size river rock should I use?"
+    answer: "Use 3/4 inch river rock for decorative ground cover and walkways (smoother surface). Use 1-3 inch river rock for drainage projects, French drains, and large landscape areas. Use 2-4 inch or larger rock for erosion control and dry creek beds."
+  - question: "How much river rock do I need for a garden bed?"
+    answer: "For a 10×5 ft garden bed at 3-inch depth: approximately 0.55 cubic yards or 0.75 tons of 1-3 inch river rock. At $75/ton plus $75 delivery, total cost is approximately $131. Add 10% extra for gaps and settling."
+  - question: "River rock vs pea gravel — which should I use?"
+    answer: "River rock is larger (3/4 to 3+ inch), rounded, and better for drainage and decorative accents. Pea gravel is smaller (3/8 inch), smoother, and better for walkways and play areas. River rock stays in place better; pea gravel can scatter more easily."
+  - question: "Do I need landscape fabric under river rock?"
+    answer: "Yes, landscape fabric is recommended under river rock. It prevents weeds, keeps rocks from sinking into the soil, and makes future maintenance easier. Use a heavy-duty woven or non-woven geotextile fabric, not thin plastic sheeting."
 
 related:
   - "pea-gravel-calculator"
   - "pea-gravel-cost-calculator"
   - "topsoil-calculator"
   - "loam-calculator"
+
+lastUpdated: "2026-05-23"

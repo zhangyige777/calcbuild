@@ -74,3 +74,12 @@ related:
   - "sod-calculator"
   - "pond-volume-calculator"
   - "pool-gallons-calculator"
+
+assumptions:
+  - "Cost per pallet is based on 2024–2025 national averages for the United States"
+  - "One pallet of sod covers approximately 450 square feet (varies by supplier)"
+  - "Prices do not include soil preparation, grading, irrigation, or professional installation labor"
+  - "Delivery fees vary by distance and order size"
+
+showEstimateDisclaimer: true
+lastUpdated: "2026-05-23"
