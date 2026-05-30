@@ -4,3 +4,7 @@ description: "Free paint and finish calculators. Estimate paint gallons, wallpap
 icon: "paint"
 calculators:
   - "paint-cost-calculator"
+
+relatedCategories:
+  - "construction-calculators"
+  - "cost-calculators"

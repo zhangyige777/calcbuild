@@ -84,6 +84,8 @@ related:
   - "pea-gravel-calculator"
   - "river-rock-calculator"
   - "sod-calculator"
+  - "sand-calculator"
+  - "pea-gravel-cost-calculator"
 
 assumptions:
   - "Topsoil density is approximately 1.1 tons per cubic yard (2,200 lbs/yd³) when loose and dry"

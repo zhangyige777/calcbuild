@@ -29,3 +29,8 @@ scenarios:
     description: "A homeowner measures attic space and uses the insulation calculator to determine R-value coverage and number of rolls or batts needed."
   - title: "Building a Block Wall"
     description: "A contractor uses the cinder block calculator to estimate the number of blocks for a retaining wall, including 5% waste factor for cuts and breaks."
+
+relatedCategories:
+  - "cost-calculators"
+  - "roofing-calculators"
+  - "siding-calculators"

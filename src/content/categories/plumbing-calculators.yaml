@@ -4,3 +4,7 @@ description: "Free plumbing calculators for pipe sizing, water flow, pressure, a
 icon: "plumbing"
 calculators:
   - "pool-gallons-calculator"
+
+relatedCategories:
+  - "construction-calculators"
+  - "cost-calculators"

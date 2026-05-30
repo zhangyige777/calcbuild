@@ -74,6 +74,7 @@ related:
   - "sod-calculator"
   - "pond-volume-calculator"
   - "pool-gallons-calculator"
+  - "loam-calculator"
 
 assumptions:
   - "Cost per pallet is based on 2024–2025 national averages for the United States"

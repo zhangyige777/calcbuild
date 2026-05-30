@@ -18,3 +18,7 @@ scenarios:
     description: "A contractor uses the siding calculator to determine materials needed for a room addition's exterior walls."
   - title: "Budgeting a Siding Replacement"
     description: "A homeowner gets multiple contractor quotes and uses the siding cost calculator to verify whether the quotes are reasonable for their area and material choice."
+
+relatedCategories:
+  - "construction-calculators"
+  - "cost-calculators"

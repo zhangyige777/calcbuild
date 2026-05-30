@@ -75,6 +75,7 @@ const categories = defineCollection({
       title: z.string(),
       description: z.string(),
     })).optional(),
+    relatedCategories: z.array(z.string()).optional(),
   }),
 });
 

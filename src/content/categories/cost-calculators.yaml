@@ -25,3 +25,8 @@ scenarios:
     description: "A family uses the pool cost calculator to understand the full scope of expenses — excavation, materials, equipment, and finishing — before committing to a contractor."
   - title: "Estimating Mold Remediation"
     description: "After discovering water damage, a homeowner uses the mold remediation calculator to understand typical costs and decide whether to file an insurance claim."
+
+relatedCategories:
+  - "construction-calculators"
+  - "landscaping-calculators"
+  - "siding-calculators"

@@ -5,3 +5,6 @@ icon: "stairs"
 calculators:
   - "stair-calculator"
   - "ramp-calculator"
+
+relatedCategories:
+  - "construction-calculators"

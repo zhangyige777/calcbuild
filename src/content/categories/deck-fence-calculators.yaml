@@ -4,3 +4,7 @@ description: "Free deck and fence calculators to estimate lumber, posts, railing
 icon: "deck"
 calculators:
   - "deck-joist-calculator"
+
+relatedCategories:
+  - "construction-calculators"
+  - "cost-calculators"

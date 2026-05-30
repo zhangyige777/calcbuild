@@ -81,10 +81,10 @@ faq:
     answer: "Square-foot cost estimates provide a useful ballpark but actual costs can vary ±20% or more. For a more accurate estimate, get quotes from local contractors who can account for site conditions, local labor rates, material availability, and specific design choices."
 
 related:
-  - "concrete-calculator"
-  - "lumber-calculator"
+  - "board-foot-calculator"
   - "roof-pitch-calculator"
   - "addition-cost-calculator"
+  - "asphalt-cost-calculator"
 
 assumptions:
   - "Cost per square foot ranges are based on 2024–2025 national averages for the United States"

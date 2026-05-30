@@ -28,3 +28,7 @@ scenarios:
     description: "A homeowner measures low spots in the yard and uses the topsoil calculator to figure out how many cubic yards of soil to order from the landscape supply company."
   - title: "Estimating Landscape Project Costs"
     description: "A property owner planning a full front-yard makeover uses the landscape cost calculator to estimate the total budget across multiple material types."
+
+relatedCategories:
+  - "cost-calculators"
+  - "construction-calculators"

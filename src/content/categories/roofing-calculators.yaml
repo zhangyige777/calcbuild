@@ -6,3 +6,7 @@ calculators:
   - "roof-pitch-calculator"
   - "gambrel-roof-calculator"
   - "roof-pitch-ratios"
+
+relatedCategories:
+  - "construction-calculators"
+  - "cost-calculators"
