@@ -1,15 +1,19 @@
-title: "Loam Calculator"
-h1: "Loam Calculator – Estimate Cubic Yards & Cost"
-description: "Use our free loam calculator to estimate how much loam you need in cubic yards and tons. Enter length, width, and depth for instant results."
+title: "Loam Calculator - Cubic Yards, Tons & Cost Estimate"
+h1: "Loam Calculator - Estimate Cubic Yards, Tons & Cost"
+description: "Free loam calculator to estimate cubic yards, tons, and cost for your project. Enter length, width, and depth for instant results with delivery pricing."
 category: "landscaping-calculators"
 slug: "loam-calculator"
 keywords:
   - "loam calculator"
+  - "loam calculator cubic yards"
+  - "loam calculator tons"
+  - "loam cost estimate"
   - "loam calculator square feet"
   - "how much loam do i need"
   - "yard of loam"
   - "1 yard of loam"
   - "how much is a yard of loam"
+  - "loam calculator cost"
 
 calculator:
   component: "LoamCalculator"

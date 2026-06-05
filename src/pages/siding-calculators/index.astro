@@ -1,0 +1,379 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/layout/Breadcrumb.astro';
+import RelatedLinks from '../../components/common/RelatedLinks.astro';
+import StructuredData from '../../components/seo/StructuredData.astro';
+import ComprehensiveSidingCalculator from '../../components/calculators/ComprehensiveSidingCalculator';
+import { SITE_URL } from '../../utils/constants';
+
+const title = 'Siding Calculator - Estimate Cost, Materials & Square Footage';
+const description = 'Free siding calculator to estimate cost, materials and square footage for vinyl, Hardie, cedar, lap siding and more. Get an accurate siding estimate for your home project.';
+const canonical = '/siding-calculators/';
+const keywords = [
+  'siding calculator',
+  'siding estimate',
+  'siding cost estimator',
+  'siding cost calculator',
+  'lap siding calculator',
+  'cedar siding cost calculator',
+  'vinyl siding calculator',
+  'hardie siding calculator',
+  'siding replacement cost',
+  'siding material calculator',
+];
+
+const formula = {
+  expression: 'Net Area = (Wall Height × Wall Width × Number of Walls) − Openings Area\nTotal with Waste = Net Area × (1 + Waste Factor%)\nSquares = Total with Waste ÷ 100\nTotal Cost = Total with Waste × Cost per sq ft (material + labor)',
+  steps: [
+    '1. Measure the height and width of each wall in feet.',
+    '2. Multiply height × width × number of walls to get the total wall area.',
+    '3. Subtract the area of all doors and windows (openings area) to get the net siding area.',
+    '4. Apply a waste factor (typically 10-15%) to account for cuts, mistakes, and future repairs.',
+    '5. Divide by 100 to convert square feet into "squares" — the standard siding unit.',
+    '6. Multiply by the installed cost per square foot for your chosen material to estimate the total project cost.',
+  ],
+};
+
+const example = {
+  scenario: 'siding a rectangular house with four 10 ft × 40 ft walls using vinyl siding, 80 sq ft of openings, and 10% waste',
+  values: {
+    'Wall Height': '10 ft',
+    'Wall Width': '40 ft',
+    'Number of Walls': '4',
+    'Openings Area': '80 sq ft',
+    'Waste Factor': '10%',
+    'Material': 'Vinyl ($3–$7/sq ft installed)',
+  },
+  result: 'Total wall area = 1,600 sq ft. Net area (minus openings) = 1,520 sq ft. With 10% waste = 1,672 sq ft (16.72 squares). Estimated total project cost: $5,016 – $11,704.',
+};
+
+const tips = [
+  'Siding is sold in "squares" — one square equals 100 square feet. Always round up when ordering.',
+  'Add 10-15% waste factor for horizontal siding and 15-20% for diagonal or shake patterns.',
+  'Vinyl siding is the most budget-friendly option, while cedar and fiber cement offer premium looks and durability.',
+  'Get at least three contractor quotes and compare them against your own calculations to verify fairness.',
+  'Removal and disposal of old siding typically adds $1–$2 per square foot to the total cost.',
+  'Board and batten and shake/shingle styles generally cost more than standard horizontal lap siding due to increased labor.',
+  'Factor in trim, soffits, fascia, and flashing — these can add 10-20% to your material budget.',
+  'Energy-efficient insulated siding costs more upfront but can reduce heating and cooling bills over time.',
+];
+
+const faq = [
+  {
+    question: 'How much does siding cost for a 1,500 sq ft house?',
+    answer: 'Siding a 1,500 sq ft house typically costs between $4,500 and $18,000 depending on the material. Vinyl siding is the most affordable at $3–$7 per square foot installed ($4,500–$10,500). Fiber cement (Hardie) runs $5–$10 per sq ft ($7,500–$15,000). Cedar or wood siding costs $6–$12 per sq ft ($9,000–$18,000). These prices include both materials and professional installation. Removal of old siding adds another $1,500–$3,000.',
+  },
+  {
+    question: 'How do I estimate siding for my house?',
+    answer: 'To estimate siding, measure the height and width of each exterior wall and multiply them together to get the total wall area. Subtract the area of all doors and windows. Add 10-15% for waste and cuts. Divide the result by 100 to get the number of squares needed. For example, a house with four 10×40 ft walls and 80 sq ft of openings would need about 1,520 sq ft net area, or roughly 17 squares including waste.',
+  },
+  {
+    question: 'How much does cedar siding cost?',
+    answer: 'Cedar siding costs $6 to $12 per square foot installed, making it one of the more premium siding options. The material alone runs $2.50–$6 per square foot, with labor adding another $3.50–$6 per square foot. For a typical 1,500 sq ft home, expect to pay $9,000–$18,000 for cedar siding installation. Cedar offers natural beauty and insect resistance but requires regular maintenance including staining or painting every 3-5 years.',
+  },
+  {
+    question: 'What is lap siding and how much does it cost?',
+    answer: 'Lap siding (also called clapboard or bevel siding) is a style where boards are installed horizontally with each board overlapping the one below it, creating a sloped surface that sheds water. Wood lap siding costs $5–$11 per square foot installed. Fiber cement lap siding (like HardiePlank) runs $5–$10 per sq ft installed. Vinyl lap siding is the most affordable at $3–$7 per sq ft. Lap siding is the most common siding style in North America due to its classic appearance and effective weather protection.',
+  },
+  {
+    question: 'How much does vinyl siding cost per square foot?',
+    answer: 'Vinyl siding costs $3 to $7 per square foot installed, including both materials and labor. The material alone costs $1–$4 per square foot, while professional installation adds $2–$3 per square foot. Premium vinyl siding with insulation backing or enhanced profiles can reach $8–$10 per sq ft installed. Vinyl is the most popular siding material in the US because it is affordable, low-maintenance, and available in a wide range of colors and styles.',
+  },
+  {
+    question: 'How much does Hardie board siding cost?',
+    answer: 'Hardie board (fiber cement) siding costs $5 to $10 per square foot installed. The material runs $1.50–$3.50 per square foot, and labor adds $3.50–$6.50 per square foot because fiber cement is heavier and harder to cut than vinyl. For a 1,500 sq ft home, expect a total cost of $7,500–$15,000. Hardie siding is popular for its durability, fire resistance, and wood-like appearance. It comes with a 30-year warranty and requires repainting every 10-15 years.',
+  },
+  {
+    question: 'How do I calculate siding squares?',
+    answer: 'One square of siding equals 100 square feet of coverage area. To calculate squares, measure each wall\'s height and width in feet, multiply to get area, subtract all door and window openings, add 10-15% for waste, then divide the total by 100. For example: if your total net siding area is 1,520 sq ft with 10% waste added (1,672 sq ft), you need approximately 16.72 squares. Always round up to the nearest full square when ordering materials.',
+  },
+  {
+    question: 'Is it cheaper to side a house yourself?',
+    answer: 'DIY siding installation can save 40-50% on labor costs, which typically represent half the total project price. For vinyl siding on a 1,500 sq ft house, materials alone cost $1,500–$6,000 versus $4,500–$10,500 with professional installation. However, DIY siding requires specialized tools, physical stamina, and knowledge of proper installation techniques. Mistakes can lead to water damage, voided warranties, and costly repairs. Fiber cement and stucco are generally not recommended for DIY due to their weight and complexity.',
+  },
+  {
+    question: 'How long does siding last?',
+    answer: 'Siding lifespan varies significantly by material. Vinyl siding lasts 20-40 years with minimal maintenance. Fiber cement (Hardie) can last 30-50 years with periodic repainting. Cedar and wood siding lasts 20-40 years but requires regular staining or painting every 3-7 years. Metal/steel siding can last 40-60 years with proper care. Stucco is extremely durable and can last 50-80 years or more. Engineered wood siding typically lasts 20-30 years. Climate, installation quality, and maintenance all significantly impact actual lifespan.',
+  },
+  {
+    question: 'How much does siding replacement cost including removal?',
+    answer: 'Full siding replacement including removal of old materials costs $4–$14 per square foot depending on the new material chosen. Removal and disposal of existing siding adds $1–$2 per square foot on top of the new siding cost. For a 1,500 sq ft home, total replacement costs range from $6,000 (vinyl, self-removal) to $21,000 (cedar with professional removal). Most homeowners spend $8,000–$15,000 for a complete siding replacement with mid-range materials and professional installation.',
+  },
+];
+
+const costFactors = [
+  { factor: 'Material', description: 'The type of siding you choose is the single biggest cost driver. Vinyl is cheapest; cedar and stucco are premium.', estimate: '$1–$6/sq ft (material only)' },
+  { factor: 'Labor', description: 'Professional installation typically costs about the same as materials. Complex styles and multi-story homes increase labor.', estimate: '$2–$6/sq ft' },
+  { factor: 'Removal & Disposal', description: 'Removing and disposing of existing siding adds to the total. Some materials like asbestos require special handling.', estimate: '$1–$2/sq ft' },
+  { factor: 'House Height', description: 'Two-story and three-story homes cost more due to scaffolding, equipment, and additional labor time.', estimate: '+15-30% vs single-story' },
+  { factor: 'Trim & Accessories', description: 'Corner posts, J-channels, starter strips, soffits, fascia, and flashing are required but often overlooked in estimates.', estimate: '+10-20% of material cost' },
+  { factor: 'Location', description: 'Labor and material prices vary by region. Urban areas and coastal regions tend to be more expensive.', estimate: '±15-25% from national average' },
+];
+
+const relatedCalcs = ['siding-calculator', 'siding-cost-calculator', 'siding-square-footage-calculator'];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} keywords={keywords}>
+  <Breadcrumb
+    items={[
+      { name: 'Home', href: '/' },
+      { name: 'Siding Calculators' },
+    ]}
+  />
+
+  <article class="max-w-ic-content mx-auto px-[20px] pb-[40px]">
+    <!-- Title -->
+    <h1 class="text-[3.5rem] max-[480px]:text-[2.8rem] font-semibold text-[#444] dark:text-grey-100 mt-[20px] mb-[12px]">{title}</h1>
+    <p class="text-[1.8rem] text-grey-600 dark:text-[#D4D4D4] mb-[30px] leading-[1.55]">
+      Use this free siding calculator to estimate how much siding you need and what it will cost. Enter your wall dimensions, choose your material, and get instant results for square footage, squares, and total project cost — whether you're working with vinyl, Hardie board, cedar, lap siding, or any other material.
+    </p>
+
+    <!-- Calculator Widget -->
+    <section id="calculator" class="mb-[40px]">
+      <div class="mt-[15px] p-[30px] border border-brand-700 dark:border-brand-600 rounded-ic-md">
+        <div class="p-[20px] border border-grey-500 dark:border-grey-600 rounded-ic-md">
+          <ComprehensiveSidingCalculator client:load />
+        </div>
+      </div>
+      <div class="mt-[15px] p-[15px] bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-ic-md">
+        <p class="text-[1.4rem] text-amber-800 dark:text-amber-200 leading-[1.55]">
+          <strong>Estimate only.</strong> Prices are approximate and vary by region. This is not a contractor quote. Use for planning purposes only.
+        </p>
+      </div>
+    </section>
+
+    <!-- Specialized Siding Calculators -->
+    <section class="mb-[40px] p-[30px] bg-grey-200 dark:bg-grey-850 rounded-ic-md">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Specialized Siding Calculators</h2>
+      <p class="text-[1.8rem] text-grey-700 dark:text-grey-300 leading-[1.55] mb-[20px]">
+        Need a more specific tool? Try one of our dedicated siding calculators for detailed material or cost estimates.
+      </p>
+      <div class="grid gap-[15px]">
+        <a href="/siding-calculators/siding-calculator/" class="p-[20px] border border-grey-400 dark:border-grey-700 rounded-ic-md hover:border-brand-700 dark:hover:border-brand-600 transition-colors block">
+          <h3 class="text-[1.8rem] font-semibold text-grey-800 dark:text-grey-100 mb-[5px]">Siding Calculator</h3>
+          <p class="text-[1.6rem] text-grey-600 dark:text-grey-300">Calculate how much siding you need based on wall dimensions, openings, and waste factor. Works for Hardie board, vinyl, and wood siding.</p>
+        </a>
+        <a href="/siding-calculators/siding-cost-calculator/" class="p-[20px] border border-grey-400 dark:border-grey-700 rounded-ic-md hover:border-brand-700 dark:hover:border-brand-600 transition-colors block">
+          <h3 class="text-[1.8rem] font-semibold text-grey-800 dark:text-grey-100 mb-[5px]">Siding Cost Calculator</h3>
+          <p class="text-[1.6rem] text-grey-600 dark:text-grey-300">Estimate the total cost of your siding project including materials, labor, and optional removal of old siding.</p>
+        </a>
+        <a href="/siding-calculators/siding-square-footage-calculator/" class="p-[20px] border border-grey-400 dark:border-grey-700 rounded-ic-md hover:border-brand-700 dark:hover:border-brand-600 transition-colors block">
+          <h3 class="text-[1.8rem] font-semibold text-grey-800 dark:text-grey-100 mb-[5px]">Siding Square Footage Calculator</h3>
+          <p class="text-[1.6rem] text-grey-600 dark:text-grey-300">Determine the exact square footage of siding needed by measuring each wall and subtracting openings.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- On this page -->
+    <nav class="mb-[40px] p-[30px] bg-grey-200 dark:bg-grey-850 rounded-ic-md">
+      <h2 class="text-[1.8rem] font-bold text-[#444] dark:text-grey-100 uppercase tracking-wide mb-[15px]">On this page</h2>
+      <ol class="space-y-[8px] text-[1.6rem]">
+        <li><a href="#formula" class="text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-500 transition-colors font-medium">Formula</a></li>
+        <li><a href="#how-to-calculate" class="text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-500 transition-colors font-medium">How to Calculate</a></li>
+        <li><a href="#cost-breakdown" class="text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-500 transition-colors font-medium">Cost Breakdown</a></li>
+        <li><a href="#example" class="text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-500 transition-colors font-medium">Example</a></li>
+        <li><a href="#tips" class="text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-500 transition-colors font-medium">Tips</a></li>
+        <li><a href="#faq" class="text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-500 transition-colors font-medium">FAQ</a></li>
+      </ol>
+    </nav>
+
+    <!-- Formula -->
+    <section id="formula" class="mb-[30px]">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Siding Calculation Formula</h2>
+      <div class="bg-grey-200 dark:bg-grey-850 border border-grey-400 dark:border-grey-700 rounded-ic-md p-[20px] font-mono text-[1.6rem] whitespace-pre-line leading-[1.8]">
+        {formula.expression}
+      </div>
+    </section>
+
+    <!-- Cost Breakdown Table -->
+    <section id="cost-breakdown" class="mb-[30px]">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Siding Cost per Square Foot (Installed)</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-[1.6rem] border border-grey-400 dark:border-grey-700 rounded-ic-md">
+          <thead>
+            <tr class="bg-grey-200 dark:bg-grey-850">
+              <th class="text-left px-[15px] py-[10px] font-semibold text-grey-800 dark:text-grey-100">Material</th>
+              <th class="text-left px-[15px] py-[10px] font-semibold text-grey-800 dark:text-grey-100">Low Cost</th>
+              <th class="text-left px-[15px] py-[10px] font-semibold text-grey-800 dark:text-grey-100">High Cost</th>
+              <th class="text-left px-[15px] py-[10px] font-semibold text-grey-800 dark:text-grey-100">Lifespan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-grey-300 dark:border-grey-700">
+              <td class="px-[15px] py-[10px] font-medium text-grey-800 dark:text-grey-200">Vinyl</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">$3/sq ft</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">$7/sq ft</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">20-40 years</td>
+            </tr>
+            <tr class="border-t border-grey-300 dark:border-grey-700">
+              <td class="px-[15px] py-[10px] font-medium text-grey-800 dark:text-grey-200">Hardie/Fiber Cement</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">$5/sq ft</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">$10/sq ft</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">30-50 years</td>
+            </tr>
+            <tr class="border-t border-grey-300 dark:border-grey-700">
+              <td class="px-[15px] py-[10px] font-medium text-grey-800 dark:text-grey-200">Cedar/Wood</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">$6/sq ft</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">$12/sq ft</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">20-40 years</td>
+            </tr>
+            <tr class="border-t border-grey-300 dark:border-grey-700">
+              <td class="px-[15px] py-[10px] font-medium text-grey-800 dark:text-grey-200">Lap Siding (Wood)</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">$5/sq ft</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">$11/sq ft</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">20-40 years</td>
+            </tr>
+            <tr class="border-t border-grey-300 dark:border-grey-700">
+              <td class="px-[15px] py-[10px] font-medium text-grey-800 dark:text-grey-200">Metal/Steel</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">$5/sq ft</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">$9/sq ft</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">40-60 years</td>
+            </tr>
+            <tr class="border-t border-grey-300 dark:border-grey-700">
+              <td class="px-[15px] py-[10px] font-medium text-grey-800 dark:text-grey-200">Stucco</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">$6/sq ft</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">$12/sq ft</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">50-80 years</td>
+            </tr>
+            <tr class="border-t border-grey-300 dark:border-grey-700">
+              <td class="px-[15px] py-[10px] font-medium text-grey-800 dark:text-grey-200">Engineered Wood</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">$4/sq ft</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">$8/sq ft</td>
+              <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-300">20-30 years</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Cost Factors -->
+    <section class="mb-[30px]">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Cost Factors</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-[1.6rem] border border-grey-400 dark:border-grey-700 rounded-ic-md">
+          <thead>
+            <tr class="bg-grey-200 dark:bg-grey-850">
+              <th class="text-left px-[15px] py-[10px] font-semibold text-grey-800 dark:text-grey-100">Factor</th>
+              <th class="text-left px-[15px] py-[10px] font-semibold text-grey-800 dark:text-grey-100">Description</th>
+              <th class="text-left px-[15px] py-[10px] font-semibold text-grey-800 dark:text-grey-100">Typical Estimate</th>
+            </tr>
+          </thead>
+          <tbody>
+            {costFactors.map((cf) => (
+              <tr class="border-t border-grey-300 dark:border-grey-700">
+                <td class="px-[15px] py-[10px] font-medium text-grey-800 dark:text-grey-200">{cf.factor}</td>
+                <td class="px-[15px] py-[10px] text-grey-600 dark:text-grey-300">{cf.description}</td>
+                <td class="px-[15px] py-[10px] text-grey-700 dark:text-grey-200">{cf.estimate}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- How to Calculate -->
+    <section id="how-to-calculate" class="mb-[30px]">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">How to Calculate Siding</h2>
+      <ol class="list-decimal pl-[25px] space-y-[10px] text-[1.8rem] text-grey-700 dark:text-grey-300 leading-[1.55]">
+        {formula.steps.map((step) => (
+          <li>{step}</li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Example -->
+    <section id="example" class="mb-[30px]">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Example Calculation</h2>
+      <div class="text-[1.8rem] text-grey-700 dark:text-grey-300 leading-[1.55] space-y-[10px]">
+        <p class="mt-0">Let's say you're {example.scenario}.</p>
+        <ul class="space-y-[5px]">
+          {Object.entries(example.values).map(([key, value]) => (
+            <li><strong class="text-grey-800 dark:text-grey-200 capitalize">{key}:</strong> {value}</li>
+          ))}
+        </ul>
+        <p class="font-medium text-grey-800 dark:text-grey-200 mt-[10px]">{example.result}</p>
+      </div>
+    </section>
+
+    <!-- Tips -->
+    <section id="tips" class="mb-[30px]">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Tips</h2>
+      <ul class="list-disc pl-[25px] space-y-[8px] text-[1.8rem] text-grey-700 dark:text-grey-300 leading-[1.55]">
+        {tips.map((tip) => (
+          <li>{tip}</li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="mb-[30px]">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Frequently Asked Questions</h2>
+      <div class="divide-y divide-grey-400 dark:divide-grey-700 border border-grey-400 dark:border-grey-700 rounded-ic-md overflow-hidden">
+        {faq.map((item) => (
+          <details class="group">
+            <summary class="flex items-center justify-between px-[20px] py-[15px] cursor-pointer text-[1.8rem] text-grey-800 dark:text-grey-200 font-medium hover:text-brand-700 dark:hover:text-brand-600 transition-colors">
+              <span class="pr-[20px]">{item.question}</span>
+              <svg class="w-[16px] h-[16px] text-grey-500 dark:text-[#D4D4D4] transition-transform group-open:rotate-180 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </summary>
+            <div class="px-[20px] pb-[15px] text-[1.6rem] text-grey-600 dark:text-[#D4D4D4] leading-[1.55]">
+              {item.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related -->
+    <section class="mb-[30px]">
+      <h2 class="text-[3.0rem] max-[480px]:text-[2.6rem] font-semibold text-[#444] dark:text-grey-100 mb-[15px]">Related Calculators</h2>
+      <RelatedLinks related={relatedCalcs} />
+    </section>
+
+    <!-- Last Updated -->
+    <p class="text-[1.4rem] text-grey-500 dark:text-grey-400 mt-[20px]">Last updated: June 2026</p>
+  </article>
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Siding Calculator",
+    "url": `${SITE_URL}/siding-calculators/`,
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": description,
+  })} />
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  })} />
+
+  <!-- Structured Data: HowTo -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Calculate Siding",
+    "step": formula.steps.map((step, i) => ({
+      "@type": "HowToStep",
+      "position": i + 1,
+      "text": step.replace(/^\d+\.\s*/, '')
+    }))
+  })} />
+</BaseLayout>

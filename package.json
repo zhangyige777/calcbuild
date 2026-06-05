@@ -5,7 +5,7 @@
   "packageManager": "pnpm@9.15.4",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node -e \"const fs=require('fs'),p=require('path');const s=p.join('dist','sitemap-index.xml'),d=p.join('dist','sitemap.xml');if(fs.existsSync(s)){fs.copyFileSync(s,d);console.log('✔ Copied sitemap-index.xml → sitemap.xml')}\"",
     "preview": "astro preview",
     "astro": "astro"
   },
